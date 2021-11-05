@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Theme } from '../../shared/theme';
 import { AppContext } from '../../shared/context';
-import { Header, Nav, Description } from './components';
+import { Header, Nav, Description, Tiles, Footer } from './components';
 
 export default function Main(): JSX.Element {
   const { theme } = useContext(AppContext);
@@ -13,43 +13,36 @@ export default function Main(): JSX.Element {
         <Header />
         <Nav />
         <Description />
-        {/* <Tiles /> */}
+        <Tiles />
+        <Footer />
       </ContentWrapper>
     </MainWrapper>
   );
 }
 
-const MainWrapper = styled.div.attrs(({ theme }: { theme: Theme }) => {
-  const style: React.CSSProperties = {
-    color: theme.primaryText,
-    backgroundColor: theme.primaryBg,
-  };
-  return { style };
-})<{ theme: Theme }>`
+const MainWrapper = styled.div<{ theme: Theme }>`
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.primaryText};
+  background-color: ${({ theme }) => theme.primaryBg};
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  padding: 8px;
+  box-sizing: border-box;
 `;
 
-const ContentWrapper = styled.div.attrs(({ theme }: { theme: Theme }) => {
-  const style: React.CSSProperties = {
-    color: theme.secondaryText,
-    backgroundColor: theme.secondaryBg,
-  };
-  return { style };
-})<{ theme: Theme }>`
+const ContentWrapper = styled.div<{ theme: Theme }>`
   display: flex;
   flex-direction: column;
+  height: auto;
   width: 1024px;
-  max-width: 100vw;
+  max-width: 95%;
   padding: 0;
-  margin: 0;
   box-sizing: border-box;
   border-radius: 16px;
+  border: 6px solid ${({ theme }) => theme.secondaryBg};
   justify-content: center;
   align-items: center;
 `;

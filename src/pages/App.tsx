@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import '../shared/theme/fonts.css';
 import Main from './Main';
 import NotFound from './NotFound';
 

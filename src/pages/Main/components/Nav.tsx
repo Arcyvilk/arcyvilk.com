@@ -24,19 +24,15 @@ export const Nav = (): JSX.Element => {
   );
 };
 
-const StyledNav = styled.div.attrs(({ theme }: { theme: Theme }) => {
-  const style: React.CSSProperties = {
-    color: theme.primaryText,
-    backgroundColor: theme.primaryBg,
-  };
-  return { style };
-})<{ theme: Theme }>`
+const StyledNav = styled.div<{ theme: Theme }>`
   display: flex;
   flex-direction: row;
   width: 100%;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
+  color: ${({ theme }) => theme.primaryText};
+  background-color: ${({ theme }) => theme.primaryBg};
 
   ul {
     margin: 0;
@@ -44,28 +40,33 @@ const StyledNav = styled.div.attrs(({ theme }: { theme: Theme }) => {
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    li {
-      margin: 4px 2px;
-      padding: 0;
-      a {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 12px 16px;
-        color: ${({ theme }) => theme.secondaryText};
-        background-color: ${({ theme }) => theme.secondaryBg};
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        cursor: pointer;
-        opacity: 1;
-        & > * {
-          margin: 2px 0;
-        }
-        &:hover {
-          opacity: 0.8;
-        }
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    & > li {
+      border: 4px solid ${({ theme }) => theme.primaryBg};
+      box-sizing: border-box;
+    }
+    li > a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 16px;
+      color: ${({ theme }) => theme.secondaryText};
+      background-color: ${({ theme }) => theme.secondaryBg};
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      opacity: 1;
+      &:hover {
+        opacity: 0.8;
+        color: white;
+      }
+      & > * {
+        margin: 2px 0;
       }
     }
   }

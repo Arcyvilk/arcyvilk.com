@@ -27,16 +27,22 @@ const StyledHeader = styled(Flex)<{ theme: Theme }>`
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 32px 16px;
+  padding: 32px 16px;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
+  color: ${({ theme }) => theme.secondaryText};
+  background-color: ${({ theme }) => theme.secondaryBg};
 
   h1 {
     margin: 0 32px;
     padding: 0;
     font-weight: 300;
     font-size: 4em;
+    @media (max-width: 650px) {
+      margin: 0 8px;
+      font-size: 3em;
+    }
   }
 
   img {
@@ -49,6 +55,13 @@ const StyledHeader = styled(Flex)<{ theme: Theme }>`
     cursor: pointer;
     &:hover {
       opacity: 1;
+    }
+    @media (max-width: 650px) {
+      width: 128px;
+      height: 128px;
+      border-radius: 128px;
+      border: 3px solid ${({ theme }) => theme.primaryText};
+      margin: 0 8px;
     }
   }
 `;

@@ -7,8 +7,9 @@ export type TileType = 'comic' | 'art' | 'bot' | 'app' | 'other';
 
 export type Tile = {
   title: string;
-  description?: React.ReactNode;
+  description: React.ReactNode;
   picture: string;
+  link: string;
   type: TileType;
 };
 
@@ -17,6 +18,7 @@ export const tiles: Tile[] = [
     title: 'The Rift [HIATUS]',
     picture: rift,
     type: 'comic',
+    link: 'http://the-rift-comics.tumblr.com/',
     description: (
       <>
         <p>
@@ -35,6 +37,7 @@ export const tiles: Tile[] = [
     title: 'Viktor Bot',
     picture: vikbot,
     type: 'bot',
+    link: 'http://viktorbot.arcyvilk.com/',
     description: (
       <>
         <p>
@@ -52,6 +55,7 @@ export const tiles: Tile[] = [
     title: 'Masochist.me',
     picture: masochist,
     type: 'app',
+    link: 'http://masochist.me/',
     description: (
       <>
         <p>
