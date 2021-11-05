@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import '../shared/theme/fonts.css';
 import Main from './Main';
 import NotFound from './NotFound';
 
@@ -12,7 +13,7 @@ export default function App(): JSX.Element {
   return (
     <Router>
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Main />
         </Route>
         <Route exact path="/404">
