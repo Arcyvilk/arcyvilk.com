@@ -7,10 +7,18 @@ import { Flex } from '../../../components';
 export const Description = (): JSX.Element => {
   const { theme } = useContext(AppContext);
   return (
-    <StyledDescription column align justify theme={theme}>
+    <StyledDescription column justify theme={theme}>
+      <p>Hello there, name&apos;s Arcyvilk.</p>
       <p>
-        Welcome to the sacred land of cats, Liches and code of questionable
-        quality.
+        This website is supposed to function as a simple portfolio, or rather -
+        due to my inability to ever finish anything - as a dump of all the
+        projects I&apos;ve started and abandoned over the years. Or at least the
+        cooler ones.
+      </p>
+      <p>
+        Amongst the things I do but rarely finish are: ink art, both traditional
+        and digital; comics; a bunch of bugged bots; some websites; a few really
+        dumb applications; and possibly written works.
       </p>
     </StyledDescription>
   );
@@ -23,6 +31,7 @@ const StyledDescription = styled(Flex)<{ theme: Theme }>`
   background-color: ${({ theme }) => theme.secondaryBg};
   color: ${({ theme }) => theme.secondaryText};
   p {
+    text-align: left;
     margin: 0;
   }
 `;

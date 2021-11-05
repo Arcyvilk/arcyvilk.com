@@ -4,14 +4,11 @@ const GlobalStyle = createGlobalStyle`
   html {
     margin: 0;
     padding: 0;
-    width: 100vw;
     height: 100vh;
-    overflow: auto;
+    vertical-align: baseline;
   }
 
   body {
-    width: 100vw;
-    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Dosis', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,9 +19,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    overflow: hidden;
   }
 
   code {

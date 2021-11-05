@@ -28,9 +28,9 @@ const MainWrapper = styled.div<{ theme: Theme }>`
   background-color: ${({ theme }) => theme.primaryBg};
   width: 100%;
   min-height: 100vh;
+  padding: 12px 0;
   height: auto;
-  padding: 8px;
-  box-sizing: border-box;
+  overflow: hidden;
 `;
 
 const ContentWrapper = styled.div<{ theme: Theme }>`
