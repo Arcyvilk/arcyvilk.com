@@ -2,24 +2,18 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Theme } from '../../shared/theme';
 import { AppContext } from '../../shared/context';
-import { Header, Nav } from './components';
+import { Header, Nav, Description } from './components';
 
 export default function Main(): JSX.Element {
-  const { theme, themeType, setThemeType } = useContext(AppContext);
-  const onChangeThemeClick = () => {
-    if (themeType === 'light') {
-      setThemeType('dark');
-    } else {
-      setThemeType('light');
-    }
-  };
+  const { theme } = useContext(AppContext);
 
   return (
     <MainWrapper theme={theme}>
       <ContentWrapper theme={theme}>
         <Header />
         <Nav />
-        <button onClick={onChangeThemeClick}>Reverse theme</button>
+        <Description />
+        {/* <Tiles /> */}
       </ContentWrapper>
     </MainWrapper>
   );

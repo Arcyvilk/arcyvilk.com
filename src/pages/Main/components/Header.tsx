@@ -6,10 +6,18 @@ import { Theme } from '../../../shared/theme';
 import avatar from '../../../shared/img/avatar.png';
 
 export const Header = (): JSX.Element => {
-  const { theme } = useContext(AppContext);
+  const { theme, themeType, setThemeType } = useContext(AppContext);
+  const onChangeThemeClick = () => {
+    if (themeType === 'light') {
+      setThemeType('dark');
+    } else {
+      setThemeType('light');
+    }
+  };
+
   return (
     <StyledHeader theme={theme}>
-      <img src={avatar} alt="Arcyvilk's avatar" />
+      <img src={avatar} alt="Arcyvilk's avatar" onClick={onChangeThemeClick} />
       <h1>ARCYVILK&apos;s hub</h1>
     </StyledHeader>
   );
@@ -38,6 +46,7 @@ const StyledHeader = styled(Flex)<{ theme: Theme }>`
     border: 6px solid ${({ theme }) => theme.primaryText};
     margin: 0 32px;
     opacity: 0.8;
+    cursor: pointer;
     &:hover {
       opacity: 1;
     }
