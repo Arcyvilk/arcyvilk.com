@@ -41,7 +41,6 @@ const ContentWrapper = styled.div<{ theme: Theme }>`
   max-width: 95%;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 16px;
   border: 6px solid ${({ theme }) => theme.secondaryBg};
   justify-content: center;
   align-items: center;

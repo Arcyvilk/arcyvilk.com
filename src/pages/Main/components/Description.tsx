@@ -26,12 +26,13 @@ export const Description = (): JSX.Element => {
 
 const StyledDescription = styled(Flex)<{ theme: Theme }>`
   width: 100%;
-  padding: 16px;
+  padding: 16px 16px 0 16px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.secondaryBg};
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.primaryText};
+  font-size: 1.1em;
   p {
     text-align: left;
-    margin: 0;
+    margin: 4px 0;
   }
 `;
