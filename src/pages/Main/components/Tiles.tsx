@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { Theme } from '../../../shared/theme';
 import { AppContext } from '../../../shared/context';
-import { Flex } from '../../../components';
-import { tiles, Tile } from '../../../shared/config';
+import { Flex, Loader } from '../../../components';
+import { Tile } from '../../../shared/config';
 
 export const Tiles = (): JSX.Element => {
-  const { theme } = useContext(AppContext);
+  const { theme, tiles } = useContext(AppContext);
   const [activeTile, setActiveTile] = useState<Tile | undefined>();
 
   const mappedTiles = tiles.map((tile: Tile) => (
@@ -21,21 +21,29 @@ export const Tiles = (): JSX.Element => {
       alt={tile.title}
     />
   ));
+
   return (
     <Tiles.Wrapper theme={theme}>
       <h1>Projects</h1>
-      <Tiles.List row align justify style={{ flexWrap: 'wrap' }}>
-        {mappedTiles}
-      </Tiles.List>
-      {activeTile && (
-        <Tiles.Description column theme={theme}>
-          <h2>
-            <a href={activeTile.link} target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faExternalLinkAlt} /> {activeTile.title}
-            </a>
-          </h2>
-          {activeTile.description}
-        </Tiles.Description>
+      {mappedTiles.length ? (
+        <>
+          <Tiles.List row align justify style={{ flexWrap: 'wrap' }}>
+            {mappedTiles}
+          </Tiles.List>
+          {activeTile && (
+            <Tiles.Description column theme={theme}>
+              <h2>
+                <a href={activeTile.link} target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon icon={faExternalLinkAlt} />{' '}
+                  {activeTile.title}
+                </a>
+              </h2>
+              {activeTile.description}
+            </Tiles.Description>
+          )}
+        </>
+      ) : (
+        <Loader />
       )}
     </Tiles.Wrapper>
   );
