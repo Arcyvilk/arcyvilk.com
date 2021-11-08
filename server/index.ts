@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { MongoClient } from 'mongodb';
 import config from './config.json';
 import { log } from './log';
@@ -6,7 +7,11 @@ import { log } from './log';
 const app = express();
 const port = 1717;
 
-app.get('/api', async (_req: any, res: any) => {
+app.use(express.json({ limit: '5mb' }));
+app.use(express.urlencoded({ limit: '5mb', extended: false }));
+app.use(cors());
+
+app.get('/api/tiles', async (_req: any, res: any) => {
   const { client, db } = await connectToDb();
   db.collection('tiles')
     .find({})
