@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for the arcyvilk.com portfolio",
+  "main": "index.ts",
+  "repository": "https://github.com/Arcyvilk/arcyvilk.com",
+  "author": "ARCYVILK",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.1.4",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
+  }
+}
