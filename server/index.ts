@@ -28,6 +28,23 @@ app.get('/api/tiles', async (_req: any, res: any) => {
     });
 });
 
+app.get('/api/icons', async (_req: any, res: any) => {
+  const { client, db } = await connectToDb();
+  db.collection('options')
+    .find({ key: 'icons' })
+    .toArray((err: any, tiles: any) => {
+      if (err) {
+        log.WARN(err);
+        res.status(err.code).send(err);
+      } else if (!tiles) {
+        res.sendStatus(404);
+      } else {
+        res.status(200).send(tiles);
+      }
+      client.close();
+    });
+});
+
 app.listen(port, () => {
   log.INFO(`ARCYVILK.COM server listening at http://localhost:${port}`);
 });
