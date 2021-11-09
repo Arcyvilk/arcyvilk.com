@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "ts-node index.ts"
+    "arcyvilk": "ts-node index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
