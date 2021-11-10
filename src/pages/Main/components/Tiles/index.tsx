@@ -10,11 +10,11 @@ import { Item } from './Item';
 import { Filter } from './Filter';
 
 export const Tiles = (): JSX.Element => {
-  const { theme, tiles } = useContext(AppContext);
+  const { theme, tiles, activeFilters } = useContext(AppContext);
   const [activeTile, setActiveTile] = useState<Tile | undefined>();
 
   const mappedTiles = tiles
-    .filter((tile: Tile) => !tile.hidden)
+    .filter((tile: Tile) => !tile.hidden && activeFilters.includes(tile.type))
     .map((tile: Tile) => {
       const active = activeTile?.title === tile.title;
       return (

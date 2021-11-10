@@ -14,6 +14,8 @@ type ContextType = {
   setTiles: (tiles: Tile[]) => void;
   icons: Icons;
   setIcons: (icons: Icons) => void;
+  activeFilters: TileType[];
+  setActiveFilters: (activeFilters: TileType[]) => void;
 };
 type Props = {
   children: React.ReactNode;
@@ -24,6 +26,7 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
   const [themeType, setThemeType] = useState<ThemeType>(defaultThemeType);
   const [theme, setTheme] = useState<Theme>(mainTheme[defaultThemeType]);
   const [tiles, setTiles] = useState<Tile[]>([]);
+  const [activeFilters, setActiveFilters] = useState<TileType[]>([]);
   const [icons, setIcons] = useState<Icons>({
     other: ['fas', 'question-circle'],
   });
@@ -41,6 +44,8 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
     setTiles,
     icons,
     setIcons,
+    activeFilters,
+    setActiveFilters,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

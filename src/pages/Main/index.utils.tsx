@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { AppContext } from '../../shared/context';
+import { TileType } from '../../shared/config';
 import { sleep } from '../../shared/utils';
 
 export const useDataBase = (): void => {
@@ -38,7 +39,7 @@ export const useTiles = (): void => {
 };
 
 export const useIcons = (): void => {
-  const { setIcons } = useContext(AppContext);
+  const { setIcons, setActiveFilters } = useContext(AppContext);
 
   const { data: iconsData } = useQuery('icons', async () => {
     const icons = await fetch('http://89.47.165.141:1717/api/icons', {
@@ -59,7 +60,9 @@ export const useIcons = (): void => {
 
   useEffect(() => {
     if (iconsData && !iconsData.error) {
-      setIcons(iconsData.data?.[0]?.value ?? {});
+      const icons = iconsData.data?.[0]?.value ?? {};
+      setIcons(icons);
+      setActiveFilters(Object.keys(icons) as TileType[]);
       return;
     }
     sleep(5000);
