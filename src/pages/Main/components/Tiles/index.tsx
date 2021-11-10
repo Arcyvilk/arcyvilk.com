@@ -2,25 +2,29 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { Theme } from '../../../shared/theme';
-import { AppContext } from '../../../shared/context';
-import { Flex, Loader } from '../../../components';
-import { Tile } from '../../../shared/config';
+import { Theme } from '../../../../shared/theme';
+import { AppContext } from '../../../../shared/context';
+import { Flex, Loader } from '../../../../components';
+import { Tile } from '../../../../shared/config';
+import { Item } from './Item';
 
 export const Tiles = (): JSX.Element => {
   const { theme, tiles } = useContext(AppContext);
   const [activeTile, setActiveTile] = useState<Tile | undefined>();
 
-  const mappedTiles = tiles.map((tile: Tile) => (
-    <Tiles.Item
-      theme={theme}
-      active={activeTile?.title === tile.title}
-      key={`tile-${tile.title}`}
-      onClick={() => setActiveTile(tile)}
-      src={tile.picture}
-      alt={tile.title}
-    />
-  ));
+  const mappedTiles = tiles
+    .filter((tile: Tile) => !tile.hidden)
+    .map((tile: Tile) => {
+      const active = activeTile?.title === tile.title;
+      return (
+        <Tiles.Item
+          active={active}
+          setActiveTile={setActiveTile}
+          tile={tile}
+          key={`tile-${tile.title}`}
+        />
+      );
+    });
 
   return (
     <Tiles.Wrapper theme={theme}>
@@ -75,19 +79,6 @@ const List = styled(Flex)`
   width: 100%;
   box-sizing: border-box;
   margin: 16px 0;
-`;
-
-const Item = styled.img<{ theme: Theme; active: boolean }>`
-  margin: 4px;
-  cursor: pointer;
-  border: 4px solid
-    ${({ theme, active }) => (active ? theme.secondaryText : theme.secondaryBg)};
-  opacity: ${({ active }) => (active ? 1 : 0.9)};
-  box-sizing: border-box;
-  max-width: 90%;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 const Description = styled(Flex)<{ theme: Theme }>`

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import { ThemeType } from '../types';
-import { Tile } from '../config';
+import { Tile, TileType } from '../config';
 import { theme as mainTheme, Theme } from '../theme';
 
+type Icons = Partial<Record<TileType, [IconPrefix, IconName]>>;
 type ContextType = {
   themeType: ThemeType;
   setThemeType: (themeType: ThemeType) => void;
@@ -10,6 +12,8 @@ type ContextType = {
   setTheme: (theme: Theme) => void;
   tiles: Tile[];
   setTiles: (tiles: Tile[]) => void;
+  icons: Icons;
+  setIcons: (icons: Icons) => void;
 };
 type Props = {
   children: React.ReactNode;
@@ -20,6 +24,9 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
   const [themeType, setThemeType] = useState<ThemeType>(defaultThemeType);
   const [theme, setTheme] = useState<Theme>(mainTheme[defaultThemeType]);
   const [tiles, setTiles] = useState<Tile[]>([]);
+  const [icons, setIcons] = useState<Icons>({
+    other: ['fas', 'question-circle'],
+  });
 
   useEffect(() => {
     setTheme(mainTheme[themeType]);
@@ -32,6 +39,8 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
     setTheme,
     tiles,
     setTiles,
+    icons,
+    setIcons,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

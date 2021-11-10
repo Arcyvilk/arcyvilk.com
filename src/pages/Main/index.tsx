@@ -1,44 +1,14 @@
-import React, { useContext, useEffect } from 'react';
-import { useQuery } from 'react-query';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Theme } from '../../shared/theme';
 import { AppContext } from '../../shared/context';
-import { sleep } from '../../shared/utils';
 import { Header, Nav, Description, Tiles, Footer } from './components';
-
-const useTiles = () => {
-  const { setTiles } = useContext(AppContext);
-
-  const { data } = useQuery('tiles', async () => {
-    const tiles = await fetch('http://localhost:1717/api/tiles', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (tiles.status === 200) {
-      const data = await tiles.json();
-      return { data };
-    } else {
-      return {
-        error: `Error fetching tiles. Status ${tiles.status}`,
-      };
-    }
-  });
-
-  useEffect(() => {
-    if (data && !data.error) {
-      setTiles(data.data);
-      return;
-    }
-    sleep(5000);
-  }, [data]);
-};
+import { useDataBase } from './index.utils';
 
 export default function Main(): JSX.Element {
   const { theme } = useContext(AppContext);
 
-  useTiles();
+  useDataBase();
 
   return (
     <MainWrapper theme={theme}>
