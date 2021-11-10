@@ -7,6 +7,7 @@ import { AppContext } from '../../../../shared/context';
 import { Flex, Loader } from '../../../../components';
 import { Tile } from '../../../../shared/config';
 import { Item } from './Item';
+import { Filter } from './Filter';
 
 export const Tiles = (): JSX.Element => {
   const { theme, tiles } = useContext(AppContext);
@@ -29,6 +30,7 @@ export const Tiles = (): JSX.Element => {
   return (
     <Tiles.Wrapper theme={theme}>
       <h1>Projects</h1>
+      <Tiles.Filter />
       {mappedTiles.length ? (
         <>
           <Tiles.List row align justify style={{ flexWrap: 'wrap' }}>
@@ -104,6 +106,7 @@ const Description = styled(Flex)<{ theme: Theme }>`
 `;
 
 Tiles.Wrapper = Wrapper;
+Tiles.Filter = Filter;
 Tiles.List = List;
 Tiles.Item = Item;
 Tiles.Description = Description;
