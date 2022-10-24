@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import { Theme } from '../../../../shared/theme';
 import { AppContext } from '../../../../shared/context';
-import { Tile, TileType } from '../../../../shared/config';
+
+import { Project, Tile } from '../../../../data';
 
 const DEFAULT_ICON: [IconPrefix, IconName] = ['fas', 'question-circle'];
 
@@ -20,8 +21,9 @@ export const Item = (props: Props): JSX.Element => {
   const { theme, icons } = useContext(AppContext);
   const [icon, setIcon] = useState<[IconPrefix, IconName]>(DEFAULT_ICON);
 
-  const getIcon = (tileType: TileType) => {
-    const icon = (icons[tileType] as [IconPrefix, IconName]) ?? DEFAULT_ICON;
+  const getIcon = (tileType: Project) => {
+    const icon =
+      icons.find(icon => icon.type === tileType)?.icon ?? DEFAULT_ICON;
     return icon;
   };
 

@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+
 import { Theme } from '../../shared/theme';
 import { AppContext } from '../../shared/context';
 import { Header, Nav, Description, Tiles, Footer } from './components';
-import { useDataBase } from './index.utils';
+import { tiles, icons } from '../../data';
 
 export default function Main(): JSX.Element {
-  const { theme } = useContext(AppContext);
+  const { theme, setTiles, setIcons } = useContext(AppContext);
 
-  useDataBase();
+  setTiles(tiles);
+  setIcons(icons);
 
   return (
     <MainWrapper theme={theme}>

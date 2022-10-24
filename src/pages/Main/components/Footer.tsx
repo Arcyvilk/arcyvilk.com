@@ -6,10 +6,10 @@ import { Theme } from '../../../shared/theme';
 export const Footer = (): JSX.Element => {
   const { theme } = useContext(AppContext);
 
-  return <StyledFooter theme={theme}>ARCYVILK © 2017-2021</StyledFooter>;
+  return <StyledFooter theme={theme}>ARCYVILK © 2017-2022</StyledFooter>;
 };
 
-const StyledFooter = styled.div<{ theme: Theme }>`
+const StyledFooter = styled.footer<{ theme: Theme }>`
   display: flex;
   flex-direction: row;
   width: 100%;

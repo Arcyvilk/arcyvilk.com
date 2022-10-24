@@ -23,7 +23,7 @@ export const Header = (): JSX.Element => {
   );
 };
 
-const StyledHeader = styled(Flex)<{ theme: Theme }>`
+const StyledHeader = styled.header<{ theme: Theme }>`
   display: flex;
   flex-direction: row;
   width: 100%;

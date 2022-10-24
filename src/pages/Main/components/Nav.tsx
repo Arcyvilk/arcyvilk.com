@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppContext } from '../../../shared/context';
 import { Theme } from '../../../shared/theme';
-import { navItems, NavItem } from '../../../shared/config';
+import { navItems, NavItem } from '../../../data';
 
 export const Nav = (): JSX.Element => {
   const { theme } = useContext(AppContext);
@@ -24,7 +24,7 @@ export const Nav = (): JSX.Element => {
   );
 };
 
-const StyledNav = styled.div<{ theme: Theme }>`
+const StyledNav = styled.nav<{ theme: Theme }>`
   display: flex;
   flex-direction: row;
   width: 100%;

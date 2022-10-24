@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
+
 import { ThemeType } from '../types';
-import { Tile, TileType } from '../config';
 import { theme as mainTheme, Theme } from '../theme';
 
-type Icons = Partial<Record<TileType, [IconPrefix, IconName]>>;
+import { Tile, Icon, icons as iconsMap, Project } from '../../data';
+
 type ContextType = {
   themeType: ThemeType;
   setThemeType: (themeType: ThemeType) => void;
@@ -12,10 +12,10 @@ type ContextType = {
   setTheme: (theme: Theme) => void;
   tiles: Tile[];
   setTiles: (tiles: Tile[]) => void;
-  icons: Icons;
-  setIcons: (icons: Icons) => void;
-  activeFilters: TileType[];
-  setActiveFilters: (activeFilters: TileType[]) => void;
+  icons: Icon[];
+  setIcons: (icons: Icon[]) => void;
+  activeFilters: Project[];
+  setActiveFilters: (activeFilters: Project[]) => void;
 };
 type Props = {
   children: React.ReactNode;
@@ -26,10 +26,15 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
   const [themeType, setThemeType] = useState<ThemeType>(defaultThemeType);
   const [theme, setTheme] = useState<Theme>(mainTheme[defaultThemeType]);
   const [tiles, setTiles] = useState<Tile[]>([]);
-  const [activeFilters, setActiveFilters] = useState<TileType[]>([]);
-  const [icons, setIcons] = useState<Icons>({
-    other: ['fas', 'question-circle'],
-  });
+  const [activeFilters, setActiveFilters] = useState<Project[]>(
+    iconsMap.map(icon => icon.type),
+  );
+  const [icons, setIcons] = useState<Icon[]>([
+    {
+      type: Project.OTHER,
+      icon: ['fas', 'question-circle'],
+    },
+  ]);
 
   useEffect(() => {
     setTheme(mainTheme[themeType]);

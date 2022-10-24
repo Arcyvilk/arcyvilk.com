@@ -1,42 +1,37 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+
 import { Theme } from '../../../../shared/theme';
 import { AppContext } from '../../../../shared/context';
-import { TileType } from '../../../../shared/config';
+import { Project } from '../../../../data';
 
 export const Filter = (): JSX.Element => {
   const { theme, icons, activeFilters, setActiveFilters } = useContext(
     AppContext,
   );
-  const tileTypes = Object.entries(icons) as [
-    TileType,
-    [IconPrefix, IconName],
-  ][];
 
-  const onFilterClick = (name: TileType): void => {
-    if (activeFilters.includes(name)) {
-      const newFilters = activeFilters.filter(f => f !== name);
+  const onFilterClick = (filter: Project): void => {
+    if (activeFilters.includes(filter)) {
+      const newFilters = activeFilters.filter(f => f !== filter);
       setActiveFilters(newFilters);
     } else {
-      setActiveFilters([...activeFilters, name]);
+      setActiveFilters([...activeFilters, filter]);
     }
   };
 
   return (
     <StyledFilter theme={theme}>
-      {tileTypes.map(type => {
-        const [name, icon] = type;
-        const active = activeFilters.includes(name);
+      {icons.map(icon => {
+        const active = activeFilters.includes(icon.type);
         return (
           <StyledFilterItem
-            key={`filter-${name}`}
+            key={`filter-${icon.type}`}
             theme={theme}
             active={active}
-            onClick={() => onFilterClick(name)}>
-            <FontAwesomeIcon icon={icon} />
-            {name}
+            onClick={() => onFilterClick(icon.type)}>
+            <FontAwesomeIcon icon={icon.icon} />
+            {icon.type}
           </StyledFilterItem>
         );
       })}

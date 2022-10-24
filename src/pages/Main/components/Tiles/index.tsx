@@ -5,7 +5,7 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { Theme } from '../../../../shared/theme';
 import { AppContext } from '../../../../shared/context';
 import { Flex, Loader } from '../../../../components';
-import { Tile } from '../../../../shared/config';
+import { Tile } from '../../../../data';
 import { Item } from './Item';
 import { Filter } from './Filter';
 
