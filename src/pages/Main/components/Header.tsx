@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Flex } from '../../../components';
+
 import { AppContext } from '../../../shared/context';
 import { Theme } from '../../../shared/theme';
 import avatar from '../../../shared/img/avatar.png';
