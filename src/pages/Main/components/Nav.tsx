@@ -12,12 +12,16 @@ export const Nav = (): JSX.Element => {
     <StyledNav theme={theme}>
       <ul>
         {navItems.map((item: NavItem, index: number) => (
-          <li key={`nav-${index}`}>
-            <a href={item.link} target="_blank" rel="noreferrer">
+          <StyledNavItem key={`nav-${index}`} theme={theme}>
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+              title={item.title}>
               <FontAwesomeIcon icon={item.icon} />
-              <div>{item.title}</div>
+              <StyledNavItemTitle>{item.title}</StyledNavItemTitle>
             </a>
-          </li>
+          </StyledNavItem>
         ))}
       </ul>
     </StyledNav>
@@ -44,30 +48,40 @@ const StyledNav = styled.nav<{ theme: Theme }>`
     align-items: center;
     justify-content: center;
     width: 100%;
-    & > li {
-      border: 4px solid ${({ theme }) => theme.primaryBg};
-      box-sizing: border-box;
+  }
+`;
+
+const StyledNavItem = styled.li<{ theme: Theme }>`
+  border: 4px solid ${({ theme }) => theme.primaryBg};
+  box-sizing: border-box;
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    color: ${({ theme }) => theme.secondaryText};
+    background-color: ${({ theme }) => theme.secondaryBg};
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    opacity: 1;
+    &:hover {
+      opacity: 0.8;
+      color: white;
     }
-    li > a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 16px;
-      color: ${({ theme }) => theme.secondaryText};
-      background-color: ${({ theme }) => theme.secondaryBg};
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      opacity: 1;
-      &:hover {
-        opacity: 0.8;
-        color: white;
-      }
-      & > * {
-        margin: 2px 0;
-      }
+    & > * {
+      margin: 2px 0;
     }
+  }
+  @media (max-width: 850px) {
+    font-size: 1.5em;
+  }
+`;
+
+const StyledNavItemTitle = styled.div`
+  @media (max-width: 850px) {
+    display: none;
   }
 `;

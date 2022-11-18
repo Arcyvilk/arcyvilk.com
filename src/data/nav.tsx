@@ -6,6 +6,8 @@ import {
   faYoutube,
   faTwitch,
   faPatreon,
+  faMastodon,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 
 export type NavItem = {
@@ -29,6 +31,16 @@ export const navItems: NavItem[] = [
     icon: faArtstation,
     link: 'https://artstation.com/arcyvilk',
     title: 'ArtStation',
+  },
+  {
+    icon: faMastodon,
+    link: 'https://mastodon.art/@arcyvilk',
+    title: 'Mastodon',
+  },
+  {
+    icon: faInstagram,
+    link: 'https://instagram.com/arcyvilk',
+    title: 'Instagram',
   },
   {
     icon: faYoutube,
