@@ -12,6 +12,7 @@ export const Footer = (): JSX.Element => {
 const StyledFooter = styled.footer<{ theme: Theme }>`
   display: flex;
   flex-direction: row;
+  margin-top: auto;
   width: 100%;
   padding: 4px;
   box-sizing: border-box;

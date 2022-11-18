@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { Theme } from '../../shared/theme';
 import { AppContext } from '../../shared/context';
 import { Header, Nav, Description, Tiles, Footer } from './components';
-import { tiles, icons } from '../../data';
+import { navItems, tiles, icons } from '../../data';
+import { Flex } from '../../components';
 
 export default function Main(): JSX.Element {
   const { theme, setTiles, setIcons } = useContext(AppContext);
@@ -14,28 +15,31 @@ export default function Main(): JSX.Element {
 
   return (
     <MainWrapper theme={theme}>
-      <ContentWrapper theme={theme}>
+      <NavWrapper column>
         <Header />
-        <Nav />
+        <Nav items={navItems} />
+      </NavWrapper>
+      <ContentWrapper theme={theme}>
         <Description />
         <Tiles />
-        <Footer />
       </ContentWrapper>
+      <Footer />
     </MainWrapper>
   );
 }
 
 const MainWrapper = styled.div<{ theme: Theme }>`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   color: ${({ theme }) => theme.primaryText};
   background-color: ${({ theme }) => theme.primaryBg};
   width: 100%;
+  height: 100%;
   min-height: 100vh;
-  padding: 12px 0;
   height: auto;
   overflow: hidden;
+  gap: 16px;
 `;
 
 const ContentWrapper = styled.div<{ theme: Theme }>`
@@ -44,9 +48,14 @@ const ContentWrapper = styled.div<{ theme: Theme }>`
   height: auto;
   width: 1024px;
   max-width: 95%;
+  gap: 16px;
   padding: 0;
   box-sizing: border-box;
-  border: 6px solid ${({ theme }) => theme.secondaryBg};
-  justify-content: center;
   align-items: center;
+`;
+
+const NavWrapper = styled(Flex)`
+  width: 100%;
+  padding: 0 4px 4px 4px;
+  box-sizing: border-box;
 `;

@@ -57,7 +57,7 @@ export const Item = (props: Props): JSX.Element => {
 const StyledItem = styled.div<{ theme: Theme; active: boolean }>`
   display: flex;
   position: relative;
-  margin: 6px;
+  flex: 0 1 317px;
   padding: 0;
   cursor: pointer;
   border: 3px solid

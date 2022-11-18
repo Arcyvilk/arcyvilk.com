@@ -35,13 +35,13 @@ const StyledHeader = styled.header<{ theme: Theme }>`
   background-color: ${({ theme }) => theme.secondaryBg};
 
   h1 {
-    margin: 0 32px;
-    padding: 0;
-    font-weight: 300;
-    font-size: 4em;
+    width: 100%;
     @media (max-width: 650px) {
       margin: 0 8px;
       font-size: 3em;
+    }
+    @media (max-width: 500px) {
+      display: none;
     }
   }
 

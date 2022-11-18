@@ -46,16 +46,18 @@ const StyledFilter = styled.ul<{ theme: Theme }>`
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0 0 8px 0;
+  padding: 0;
+  gap: 4px;
   list-style-type: none;
   color: ${({ theme }) => theme.secondaryText};
-  background-color: ${({ theme }) => theme.secondaryBg};
   width: 100%;
 `;
 
 const StyledFilterItem = styled.li<{ theme: Theme; active: boolean }>`
   margin: 0;
   padding: 6px;
+  gap: 4px;
+  flex: 1 1 100px;
   color: ${({ theme }) => theme.secondaryText};
   background-color: ${({ theme, active }) =>
     active ? theme.secondaryBg : theme.primaryBg};
@@ -70,8 +72,5 @@ const StyledFilterItem = styled.li<{ theme: Theme; active: boolean }>`
   &:hover {
     opacity: 0.8;
     color: white;
-  }
-  & > * {
-    margin: 0 4px;
   }
 `;

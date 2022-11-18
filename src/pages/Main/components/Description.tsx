@@ -8,7 +8,7 @@ export const Description = (): JSX.Element => {
   const { theme } = useContext(AppContext);
   return (
     <StyledDescription column justify theme={theme}>
-      <p>Hello there, name&apos;s Arcyvilk.</p>
+      <h4>Hello there, name&apos;s Arcyvilk.</h4>
       <p>
         This website is supposed to function as a simple portfolio, or rather -
         due to my inability to ever finish anything - as a dump of all the
@@ -26,13 +26,16 @@ export const Description = (): JSX.Element => {
 
 const StyledDescription = styled(Flex)<{ theme: Theme }>`
   width: 100%;
-  padding: 16px 16px 0 16px;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.secondaryBg};
   color: ${({ theme }) => theme.primaryText};
-  font-size: 1.1em;
+  background-color: ${({ theme }) => theme.secondaryBg};
+  padding: 16px;
+  gap: 16px;
+  font-size: 1.2em;
   p {
-    text-align: left;
-    margin: 4px 0;
+    margin: 0;
+  }
+  h4 {
+    padding: 0;
   }
 `;

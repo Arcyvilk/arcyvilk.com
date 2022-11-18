@@ -3,15 +3,24 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppContext } from '../../../shared/context';
 import { Theme } from '../../../shared/theme';
-import { navItems, NavItem } from '../../../data';
+import { NavItem } from '../../../data';
 
-export const Nav = (): JSX.Element => {
+type Props = {
+  items: NavItem[];
+  title?: string;
+};
+
+export const Nav = (props: Props): JSX.Element => {
+  const { items, title } = props;
   const { theme } = useContext(AppContext);
 
+  const numOfItems = items.length ?? 10;
+
   return (
-    <StyledNav theme={theme}>
+    <StyledNav theme={theme} numOfItems={numOfItems}>
+      {title && <h4>{title}</h4>}
       <ul>
-        {navItems.map((item: NavItem, index: number) => (
+        {items.map((item: NavItem, index: number) => (
           <StyledNavItem key={`nav-${index}`} theme={theme}>
             <a
               href={item.link}
@@ -28,10 +37,9 @@ export const Nav = (): JSX.Element => {
   );
 };
 
-const StyledNav = styled.nav<{ theme: Theme }>`
+const StyledNav = styled.nav<{ theme: Theme; numOfItems: number }>`
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -39,21 +47,29 @@ const StyledNav = styled.nav<{ theme: Theme }>`
   background-color: ${({ theme }) => theme.primaryBg};
 
   ul {
-    margin: 0;
+    margin: 4px 0 0 0;
     padding: 0;
     list-style-type: none;
     display: flex;
+    gap: 4px;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 100%;
   }
+
+  h4 {
+    margin: 0;
+    padding: 8px 0;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const StyledNavItem = styled.li<{ theme: Theme }>`
-  border: 4px solid ${({ theme }) => theme.primaryBg};
   box-sizing: border-box;
+  flex: 1 1 100px;
   a {
     display: flex;
     flex-direction: column;
@@ -70,9 +86,6 @@ const StyledNavItem = styled.li<{ theme: Theme }>`
     &:hover {
       opacity: 0.8;
       color: white;
-    }
-    & > * {
-      margin: 2px 0;
     }
   }
   @media (max-width: 850px) {

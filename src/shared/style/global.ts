@@ -32,6 +32,31 @@ const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  h1, h2, h3, h4 {
+    padding: 16px;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 4em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.15em;
+  }
+  h2 {
+    letter-spacing: 0.2em;
+    font-size: 2em;
+  }
+  h3 {
+    letter-spacing: 0;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+  h4 {
+    letter-spacing: 0;
+    font-size: 1.5em;
+    font-weight: 400;
+  }
 `;
 
 export default GlobalStyle;
