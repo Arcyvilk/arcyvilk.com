@@ -1,3 +1,10 @@
+import masochist from '../assets/masochist2.png';
+import rift from '../assets/rift2.png';
+import fireworks from '../assets/fireworks2.png';
+import vikbot from '../assets/vikbot2.png';
+import arcybot from '../assets/arcybot.png';
+import vnengine from '../assets/vnengine2.png';
+
 export enum Project {
   ART = 'art',
   BOT = 'bot',
@@ -23,27 +30,27 @@ export const tiles: Tile[] = [
   {
     type: Project.WEBSITE,
     title: 'Masochist.me',
-    link: 'http://masochist.me',
-    picture: 'http://cdn.arcyvilk.com/arcyvilk/masochist2.png',
+    link: 'https://masochist.me',
+    picture: masochist,
     description:
       'Website for the masochist.me community - a community of the fans of challenge given by hardcore games. Website provides them with their own, unique ranking system, leaderboards and insight into the game statistics.',
-    year: '2018-2022',
+    year: '2018-2025',
   },
   {
     type: Project.COMIC,
     title: 'The Rift [HIATUS]',
-    link: 'http://the-rift-comics.tumblr.com',
-    picture: 'http://cdn.arcyvilk.com/arcyvilk/rift2.png',
+    link: 'https://the-rift-comics.tumblr.com',
+    picture: rift,
     description:
       'League of Legends fancomic. What is the worst that could happen, when you force Viktor and Ekko to face the upcoming Apocalypse together?\nLeague of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.',
-    year: '2017',
+    year: '2017-2018',
     legacy: true,
   },
   {
     type: Project.WEBAPP,
     title: 'EXPLO.TECH [WIP]',
-    link: 'http://cdn.arcyvilk.com/explotech',
-    picture: 'http://cdn.arcyvilk.com/arcyvilk/fireworks2.png',
+    link: 'https://web.arcyvilk.com/explotech',
+    picture: fireworks,
     description:
       'COVID ruined your New Year plans? Fret not thyself! You can now celebrate together with friends and family completely safely with the remote fireworks!',
     year: '2020',
@@ -52,19 +59,19 @@ export const tiles: Tile[] = [
   {
     type: Project.BOT,
     title: 'Viktor Bot',
-    link: 'http://cdn.arcyvilk.com/greatherald',
-    picture: 'http://cdn.arcyvilk.com/arcyvilk/vikbot2.png',
+    link: 'https://web.arcyvilk.com/greatherald',
+    picture: vikbot,
     description:
       // eslint-disable-next-line prettier/prettier
       'Great Herald aka Viktor Bot is a bot created specifically for the /r/viktormains&apos; community Discord server. His job involves simple talk, role management, promoting streamers and presenting League of Legends players\' data.',
-    year: '2018',
+    year: '2016-2022',
     legacy: true,
   },
   {
     type: Project.BOT,
     title: 'Arcybot [TEMPLATE]',
     link: 'https://arcyvilk.github.io/arcybot-discord-template/',
-    picture: 'http://cdn.arcyvilk.com/arcyvilk/arcybot.png',
+    picture: arcybot,
     description:
       // eslint-disable-next-line prettier/prettier
       'Discord Bot\'s template! It provides you with fully working skeleton for the NodeJS Discord Bot with the database setup on which you can later build. The template includes support for commands, reactions, logging Discord events in designated rooms (user joining/leaving the server, user editing message, user deleting message) and obviously allows you to create your own commands in a relatively simple and straightforwards way.',
@@ -74,8 +81,8 @@ export const tiles: Tile[] = [
   {
     type: Project.WEBAPP,
     title: 'VnEngine [HIATUS]',
-    link: 'http://cdn.arcyvilk.com/vnengine/',
-    picture: 'http://cdn.arcyvilk.com/arcyvilk/vnengine.png',
+    link: 'https://web.arcyvilk.com/vnengine/',
+    picture: vnengine,
     description:
       'A simple JavaScript engine for text-based adventures with elements of point-and-click. Creating your own game is as simple as editing a JSON file and putting pictures in a correct folder.',
     year: '2017',
