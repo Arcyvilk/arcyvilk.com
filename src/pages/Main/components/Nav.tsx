@@ -20,18 +20,20 @@ export const Nav = (props: Props): JSX.Element => {
     <StyledNav theme={theme} numOfItems={numOfItems}>
       {title && <h4>{title}</h4>}
       <ul>
-        {items.map((item: NavItem, index: number) => (
-          <StyledNavItem key={`nav-${index}`} theme={theme}>
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noreferrer"
-              title={item.title}>
-              <FontAwesomeIcon icon={item.icon} />
-              <StyledNavItemTitle>{item.title}</StyledNavItemTitle>
-            </a>
-          </StyledNavItem>
-        ))}
+        {items
+          .filter((item: NavItem) => !item.isHidden)
+          .map((item: NavItem, index: number) => (
+            <StyledNavItem key={`nav-${index}`} theme={theme}>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+                title={item.title}>
+                <FontAwesomeIcon icon={item.icon} />
+                <StyledNavItemTitle>{item.title}</StyledNavItemTitle>
+              </a>
+            </StyledNavItem>
+          ))}
       </ul>
     </StyledNav>
   );
