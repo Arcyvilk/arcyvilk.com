@@ -1,57 +1,38 @@
-# CRA with setup - template
+# sv
 
-This is just a template for CRA making it easier to headstart with the initial set up.
-This template provides:
-- TypeScript support
-- eslint and prettier support
-- autolinting on save with VSCode
-- basic routing with React Router
-- basic React Context setup
-- basic theming setup
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Create React App 
+## Creating a project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+If you're seeing this, you've probably already done this step. Congrats!
 
-### Available Scripts
+```bash
+# create a new project in the current directory
+npx sv create
 
-In the project directory, you can run:
+# create a new project in my-app
+npx sv create my-app
+```
 
-#### `yarn start`
+## Developing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm run dev
 
-#### `yarn test`
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Building
 
-#### `yarn build`
+To create a production version of your app:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can preview the production build with `npm run preview`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-#### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
