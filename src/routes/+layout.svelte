@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Header from '$lib/components/Header.svelte'
-  import Navigation from '$lib/components/Navigation.svelte'
+  import Header from '$lib/containers/Header.svelte'
+  import Navigation from '$lib/containers/Navigation.svelte'
 
   let { children } = $props()
 </script>
