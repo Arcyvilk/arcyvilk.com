@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Silkscreen:wght@300;400;500;700;900&display=swap');
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@theme inline {
+  --color-background-bg: var(--theme-background-bg);
+  --color-foreground-bg: var(--theme-foreground-bg);
+  --color-accent-bg: var(--theme-accent-bg);
+
+  --color-background-text: var(--theme-background-text);
+  --color-foreground-text: var(--theme-foreground-text);
+  --color-accent-text: var(--theme-accent-text);
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+
+[data-theme='dark'] {
+  --theme-background-bg: #071013;
+  --theme-foreground-bg: #1e3136;
+  --theme-accent-bg: #e74858;
+
+  --theme-background-text: #cfc5c5;
+  --theme-foreground-text: #e7e4e4;
+  --theme-accent-text: #000000;
+}
+
+[data-theme='light'] {
+  --theme-background-bg: #cfc5c5;
+  --theme-foreground-bg: #e7e4e4;
+  --theme-accent-bg: #eb5160;
+
+  --theme-background-text: #071013;
+  --theme-foreground-text: #1e3136;
+  --theme-accent-text: #000000;
+}
+
+:root {
+  font-family: 'Raleway', sans-serif;
+}
