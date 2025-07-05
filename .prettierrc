@@ -9,13 +9,11 @@
 	"tabWidth": 2,
 	"trailingComma": "none",
 	"useTabs": false,
-
 	"svelteIndentScriptAndStyle": true,
-
 	"plugins": [
-		"prettier-plugin-svelte"
+		"prettier-plugin-svelte",
+		"prettier-plugin-tailwindcss"
 	],
-
 	"overrides": [
 		{
 			"files": "*.svelte",
