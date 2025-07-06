@@ -13,7 +13,7 @@
   const desktopIcons: DesktopIcon[] = [
     {
       icon: 'PC',
-      label: 'My PC haha hehe lolmao heheszki',
+      label: 'My Computer',
       alt: 'My PC'
     },
     {
@@ -25,6 +25,11 @@
       icon: 'RecycleBin',
       label: 'Recycle Bin',
       alt: 'Recycle Bin'
+    },
+    {
+      icon: 'Script',
+      label: 'Completely harmless file, there is nothing to worry about',
+      alt: 'Completely harmless file'
     }
   ]
 
