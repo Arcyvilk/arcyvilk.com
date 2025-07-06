@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Silkscreen:wght@300;400;500;700;900&display=swap');
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Win95FA';
+  src:
+    url('/fonts/w95fa.woff2') format('woff2'),
+    url('/fonts/w95fa.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+@custom-variant windows (&:where([data-theme=windows], [data-theme=windows] *));
+
 @theme inline {
   --color-background-bg: var(--theme-background-bg);
   --color-foreground-bg: var(--theme-foreground-bg);
@@ -9,11 +23,30 @@
   --color-background-text: var(--theme-background-text);
   --color-foreground-text: var(--theme-foreground-text);
   --color-accent-text: var(--theme-accent-text);
+
+  --color-shadow-bg: var(--theme-shadow-bg);
+  --color-highlight-bg: var(--theme-highlight-bg);
 }
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+/**
+* WINDOWS THEME!
+*/
+[data-theme='windows'] {
+  --theme-background-bg: #008080;
+  --theme-foreground-bg: #c0c0c0;
+  --theme-accent-bg: #c0c0c0;
 
+  --theme-background-text: #000000;
+  --theme-foreground-text: #ffffff;
+  --theme-accent-text: #000000;
+
+  --theme-shadow-bg: #808080;
+  --theme-highlight-bg: #ffffff;
+}
+
+/**
+* DARK THEME!
+*/
 [data-theme='dark'] {
   --theme-background-bg: #071013;
   --theme-foreground-bg: #1e3136;
@@ -22,8 +55,14 @@
   --theme-background-text: #cfc5c5;
   --theme-foreground-text: #e7e4e4;
   --theme-accent-text: #000000;
+
+  --theme-shadow-bg: #808080;
+  --theme-highlight-bg: #ffffff;
 }
 
+/**
+* LIGHT THEME!
+*/
 [data-theme='light'] {
   --theme-background-bg: #cfc5c5;
   --theme-foreground-bg: #e7e4e4;
@@ -32,8 +71,15 @@
   --theme-background-text: #071013;
   --theme-foreground-text: #1e3136;
   --theme-accent-text: #000000;
+
+  --theme-shadow-bg: #808080;
+  --theme-highlight-bg: #ffffff;
 }
 
 :root {
   font-family: 'Raleway', sans-serif;
+
+  /* * { */
+  box-sizing: border-box;
+  /* } */
 }
