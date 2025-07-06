@@ -9,12 +9,24 @@
     label: string
     alt: string
   }
-  const pc = {
-    icon: 'PC',
-    label: 'My PC haha hehe lolmao heheszki',
-    alt: 'My PC'
-  }
-  const desktopIcons: DesktopIcon[] = new Array(24).fill(pc)
+
+  const desktopIcons: DesktopIcon[] = [
+    {
+      icon: 'PC',
+      label: 'My PC haha hehe lolmao heheszki',
+      alt: 'My PC'
+    },
+    {
+      icon: 'Documents',
+      label: 'My Documents',
+      alt: 'My Documents'
+    },
+    {
+      icon: 'RecycleBin',
+      label: 'Recycle Bin',
+      alt: 'Recycle Bin'
+    }
+  ]
 </script>
 
 <Desktop>
