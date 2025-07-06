@@ -14,6 +14,7 @@
   <button
     data-testid="desktop-icon"
     class="button-outline flex flex-col items-center justify-center gap-2 overflow-hidden p-1"
+    title={label}
   >
     <Image image={icon} {alt} className="h-16 w-16 aspect-square" />
     <p class="wrap text-foreground-text line-clamp-2 [font-family:Win95FA] text-xl leading-5">
