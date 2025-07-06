@@ -10,6 +10,25 @@
 </script>
 
 <button
-  class="bg-accent-bg text-accent-text cursor-pointer rounded-lg px-3 py-2 font-bold shadow-lg"
+  class="button-border bg-accent-bg text-accent-text cursor-pointer px-3 py-1 font-bold shadow-lg"
   {...rest}>{label}</button
 >
+
+<style>
+  .button-border {
+    border-width: 4px;
+    border-style: ridge;
+
+    border-top-color: var(--color-highlight-bg);
+    border-left-color: var(--color-highlight-bg);
+    border-bottom-color: var(--color-shadow-bg);
+    border-right-color: var(--color-shadow-bg);
+
+    &:active {
+      border-top-color: var(--color-shadow-bg);
+      border-left-color: var(--color-shadow-bg);
+      border-bottom-color: var(--color-highlight-bg);
+      border-right-color: var(--color-highlight-bg);
+    }
+  }
+</style>
