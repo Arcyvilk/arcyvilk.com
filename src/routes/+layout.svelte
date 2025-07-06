@@ -27,6 +27,8 @@
       alt: 'Recycle Bin'
     }
   ]
+
+  let { children } = $props()
 </script>
 
 <Desktop>
@@ -35,6 +37,8 @@
       <DesktopIcon icon={desktopIcon.icon} label={desktopIcon.label} alt={desktopIcon.alt} />
     {/each}
   </div>
+
+  {@render children()}
 
   <Taskbar />
 </Desktop>
