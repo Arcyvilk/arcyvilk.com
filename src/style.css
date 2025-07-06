@@ -5,7 +5,8 @@
   font-family: 'Win95FA';
   src:
     url('/fonts/w95fa.woff2') format('woff2'),
-    url('/fonts/w95fa.woff') format('woff');
+    url('/fonts/w95fa.woff') format('woff'),
+    url('/fonts/W95FA.otf') format('otf');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
