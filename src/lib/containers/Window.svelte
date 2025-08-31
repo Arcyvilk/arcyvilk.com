@@ -1,18 +1,22 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
-  import type { DesktopIconProps } from '$lib/types/DesktopIcon'
+  import { desktopIcons } from '$lib/data/desktopIcons'
+  import type { DesktopIconId, DesktopIconProps } from '$lib/types/DesktopIcon'
   import type { Snippet } from 'svelte'
 
   type WindowProps = {
     content: Snippet
-    window: DesktopIconProps | null
+    windowId: DesktopIconId
     onclose: () => void
   } & Partial<HTMLDialogElement>
 
-  let { content, window, onclose }: WindowProps = $props()
+  let { content, windowId, onclose }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
+  let window: DesktopIconProps | undefined = $state(
+    desktopIcons.find((icon) => icon.id === windowId)
+  )
 
   const handleWindowClose = () => {
     onclose()

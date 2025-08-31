@@ -6,14 +6,14 @@
   import Window from '$lib/containers/Window.svelte'
 
   let { children } = $props()
-  let currentWindowId: DesktopIconId | null = $state(null)
+  let openWindowIds: DesktopIconId[] = $state([])
 
   const openWindow = (id: DesktopIconId): void => {
-    currentWindowId = id
+    openWindowIds = Array.from(new Set([...openWindowIds, id]))
   }
 
-  const onWindowClose = (): void => {
-    currentWindowId = null
+  const onWindowClose = (id: DesktopIconId): void => {
+    openWindowIds = openWindowIds.filter((windowId) => windowId !== id)
   }
 </script>
 
@@ -26,14 +26,13 @@
     {/each}
   </div>
 
-  <Window
-    window={desktopIcons.find((icon) => icon.id === currentWindowId) ?? null}
-    onclose={onWindowClose}
-  >
-    {#snippet content()}
-      <span>{currentWindowId}</span>
-    {/snippet}
-  </Window>
+  {#each openWindowIds as windowId}
+    <Window {windowId} onclose={() => onWindowClose(windowId)}>
+      {#snippet content()}
+        <span>{windowId}</span>
+      {/snippet}
+    </Window>
+  {/each}
 
   {@render children()}
 
