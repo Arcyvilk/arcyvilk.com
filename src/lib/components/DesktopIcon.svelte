@@ -1,6 +1,6 @@
 <script lang="ts">
   import Image from '$lib/components/Image.svelte'
-  import { type DesktopIconProps } from '$lib/types/DesktopIcon'
+  import { type DesktopIconProps } from '$lib/data/desktopIcons'
 
   const { alt, icon, label, ondblclick }: DesktopIconProps & Partial<HTMLButtonElement> = $props()
 </script>
