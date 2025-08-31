@@ -1,16 +1,16 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte'
-  import type { DesktopIconId } from '$lib/types/DesktopIcon'
+  import Image from '$lib/components/Image.svelte'
+  import type { DesktopIconProps } from '$lib/types/DesktopIcon'
   import type { Snippet } from 'svelte'
 
   type WindowProps = {
     content: Snippet
-    currentWindowId: DesktopIconId | null
-    windowTitle: string
+    window: DesktopIconProps | null
     onclose: () => void
   } & Partial<HTMLDialogElement>
 
-  let { content, currentWindowId = $bindable(), windowTitle, onclose }: WindowProps = $props()
+  let { content, window, onclose }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
 
@@ -20,9 +20,7 @@
   }
 
   $effect(() => {
-    if (currentWindowId) {
-      dialog?.show()
-    }
+    if (window) dialog?.show()
   })
 </script>
 
@@ -33,12 +31,21 @@
 >
   <div class="window-border bg-window-bg min-w-[80vw]">
     <header class="bg-window-header-bg flex items-center justify-between p-1">
-      <h2 class="text-foreground-text text-base/4 font-semibold">{windowTitle}</h2>
-      <Button square onclick={handleWindowClose}
-        >{#snippet label()}<span
-            class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">✕</span
-          >{/snippet}</Button
-      >
+      <div class="flex items-center gap-2">
+        {#if window?.icon}
+          <Image image={window.icon} alt="" className="h-6 w-6 aspect-square" />
+        {/if}
+
+        {#if window?.label}
+          <h2 class="text-foreground-text text-base/4 font-semibold">{window.label}</h2>
+        {/if}
+      </div>
+
+      <Button square onclick={handleWindowClose}>
+        {#snippet label()}
+          <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">✕</span>
+        {/snippet}
+      </Button>
     </header>
 
     {@render content()}
