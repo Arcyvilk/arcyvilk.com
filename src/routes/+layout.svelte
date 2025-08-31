@@ -4,6 +4,9 @@
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Desktop from '$lib/containers/Desktop.svelte'
   import Taskbar from '$lib/containers/Taskbar.svelte'
+  import Window from '$lib/containers/Window.svelte'
+
+  let showWindow: boolean = $state(false)
 
   const desktopIcons: TDesktopIcon[] = [
     {
@@ -15,9 +18,9 @@
       icon: 'Documents',
       label: 'My Documents',
       alt: 'My Documents',
-      handleDoubleClick: () => { 
-        alert("yay");
-      },
+      handleDoubleClick: () => {
+        showWindow = true
+      }
     },
     {
       icon: 'RecycleBin',
@@ -42,6 +45,8 @@
   </div>
 
   {@render children()}
+
+  <Window {showWindow}>Dupa!</Window>
 
   <Taskbar />
 </Desktop>

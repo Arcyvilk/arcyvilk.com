@@ -24,7 +24,7 @@
     &:active,
     &:focus,
     &:focus-visible {
-      outline-color: var(--color-foreground-bg);
+      outline-color: var(--color-window-bg);
       outline-width: 2px;
       outline-style: dotted;
     }
