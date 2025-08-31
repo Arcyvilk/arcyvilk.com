@@ -5,16 +5,17 @@
   interface ButtonProps extends HTMLButtonAttributes {
     label: Snippet
     square?: boolean
+    className?:string
   }
   let allProps: ButtonProps = $props()
 
-  const { label, square, ...rest } = allProps
+  const { label, square, className, ...rest } = allProps
 </script>
 
 <button
   class="button-border bg-accent-bg text-accent-text cursor-pointer font-bold shadow-lg {square
     ? 'aspect-square'
-    : ''}"
+    : ''} {className ? className : ''}"
   {...rest}
 >
   {@render label()}

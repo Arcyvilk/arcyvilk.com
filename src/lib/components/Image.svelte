@@ -11,4 +11,4 @@
   const src = images[image]
 </script>
 
-<img {src} {alt} class={className} />
+<img {src} {alt} class="object-contain {className ? className : ''}" />

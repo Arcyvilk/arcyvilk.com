@@ -53,5 +53,5 @@
 
   {@render children()}
 
-  <Taskbar />
+  <Taskbar {openWindowIds} />
 </Desktop>
