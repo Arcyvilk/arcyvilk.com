@@ -9,10 +9,11 @@
     windowId: DesktopIconId
     clickCoords: { x: number; y: number }
     content: Snippet
+    onclick: () => void
     onclose: () => void
   } & Partial<HTMLDialogElement>
 
-  let { windowId, clickCoords, content, onclose }: WindowProps = $props()
+  let { windowId, clickCoords, content, onclick, onclose }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
   let windowData: DesktopIconProps | undefined = $state(
@@ -54,7 +55,7 @@
   })
 </script>
 
-<dialog class="fixed" bind:this={dialog} onclose={handleWindowClose}>
+<dialog class="fixed" bind:this={dialog} onclose={handleWindowClose} {onclick}>
   <div class="window-border bg-window-bg max-w-[80vw]">
     <header class="bg-window-header-bg flex items-center justify-between gap-8 p-1">
       <div class="flex items-center gap-2 overflow-hidden">

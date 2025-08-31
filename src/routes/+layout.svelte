@@ -20,6 +20,10 @@
   const onWindowClose = (id: DesktopIconId): void => {
     openWindowIds = openWindowIds.filter((windowId) => windowId !== id)
   }
+
+  const onWindowClick = (id: DesktopIconId): void => {
+    // TODO: Bring to front on click!
+  }
 </script>
 
 <Desktop>
@@ -35,7 +39,12 @@
   </div>
 
   {#each openWindowIds as windowId}
-    <Window {clickCoords} {windowId} onclose={() => onWindowClose(windowId)}>
+    <Window
+      {clickCoords}
+      {windowId}
+      onclick={() => onWindowClick(windowId)}
+      onclose={() => onWindowClose(windowId)}
+    >
       {#snippet content()}
         <span>{windowId}</span>
       {/snippet}
