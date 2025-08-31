@@ -1,28 +1,32 @@
 <script lang="ts">
+  import type { DesktopIconId } from '$lib/types/DesktopIcon'
   import type { Snippet } from 'svelte'
 
   type WindowProps = {
-    children: Snippet
-    showWindow: boolean
-  }
+    content: Snippet
+    currentWindowId: DesktopIconId | null
+    onclose: () => void
+  } & Partial<HTMLDialogElement>
 
-  let { children, showWindow = $bindable() }: WindowProps = $props()
+  let { content, currentWindowId = $bindable(), onclose }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
 
   $effect(() => {
-    if (dialog && showWindow) {
-      dialog.showModal()
+    if (currentWindowId) {
+      dialog?.show()
     }
   })
 </script>
 
 <dialog
-  class="window-border h-5-6 bg-window-bg w-5/6"
+  class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
   bind:this={dialog}
-  onclose={() => (showWindow = false)}
+  {onclose}
 >
-  {@render children()}
+  <div class="window-border bg-window-bg">
+    {@render content()}
+  </div>
 </dialog>
 
 <style>
