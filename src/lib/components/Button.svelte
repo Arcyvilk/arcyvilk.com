@@ -1,22 +1,28 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte'
   import type { HTMLButtonAttributes } from 'svelte/elements'
 
   interface ButtonProps extends HTMLButtonAttributes {
-    label: string
+    label: Snippet
+    square?: boolean
   }
   let allProps: ButtonProps = $props()
 
-  const { label, ...rest } = allProps
+  const { label, square, ...rest } = allProps
 </script>
 
 <button
-  class="button-border bg-accent-bg text-accent-text cursor-pointer px-3 py-1 font-bold shadow-lg"
-  {...rest}>{label}</button
+  class="button-border bg-accent-bg text-accent-text cursor-pointer font-bold shadow-lg {square
+    ? 'aspect-square'
+    : ''}"
+  {...rest}
 >
+  {@render label()}
+</button>
 
 <style>
   .button-border {
-    border-width: 4px;
+    border-width: 3px;
     border-style: ridge;
 
     border-top-color: var(--color-highlight-bg);
