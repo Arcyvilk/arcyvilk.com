@@ -50,9 +50,9 @@
     border-width: 4px;
     border-style: ridge;
 
-    border-top-color: var(--window-border-top-color, var(--color-highlight-bg));
-    border-left-color: var(--window-border-left-color, var(--color-highlight-bg));
-    border-bottom-color: var(--window-border-bottom-color, var(--color-shadow-bg));
-    border-right-color: var(--window-border-right-color, var(--color-shadow-bg));
+    border-top-color: var(--color-highlight-bg);
+    border-left-color: var(--color-highlight-bg);
+    border-bottom-color: var(--color-shadow-bg);
+    border-right-color: var(--color-shadow-bg);
   }
 </style>
