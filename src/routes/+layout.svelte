@@ -42,8 +42,8 @@
 
   {#each openWindowIds as windowId}
     <Window
-      {clickCoords}
       {windowId}
+      originCoords={clickCoords}
       onclick={() => onWindowClick(windowId)}
       onclose={() => onWindowClose(windowId)}
     >
