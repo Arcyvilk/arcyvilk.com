@@ -8,13 +8,13 @@
 
   type WindowProps = {
     windowId: DesktopIconId
-    clickCoords: { x: number; y: number }
+    clickCoords?: { x: number; y: number }
     content: Snippet
     onclick: () => void
     onclose: () => void
   } & Partial<HTMLDialogElement>
 
-  let { windowId, clickCoords, content, onclick, onclose }: WindowProps = $props()
+  let { windowId, clickCoords = { x: 0, y: 0 }, content, onclick, onclose }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
   let windowData: DesktopIconProps | undefined = $state(
