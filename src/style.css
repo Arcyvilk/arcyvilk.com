@@ -17,8 +17,8 @@
 @custom-variant windows (&:where([data-theme=windows], [data-theme=windows] *));
 
 @theme inline {
-  --color-background-bg: var(--theme-background-bg);
-  --color-foreground-bg: var(--theme-foreground-bg);
+  --color-desktop-bg: var(--theme-desktop-bg);
+  --color-window-bg: var(--theme-window-bg);
   --color-accent-bg: var(--theme-accent-bg);
 
   --color-background-text: var(--theme-background-text);
@@ -33,8 +33,8 @@
 * WINDOWS THEME!
 */
 [data-theme='windows'] {
-  --theme-background-bg: #008080;
-  --theme-foreground-bg: #c0c0c0;
+  --theme-desktop-bg: #008080;
+  --theme-window-bg: #c0c0c0;
   --theme-accent-bg: #c0c0c0;
 
   --theme-background-text: #000000;

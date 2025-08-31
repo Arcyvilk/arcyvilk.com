@@ -5,7 +5,7 @@
 
 <footer class="sticky bottom-0 left-0 w-full">
   <div
-    class="bg-foreground-bg text-foreground-text border-t-highlight-bg flex gap-1 border-t-4 [border-style:groove] p-1"
+    class="bg-window-bg text-foreground-text border-t-highlight-bg flex gap-1 border-t-4 [border-style:groove] p-1"
   >
     <Button label="Start" />
     <Divider />
