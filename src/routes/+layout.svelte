@@ -9,7 +9,10 @@
   let openWindowIds: DesktopIconId[] = $state([])
 
   const openWindow = (id: DesktopIconId): void => {
-    openWindowIds = Array.from(new Set([...openWindowIds, id]))
+    // TODO: whenuser tries to open window which is already opened,
+    // bring it to the top of the page
+    if (openWindowIds.includes(id)) return
+    openWindowIds.push(id)
   }
 
   const onWindowClose = (id: DesktopIconId): void => {
@@ -20,7 +23,7 @@
 <Desktop>
   <div class="flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4">
     {#each desktopIcons as desktopIcon}
-      {#if desktopIcon.hidden === false}
+      {#if !desktopIcon.hidden}
         <DesktopIcon {...desktopIcon} ondblclick={() => openWindow(desktopIcon.id)} />
       {/if}
     {/each}
