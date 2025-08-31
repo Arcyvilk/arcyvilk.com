@@ -3,8 +3,6 @@
   import { type TDesktopIcon } from '$lib/types/DesktopIcon'
 
   const { alt, icon, label, handleDoubleClick }: TDesktopIcon = $props()
-
-  console.log(handleDoubleClick)
 </script>
 
 <div class="flex h-34 max-h-34 w-32 max-w-32 items-center justify-center">
