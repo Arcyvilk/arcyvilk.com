@@ -51,7 +51,11 @@
     {/each}
   </div>
 
-  <Window {currentWindowId} onclose={onWindowClose}>
+  <Window
+    {currentWindowId}
+    windowTitle={desktopIcons.find((icon) => icon.id === currentWindowId)?.label ?? '-'}
+    onclose={onWindowClose}
+  >
     {#snippet content()}
       <span>{currentWindowId}</span>
     {/snippet}
