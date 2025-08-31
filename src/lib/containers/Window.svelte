@@ -1,20 +1,21 @@
 <script lang="ts">
+  import { type Snippet, onMount } from 'svelte'
+  import { gsap } from 'gsap'
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
-  import { desktopIcons } from '$lib/data/desktopIcons'
-  import type { DesktopIconId, DesktopIconProps } from '$lib/types/DesktopIcon'
-  import type { Snippet } from 'svelte'
+  import { desktopIcons, type DesktopIconId, type DesktopIconProps } from '$lib/data/desktopIcons'
 
   type WindowProps = {
-    content: Snippet
     windowId: DesktopIconId
+    clickCoords: { x: number; y: number }
+    content: Snippet
     onclose: () => void
   } & Partial<HTMLDialogElement>
 
-  let { content, windowId, onclose }: WindowProps = $props()
+  let { windowId, clickCoords, content, onclose }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
-  let window: DesktopIconProps | undefined = $state(
+  let windowData: DesktopIconProps | undefined = $state(
     desktopIcons.find((icon) => icon.id === windowId)
   )
 
@@ -26,22 +27,45 @@
   $effect(() => {
     if (window) dialog?.show()
   })
+
+  onMount(() => {
+    if (dialog) {
+      const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
+      const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
+
+      gsap.fromTo(
+        dialog,
+        {
+          opacity: 0.5,
+          scale: 0.1,
+          x: clickCoords.x,
+          y: clickCoords.y
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          x: centerX,
+          y: centerY,
+          duration: 0.4,
+          ease: 'power2-out'
+        }
+      )
+    }
+  })
 </script>
 
-<dialog
-  class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-  bind:this={dialog}
-  onclose={handleWindowClose}
->
-  <div class="window-border bg-window-bg min-w-[80vw]">
-    <header class="bg-window-header-bg flex items-center justify-between p-1">
-      <div class="flex items-center gap-2">
-        {#if window?.icon}
-          <Image image={window.icon} alt="" className="h-6 w-6 aspect-square" />
+<dialog class="fixed" bind:this={dialog} onclose={handleWindowClose}>
+  <div class="window-border bg-window-bg max-w-[80vw]">
+    <header class="bg-window-header-bg flex items-center justify-between gap-8 p-1">
+      <div class="flex items-center gap-2 overflow-hidden">
+        {#if windowData?.icon}
+          <Image image={windowData.icon} alt="" className="h-6 w-6 aspect-square" />
         {/if}
 
-        {#if window?.label}
-          <h2 class="text-foreground-text text-base/4 font-semibold">{window.label}</h2>
+        {#if windowData?.label}
+          <h2 class="text-foreground-text truncate text-base/4 font-semibold">
+            {windowData.label}
+          </h2>
         {/if}
       </div>
 

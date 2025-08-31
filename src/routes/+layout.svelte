@@ -7,8 +7,10 @@
 
   let { children } = $props()
   let openWindowIds: DesktopIconId[] = $state([])
+  let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
 
-  const openWindow = (id: DesktopIconId): void => {
+  const openWindow = (id: DesktopIconId, event: MouseEvent): void => {
+    clickCoords = { x: event.clientX, y: event.clientY }
     // TODO: whenuser tries to open window which is already opened,
     // bring it to the top of the page
     if (openWindowIds.includes(id)) return
@@ -24,13 +26,16 @@
   <div class="flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4">
     {#each desktopIcons as desktopIcon}
       {#if !desktopIcon.hidden}
-        <DesktopIcon {...desktopIcon} ondblclick={() => openWindow(desktopIcon.id)} />
+        <DesktopIcon
+          {...desktopIcon}
+          ondblclick={(event: MouseEvent) => openWindow(desktopIcon.id, event)}
+        />
       {/if}
     {/each}
   </div>
 
   {#each openWindowIds as windowId}
-    <Window {windowId} onclose={() => onWindowClose(windowId)}>
+    <Window {clickCoords} {windowId} onclose={() => onWindowClose(windowId)}>
       {#snippet content()}
         <span>{windowId}</span>
       {/snippet}
