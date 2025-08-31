@@ -15,5 +15,5 @@
   class="bg-window-bg text-foreground-text sticky flex flex-row items-center justify-between gap-1 p-3 shadow-lg"
 >
   <h1 class="font-c text-xl font-bold uppercase"><a href="/">Arcyvilk.com</a></h1>
-  <div><Button label="Theme" onclick={onThemeChange} /></div>
+  <div><Button onclick={onThemeChange}>{#snippet label()}Theme{/snippet}</Button></div>
 </header>

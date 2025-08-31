@@ -7,7 +7,7 @@
   <div
     class="bg-window-bg text-foreground-text border-t-highlight-bg flex gap-1 border-t-4 [border-style:groove] p-1"
   >
-    <Button label="Start" />
+    <Button>{#snippet label()}<span class="px-2">Start</span>{/snippet}</Button>
     <Divider />
   </div>
 </footer>
