@@ -1,6 +1,7 @@
 <script lang="ts">
   import { type Snippet, onMount } from 'svelte'
   import { gsap } from 'gsap'
+  import { draggable } from '@neodrag/svelte'
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
   import { desktopIcons, type DesktopIconId, type DesktopIconProps } from '$lib/data/desktopIcons'
@@ -55,9 +56,15 @@
   })
 </script>
 
-<dialog class="fixed" bind:this={dialog} onclose={handleWindowClose} {onclick}>
+<dialog
+  class="fixed"
+  use:draggable={{ bounds: 'parent' }}
+  bind:this={dialog}
+  onclose={handleWindowClose}
+  {onclick}
+>
   <div class="window-border bg-window-bg max-w-[80vw]">
-    <header class="bg-window-header-bg flex items-center justify-between gap-8 p-1">
+    <header class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1">
       <div class="flex items-center gap-2 overflow-hidden">
         {#if windowData?.icon}
           <Image image={windowData.icon} alt="" className="h-6 w-6 aspect-square" />
