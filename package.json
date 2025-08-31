@@ -41,6 +41,7 @@
 		}
 	},
 	"dependencies": {
+		"@neodrag/svelte": "^2.3.3",
 		"gsap": "^3.13.0"
 	}
 }
