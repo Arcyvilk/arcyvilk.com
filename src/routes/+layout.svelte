@@ -11,7 +11,9 @@
   let openWindowIds: DesktopIconId[] = $state([])
   let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
 
-  const openWindow = (id: DesktopIconId, event: MouseEvent): void => {
+  $inspect(openWindowIds)
+
+  const openWindow = (event: MouseEvent, id: DesktopIconId): void => {
     clickCoords = { x: event.clientX, y: event.clientY }
     // TODO: whenuser tries to open window which is already opened,
     // bring it to the top of the page
@@ -34,21 +36,22 @@
       {#if !desktopIcon.hidden}
         <DesktopIcon
           {...desktopIcon}
-          ondblclick={(event: MouseEvent) => openWindow(desktopIcon.id, event)}
+          ondblclick={(event: MouseEvent) => openWindow(event, desktopIcon.id)}
         />
       {/if}
     {/each}
   </div>
 
-  {#each openWindowIds as windowId}
+  {#each desktopIcons as { id }}
     <Window
-      {windowId}
+      windowId={id}
+      open={openWindowIds.includes(id)}
       originCoords={clickCoords}
-      onclick={() => onWindowClick(windowId)}
-      onclose={() => onWindowClose(windowId)}
+      onclick={() => onWindowClick(id)}
+      onclose={() => onWindowClose(id)}
     >
       {#snippet content()}
-        <span>{windowId}</span>
+        <span>{id}</span>
       {/snippet}
     </Window>
   {/each}

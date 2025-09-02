@@ -14,7 +14,14 @@
     onclose: () => void
   } & Partial<HTMLDialogElement>
 
-  let { windowId, originCoords = { x: 0, y: 0 }, content, onclick, onclose }: WindowProps = $props()
+  let {
+    windowId,
+    originCoords = { x: 0, y: 0 },
+    open,
+    content,
+    onclick,
+    onclose
+  }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
   let windowData: DesktopIconProps | undefined = $state(
@@ -22,13 +29,8 @@
   )
 
   const handleWindowClose = () => {
-    onclose()
     dialog?.close()
   }
-
-  $effect(() => {
-    if (window) dialog?.show()
-  })
 
   onMount(() => {
     if (dialog) {
@@ -58,9 +60,10 @@
 
 <dialog
   class="fixed"
+  {open}
   use:draggable={{ bounds: 'parent' }}
   bind:this={dialog}
-  onclose={handleWindowClose}
+  {onclose}
   {onclick}
 >
   <div class="window-border bg-window-bg max-w-[80vw]">
