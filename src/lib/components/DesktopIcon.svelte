@@ -1,11 +1,15 @@
 <script lang="ts">
+  import { draggable } from '@neodrag/svelte'
   import Image from '$lib/components/Image.svelte'
   import { type DesktopIconProps } from '$lib/data/desktopIcons'
 
   const { alt, icon, label, ondblclick }: DesktopIconProps & Partial<HTMLButtonElement> = $props()
 </script>
 
-<div class="flex h-34 max-h-34 w-32 max-w-32 items-center justify-center">
+<div
+  use:draggable={{ bounds: 'parent' }}
+  class="flex h-34 max-h-34 w-32 max-w-32 items-center justify-center"
+>
   <button
     data-testid="desktop-icon"
     class="button-outline flex flex-col items-center justify-center gap-2 overflow-hidden p-1"

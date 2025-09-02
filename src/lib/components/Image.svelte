@@ -11,4 +11,9 @@
   const src = images[image]
 </script>
 
-<img {src} {alt} class="object-contain {className ? className : ''}" />
+<img
+  {src}
+  {alt}
+  draggable="false"
+  class="object-contain select-none {className ? className : ''}"
+/>
