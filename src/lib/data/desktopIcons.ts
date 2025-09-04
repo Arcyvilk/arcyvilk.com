@@ -1,12 +1,13 @@
 import type { Win95DesktopIcon } from '$lib/assets/desktopIcons'
 
-export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno'
+export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno' | 'internet'
 
 export type DesktopIconProps = {
   id: DesktopIconId
   icon: Win95DesktopIcon
   label: string
   alt: string
+  href?: string
   hidden?: boolean
 }
 
@@ -39,6 +40,14 @@ export const desktopIcons: DesktopIconProps[] = [
     icon: 'RecycleBin',
     label: 'Recycle Bin',
     alt: 'Recycle Bin',
+    hidden: false
+  },
+  {
+    id: 'internet',
+    icon: 'Explorer',
+    label: 'Internet',
+    alt: 'Internet',
+    href: '/reddit',
     hidden: false
   },
   {

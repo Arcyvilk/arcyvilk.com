@@ -36,7 +36,13 @@
       {#if !desktopIcon.hidden}
         <DesktopIcon
           {...desktopIcon}
-          ondblclick={(event: MouseEvent) => openWindow(event, desktopIcon.id)}
+          ondblclick={(event: MouseEvent) => {
+            if (desktopIcon.href) {
+              window.location.href = desktopIcon.href
+            } else {
+              openWindow(event, desktopIcon.id)
+            }
+          }}
         />
       {/if}
     {/each}
