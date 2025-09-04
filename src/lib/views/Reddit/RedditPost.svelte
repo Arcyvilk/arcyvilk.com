@@ -1,23 +1,53 @@
 <script lang="ts">
   import type { RedditPost } from '$lib/data/redditPosts'
 
-  let { id, title, subreddit, author, date, body, upvotes }: RedditPost = $props()
+  let { id, image, title, subreddit, author, date, upvotes, downvotes }: RedditPost = $props()
+
+  const linkSubreddit = `/reddit/r/${subreddit}`
+  const linkUser = `/reddit/u/${author}`
+  const linkPost = `/reddit/${id}`
 </script>
 
-<div class="m-4 box-border w-full p-4">
-  <div>
-    <a href="/reddit/{id}" class="mb-2 text-lg text-blue-800">{title}</a>
-    <span class="text-xs text-gray-400">(self.{subreddit})</span>
+<div class="box-border grid w-full grid-cols-[64px_72px_1fr] flex-row gap-2">
+  <div class="flex flex-col items-center font-bold text-gray-400">
+    <button>⬆️</button>
+    <span>{upvotes - downvotes}</span>
+    <button>⬇️</button>
   </div>
-  <div class="mb-2 text-xs text-gray-600">
-    submitted {date} by <a href="/reddit/u/{author}">{author}</a> in r/{subreddit}
-  </div>
-  <p class="text-gray-800">{body}</p>
-  <!-- {#if post.image}
-        <img src={post.image} alt="Post image" class="mt-2 w-full rounded" />
-      {/if} -->
-  <div class="mt-2 flex items-center text-sm text-gray-600">
-    <span class="mr-4">👍 {upvotes}</span>
-    <span>💬 {12} comments</span>
+
+  <img
+    class="w-full max-w-16 rounded-full bg-gray-200 p-4"
+    src={'https://cdn-icons-png.flaticon.com/512/7046/7046086.png'}
+    alt="Post thumbnail"
+  />
+
+  <div class="flex flex-col">
+    <div>
+      <a href={linkPost} class="text-lg">{title}</a>
+      <span class="text-xs text-gray-400">(self.{subreddit})</span>
+    </div>
+    <div class="text-xs text-gray-600">
+      submitted {date} by <a href={linkUser}>{author}</a> to
+      <a href={linkSubreddit}>r/{subreddit}</a>
+    </div>
+
+    <div class="reddit-font mt-2 flex items-center gap-2 text-xs font-bold text-gray-600">
+      <a href={linkPost}>{Math.round(Math.random() * 100)} comments</a>
+      <a href={'#'}>share</a>
+      <a href={'#'}>save</a>
+      <a href={'#'}>hide</a>
+      <a href={'#'}>report</a>
+      <a href={'#'}>crosspost</a>
+    </div>
   </div>
 </div>
+
+<style>
+  .reddit-font {
+    font-family:
+      normal x-small verdana,
+      arial,
+      helvetica,
+      sans-serif;
+  }
+</style>

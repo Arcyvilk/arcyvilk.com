@@ -54,4 +54,20 @@
   * {
     box-sizing: border-box;
   }
+
+  a {
+    color: rgb(0, 0, 255);
+  }
+
+  a:visited {
+    color: rgb(128, 0, 128);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  button {
+    cursor: pointer;
+  }
 }
