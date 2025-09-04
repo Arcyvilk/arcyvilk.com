@@ -21,7 +21,7 @@
     icon,
     label,
     open,
-    originCoords = { x: 0, y: 0 },
+    originCoords = { x: window.innerWidth / 2, y: window.innerHeight / 2 },
     content,
     onWindowClick,
     onWindowClose

@@ -1,8 +1,7 @@
 <script>
   import { goto } from '$app/navigation'
   import Window from '$lib/containers/Window.svelte'
-
-  let { originCoords } = $props()
+  import Reddit from '$lib/views/Reddit/Reddit.svelte'
 
   const onWindowClick = () => {
     // TODO: Bring to front on click!
@@ -13,15 +12,8 @@
   }
 </script>
 
-<Window
-  icon="Explorer"
-  label="Internet"
-  open={true}
-  originCoords={{ x: 0, y: 0 }}
-  {onWindowClick}
-  {onWindowClose}
->
+<Window icon="Explorer" label="Internet" open={true} {onWindowClick} {onWindowClose}>
   {#snippet content()}
-    <span>dupa</span>
+    <Reddit />
   {/snippet}</Window
 >
