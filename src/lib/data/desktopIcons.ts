@@ -12,7 +12,7 @@ export type DesktopIconProps = {
 
 export const defaultDesktopIcon: DesktopIconProps = {
   id: 'missingno',
-  icon: 'MissingNo',
+  icon: 'Tree',
   label: 'MISSINGNO',
   alt: 'MISSINGNO',
   hidden: true
