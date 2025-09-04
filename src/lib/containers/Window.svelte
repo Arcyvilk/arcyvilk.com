@@ -8,63 +8,74 @@
 
   type WindowProps = {
     windowId: DesktopIconId
+    open: boolean
     originCoords?: { x: number; y: number }
     content: Snippet
-    onclick: () => void
-    onclose: () => void
+    onWindowClick: () => void
+    onWindowClose: () => void
   } & Partial<HTMLDialogElement>
 
   let {
     windowId,
-    originCoords = { x: 0, y: 0 },
     open,
+    originCoords = { x: 0, y: 0 },
     content,
-    onclick,
-    onclose
+    onWindowClick,
+    onWindowClose
   }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
+
   let windowData: DesktopIconProps | undefined = $state(
     desktopIcons.find((icon) => icon.id === windowId)
   )
 
   const handleWindowClose = () => {
     dialog?.close()
+    onWindowClose()
   }
 
-  onMount(() => {
-    if (dialog) {
-      const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
-      const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
+  $effect(() => {
+    if (!dialog) return
 
-      gsap.fromTo(
-        dialog,
-        {
-          opacity: 0.5,
-          scale: 0.1,
-          x: originCoords.x,
-          y: originCoords.y
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          x: centerX,
-          y: centerY,
-          duration: 0.4,
-          ease: 'power2-out'
-        }
-      )
-    }
+    if (open && !dialog.open) dialog?.show()
+    else if (!open && dialog.open) handleWindowClose()
+  })
+
+  $inspect(open)
+
+  $effect(() => {
+    if (!open || !dialog) return
+
+    const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
+    const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
+
+    gsap.fromTo(
+      dialog,
+      {
+        opacity: 0.5,
+        scale: 0.1,
+        x: originCoords.x,
+        y: originCoords.y
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        x: centerX,
+        y: centerY,
+        duration: 0.4,
+        ease: 'power2-out'
+      }
+    )
   })
 </script>
 
 <dialog
   class="fixed"
-  {open}
-  use:draggable={{ bounds: 'parent' }}
   bind:this={dialog}
-  {onclose}
-  {onclick}
+  use:draggable={{ bounds: 'parent' }}
+  onclose={onWindowClose}
+  onclick={onWindowClick}
 >
   <div class="window-border bg-window-bg max-w-[80vw]">
     <header class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1">
