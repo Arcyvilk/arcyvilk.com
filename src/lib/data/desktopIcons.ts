@@ -1,10 +1,10 @@
-import type { ImageType } from '$lib/assets/images'
+import type { Win95DesktopIcon } from '$lib/assets/desktopIcons'
 
 export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno'
 
 export type DesktopIconProps = {
   id: DesktopIconId
-  icon: ImageType
+  icon: Win95DesktopIcon
   label: string
   alt: string
   hidden?: boolean

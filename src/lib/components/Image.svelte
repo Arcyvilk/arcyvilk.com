@@ -1,8 +1,8 @@
 <script lang="ts">
-  import images, { type ImageType } from '$lib/assets/images'
+  import images, { type TImage } from '$lib/assets'
 
   type ImageProps = {
-    image: ImageType
+    image: TImage
     alt?: string
     className?: string
   }
