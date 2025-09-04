@@ -16,4 +16,4 @@
   const dateFromNow = dayjs(date).fromNow()
 </script>
 
-<span {...rest} title={date}>{dateFromNow}</span>
+<span {...rest} title={date.toString()}>{dateFromNow}</span>
