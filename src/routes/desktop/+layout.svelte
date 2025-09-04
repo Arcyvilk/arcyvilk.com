@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from '$app/navigation'
   import { desktopIcons, type DesktopIconId } from '$lib/data/desktopIcons'
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Desktop from '$lib/views/Desktop/Desktop.svelte'
@@ -38,7 +39,7 @@
           {...desktopIcon}
           ondblclick={(event: MouseEvent) => {
             if (desktopIcon.href) {
-              window.location.href = desktopIcon.href
+              goto(desktopIcon.href)
             } else {
               openWindow(event, desktopIcon.id)
             }
