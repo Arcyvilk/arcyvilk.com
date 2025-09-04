@@ -5,7 +5,7 @@
   import Taskbar from '$lib/containers/Taskbar.svelte'
   import Window from '$lib/containers/Window.svelte'
 
-  import '../style.css'
+  import '../../style.css'
 
   let { children } = $props()
   let openWindowIds: DesktopIconId[] = $state([])
@@ -14,10 +14,10 @@
   $inspect(openWindowIds)
 
   const openWindow = (event: MouseEvent, id: DesktopIconId): void => {
-    clickCoords = { x: event.clientX, y: event.clientY }
-    // TODO: whenuser tries to open window which is already opened,
+    // TODO: when user tries to open window which is already opened,
     // bring it to the top of the page
     if (openWindowIds.includes(id)) return
+    clickCoords = { x: event.clientX, y: event.clientY }
     openWindowIds.push(id)
   }
 
@@ -47,8 +47,8 @@
       windowId={id}
       open={openWindowIds.includes(id)}
       originCoords={clickCoords}
-      onclick={() => onWindowClick(id)}
-      onclose={() => onWindowClose(id)}
+      onWindowClick={() => onWindowClick(id)}
+      onWindowClose={() => onWindowClose(id)}
     >
       {#snippet content()}
         <span>{id}</span>
