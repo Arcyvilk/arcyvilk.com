@@ -1,8 +1,8 @@
 <script lang="ts">
   import { desktopIcons, type DesktopIconId } from '$lib/data/desktopIcons'
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
-  import Desktop from '$lib/containers/Desktop.svelte'
-  import Taskbar from '$lib/containers/Taskbar.svelte'
+  import Desktop from '$lib/views/Desktop/Desktop.svelte'
+  import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
   import Window from '$lib/containers/Window.svelte'
 
   import '../../style.css'
