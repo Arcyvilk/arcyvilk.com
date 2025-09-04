@@ -6,8 +6,6 @@
   import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
   import Window from '$lib/containers/Window.svelte'
 
-  import './style.css'
-
   let { children } = $props()
   let openWindowIds: DesktopIconId[] = $state([])
   let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
@@ -28,6 +26,14 @@
 
   const onWindowClick = (id: DesktopIconId): void => {
     // TODO: Bring to front on click!
+  }
+
+  const getIcon = (id: DesktopIconId) => {
+    return desktopIcons.find((icon) => icon.id === id)?.icon
+  }
+
+  const getLabel = (id: DesktopIconId) => {
+    return desktopIcons.find((icon) => icon.id === id)?.label
   }
 </script>
 
@@ -51,7 +57,8 @@
 
   {#each desktopIcons as { id }}
     <Window
-      windowId={id}
+      icon={getIcon(id)}
+      label={getLabel(id)}
       open={openWindowIds.includes(id)}
       originCoords={clickCoords}
       onWindowClick={() => onWindowClick(id)}

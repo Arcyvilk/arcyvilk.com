@@ -5,9 +5,11 @@
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
   import { desktopIcons, type DesktopIconId, type DesktopIconProps } from '$lib/data/desktopIcons'
+  import type { TImage } from '$lib/assets'
 
   type WindowProps = {
-    windowId: DesktopIconId
+    icon?: TImage
+    label?: string
     open: boolean
     originCoords?: { x: number; y: number }
     content: Snippet
@@ -16,7 +18,8 @@
   } & Partial<HTMLDialogElement>
 
   let {
-    windowId,
+    icon,
+    label,
     open,
     originCoords = { x: 0, y: 0 },
     content,
@@ -25,10 +28,6 @@
   }: WindowProps = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
-
-  let windowData: DesktopIconProps | undefined = $state(
-    desktopIcons.find((icon) => icon.id === windowId)
-  )
 
   const handleWindowClose = () => {
     dialog?.close()
@@ -80,13 +79,13 @@
   <div class="window-border bg-window-bg max-w-[80vw]">
     <header class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1">
       <div class="flex items-center gap-2 overflow-hidden">
-        {#if windowData?.icon}
-          <Image image={windowData.icon} alt="" className="h-6 w-6 aspect-square" />
+        {#if icon}
+          <Image image={icon} alt="" className="h-6 w-6 aspect-square" />
         {/if}
 
-        {#if windowData?.label}
+        {#if label}
           <h2 class="text-foreground-text truncate text-base/4 font-semibold">
-            {windowData.label}
+            {label}
           </h2>
         {/if}
       </div>
