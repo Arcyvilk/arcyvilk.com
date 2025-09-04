@@ -9,7 +9,7 @@
 </script>
 
 <div class="box-border grid w-full grid-cols-[64px_72px_1fr] flex-row gap-2">
-  <div class="flex flex-col items-center font-bold text-gray-400">
+  <div class="flex flex-col items-center text-sm font-bold text-gray-400">
     <button>⬆️</button>
     <span>{upvotes - downvotes}</span>
     <button>⬇️</button>
@@ -31,7 +31,7 @@
       <a href={linkSubreddit}>r/{subreddit}</a>
     </div>
 
-    <div class="reddit-font mt-2 flex items-center gap-2 text-xs font-bold text-gray-600">
+    <div class="reddit-font mt-2 flex flex-wrap items-center gap-2 text-xs font-bold text-gray-600">
       <a href={linkPost}>{Math.round(Math.random() * 100)} comments</a>
       <a href={'#'}>share</a>
       <a href={'#'}>save</a>
