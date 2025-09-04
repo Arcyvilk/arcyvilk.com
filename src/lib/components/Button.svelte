@@ -5,7 +5,7 @@
   interface ButtonProps extends HTMLButtonAttributes {
     label: Snippet
     square?: boolean
-    className?:string
+    className?: string
   }
   let allProps: ButtonProps = $props()
 

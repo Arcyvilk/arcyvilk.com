@@ -1,5 +1,7 @@
 <script lang="ts">
+  import Date from '$lib/components/Date.svelte'
   import type { RedditPost } from '$lib/data/redditPosts'
+  import dayjs from 'dayjs'
 
   let { id, image, title, subreddit, author, date, upvotes, downvotes }: RedditPost = $props()
 
@@ -27,7 +29,7 @@
       <span class="text-xs text-gray-400">(self.{subreddit})</span>
     </div>
     <div class="text-xs text-gray-600">
-      submitted {date} by <a href={linkUser}>{author}</a> to
+      submitted <Date {date} /> by <a href={linkUser}>{author}</a> to
       <a href={linkSubreddit}>r/{subreddit}</a>
     </div>
 
