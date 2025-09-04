@@ -5,8 +5,6 @@
   import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
   import Window from '$lib/containers/Window.svelte'
 
-  import '../../style.css'
-
   let { children } = $props()
   let openWindowIds: DesktopIconId[] = $state([])
   let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })

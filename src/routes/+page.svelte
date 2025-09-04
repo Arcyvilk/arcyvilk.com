@@ -2,6 +2,8 @@
   import { goto } from '$app/navigation'
   import { onMount } from 'svelte'
 
+  import '../style.css'
+
   onMount(() => {
     goto('/desktop')
   })
