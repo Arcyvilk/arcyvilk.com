@@ -99,7 +99,7 @@
       </Button>
     </header>
 
-    <div class="box-border flex-1 overflow-auto">
+    <div class="box-border flex-1 overflow-y-auto">
       {@render content()}
     </div>
   </div>
