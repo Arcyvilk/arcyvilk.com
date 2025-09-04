@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"@neodrag/svelte": "^2.3.3",
+		"dayjs": "^1.11.18",
 		"gsap": "^3.13.0"
 	}
 }
