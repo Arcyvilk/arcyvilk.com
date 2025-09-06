@@ -43,8 +43,8 @@
   --theme-foreground-text: #ffffff;
   --theme-accent-text: #000000;
 
-  --theme-shadow-bg: #808080;
-  --theme-highlight-bg: #ffffff;
+  --theme-shadow-bg: #666666;
+  --theme-highlight-bg: #e8e8e8;
 }
 
 :root {
