@@ -1,6 +1,5 @@
 <script lang="ts">
-  import dayjs from 'dayjs'
-  import relativeTime from 'dayjs/plugin/relativeTime'
-
-  dayjs.extend(relativeTime)
+  import Home from '$lib/views/Home/Home.svelte'
 </script>
+
+<Home />

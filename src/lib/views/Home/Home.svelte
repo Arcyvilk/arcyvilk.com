@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation'
 
   const handleRedirectToDesktop = () => {
-    goto('/home')
+    goto('/desktop')
   }
 </script>
 
