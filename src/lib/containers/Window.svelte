@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { type Snippet, onMount } from 'svelte'
+  import { type Snippet } from 'svelte'
   import { gsap } from 'gsap'
   import { draggable } from '@neodrag/svelte'
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
-  import { desktopIcons, type DesktopIconId, type DesktopIconProps } from '$lib/data/desktopIcons'
   import type { TImage } from '$lib/assets'
 
   type WindowProps = {
@@ -102,16 +101,14 @@
     </header>
 
     <div class="box-border flex-1 overflow-y-auto">
-      {#if iframe}
-        <iframe
-          src={iframe}
-          title="Embedded content"
-          class="h-full w-full"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-      {/if}
+      <!-- <iframe
+        src={iframe}
+        title="Embedded content"
+        class="h-[80vh] w-[80vw]"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe> -->
 
       {@render content()}
     </div>
