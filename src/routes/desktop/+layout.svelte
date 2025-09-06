@@ -1,81 +1,9 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-  import { desktopIcons, type DesktopIconId } from '$lib/data/desktopIcons'
-  import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Desktop from '$lib/views/Desktop/Desktop.svelte'
-  import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
-  import Window from '$lib/containers/Window.svelte'
 
   let { children } = $props()
-  let openWindowIds: DesktopIconId[] = $state([])
-  let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
-
-  $inspect(openWindowIds)
-
-  const openWindow = (event: MouseEvent, id: DesktopIconId): void => {
-    // TODO: when user tries to open window which is already opened,
-    // bring it to the top of the page
-    if (openWindowIds.includes(id)) return
-    clickCoords = { x: event.clientX, y: event.clientY }
-    openWindowIds.push(id)
-  }
-
-  const onWindowClose = (id: DesktopIconId): void => {
-    openWindowIds = openWindowIds.filter((windowId) => windowId !== id)
-  }
-
-  const onWindowClick = (id: DesktopIconId): void => {
-    // TODO: Bring to front on click!
-  }
-
-  const getIcon = (id: DesktopIconId) => {
-    return desktopIcons.find((icon) => icon.id === id)?.icon
-  }
-
-  const getIframe = (id: DesktopIconId) => {
-    return desktopIcons.find((icon) => icon.id === id)?.iframe
-  }
-
-  const getLabel = (id: DesktopIconId) => {
-    return desktopIcons.find((icon) => icon.id === id)?.label
-  }
 </script>
 
 <Desktop>
-  <div class="flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4">
-    {#each desktopIcons as desktopIcon}
-      {#if !desktopIcon.hidden}
-        <DesktopIcon
-          {...desktopIcon}
-          ondblclick={(event: MouseEvent) => {
-            if (desktopIcon.href) {
-              goto(desktopIcon.href)
-            } else {
-              openWindow(event, desktopIcon.id)
-            }
-          }}
-        />
-      {/if}
-    {/each}
-  </div>
-
-  {#each desktopIcons as { id }}
-    <Window
-      icon={getIcon(id)}
-      iframe={getIframe(id)}
-      label={getLabel(id)}
-      open={openWindowIds.includes(id)}
-      originCoords={clickCoords}
-      onWindowClick={() => onWindowClick(id)}
-      onWindowClose={() => onWindowClose(id)}
-    >
-      {#snippet content()}
-        <span>{id}</span>
-      {/snippet}
-    </Window>
-  {/each}
-
   {@render children()}
-
-  <Taskbar {openWindowIds} />
 </Desktop>
