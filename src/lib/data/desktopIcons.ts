@@ -1,4 +1,5 @@
 import type { Win95DesktopIcon } from '$lib/assets/desktopIcons'
+import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte';
 import Home from '$lib/views/Home/Home.svelte';
 import type { Component } from 'svelte';
 
@@ -55,7 +56,7 @@ export const desktopIcons: DesktopIconProps[] = [
     label: 'Internet',
     alt: 'Internet',
     hidden: false,
-    DynamicContent: Home
+    DynamicContent: BrowserIframe
   },
   {
     id: 'script',
