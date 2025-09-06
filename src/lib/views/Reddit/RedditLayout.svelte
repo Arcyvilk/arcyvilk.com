@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Image from '$lib/components/Image.svelte'
   import RedditHeaderLink from '$lib/views/Reddit/components/RedditHeaderLink.svelte'
 
   let { children } = $props()
@@ -15,9 +16,9 @@
     <RedditHeaderLink label="Users" href="/users" />
   </div>
 
-  <div class="flex items-center gap-4 border-b-1 border-blue-600 bg-blue-100 px-4">
-    <img src="/logo/reddit-logo.png" alt="Reddit Logo" class="h-12 w-12" />
-    <span class="text-2xl font-bold text-black">Reddit</span>
+  <div class="flex items-center gap-8 border-b-1 border-blue-600 bg-blue-100 px-3 py-1">
+    <Image image="RedditLogo" alt="Reddit Logo" className="h-full" />
+    <span class="text-2xl font-bold text-black">Hot</span>
   </div>
 
   <!-- <div class="crt absolute h-screen w-screen"></div> -->
