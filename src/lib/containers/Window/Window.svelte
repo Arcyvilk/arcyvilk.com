@@ -77,7 +77,7 @@
   onclick={onWindowClick}
 >
   <div
-    class="window-border bg-window-bg box-border flex max-h-[90vh] max-w-[90vw] flex-col overflow-hidden"
+    class="window-border bg-window-bg box-border flex size-fit h-auto max-h-[90vh] max-w-[90vw] flex-col overflow-hidden"
   >
     <header class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1">
       <div class="flex items-center gap-2 overflow-hidden">
@@ -99,9 +99,7 @@
       </Button>
     </header>
 
-    <div class="box-border flex-1 overflow-y-auto">
-      <DynamicContent></DynamicContent>
-    </div>
+    <DynamicContent></DynamicContent>
   </div>
 </dialog>
 

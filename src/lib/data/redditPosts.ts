@@ -43,6 +43,5 @@ export const redditPosts:RedditPost[] = [
     author: "5b2137692022",
     subreddit:"poland",
     date: new Date('2023-10-01T12:00:00Z')
-  },
-
+  }
 ]

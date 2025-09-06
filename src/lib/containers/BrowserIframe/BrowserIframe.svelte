@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="h-[80vh] w-[80vw]">
+<div class="box-border flex h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
   <div class="separator-border flex gap-2 px-2 pl-4">
     <button class="px-2 hover:bg-gray-400"><span class="underline">F</span>ile</button>
     <button class="px-2 hover:bg-gray-400"><span class="underline">E</span>dit</button>
@@ -13,17 +13,23 @@
 
   <div class="separator-border flex items-center gap-2 pl-2">
     <span>Address</span>
-    <input class="address-bar-border h-8 w-full bg-white px-2" value="https://www.reddit.com" />
+    <input
+      class="address-bar-border h-8 w-full bg-white px-2"
+      readonly
+      value="https://www.reddit.com"
+    />
   </div>
 
-  <iframe
-    class="h-full w-full"
-    src={'/reddit'}
-    title="Embedded content"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-  ></iframe>
+  <div class="flex flex-1 overflow-y-auto">
+    <iframe
+      class="h-full min-h-[50vh] w-full"
+      src={'/reddit'}
+      title="Embedded content"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
 </div>
 
 <style>
