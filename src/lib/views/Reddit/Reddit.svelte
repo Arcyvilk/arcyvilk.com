@@ -1,8 +1,6 @@
 <script lang="ts">
   import { redditPosts } from '$lib/data/redditPosts'
   import RedditPost from '$lib/views/Reddit/RedditPost.svelte'
-
-  let test: string = 'Reddit layout'
 </script>
 
 <div
