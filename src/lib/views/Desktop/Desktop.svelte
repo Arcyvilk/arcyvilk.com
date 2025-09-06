@@ -3,7 +3,7 @@
   import { desktopIcons, type DesktopIconId } from '$lib/data/desktopIcons'
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
-  import Window from '$lib/containers/Window.svelte'
+  import Window from '$lib/containers/Window/Window.svelte'
 
   let { children } = $props()
   let openWindowIds: DesktopIconId[] = $state([])
