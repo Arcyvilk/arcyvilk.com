@@ -1,5 +1,9 @@
 import type { Win95DesktopIcon } from '$lib/assets/desktopIcons'
 import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte';
+import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte';
+import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte';
+import RecycleBin from '$lib/containers/RecycleBin/RecycleBin.svelte';
+import SuspiciousScript from '$lib/containers/SuspiciousScript/SuspiciousScript.svelte';
 import Home from '$lib/views/Home/Home.svelte';
 import type { Component } from 'svelte';
 
@@ -32,7 +36,7 @@ export const desktopIcons: DesktopIconProps[] = [
     label: 'My Computer',
     alt: 'My PC',
     hidden: false,
-    DynamicContent: Home
+    DynamicContent: MyComputer
   },
   {
     id: 'documents',
@@ -40,7 +44,7 @@ export const desktopIcons: DesktopIconProps[] = [
     label: 'My Documents',
     alt: 'My Documents',
     hidden: true,
-    DynamicContent: Home
+    DynamicContent: MyDocuments
   },
   {
     id: 'bin',
@@ -48,7 +52,7 @@ export const desktopIcons: DesktopIconProps[] = [
     label: 'Recycle Bin',
     alt: 'Recycle Bin',
     hidden: false,
-    DynamicContent: Home
+    DynamicContent: RecycleBin
   },
   {
     id: 'internet',
@@ -64,6 +68,6 @@ export const desktopIcons: DesktopIconProps[] = [
     label: 'Completely harmless file, there is nothing to worry about',
     alt: 'Completely harmless file',
     hidden: true,
-    DynamicContent: Home
+    DynamicContent: SuspiciousScript
   }
 ]
