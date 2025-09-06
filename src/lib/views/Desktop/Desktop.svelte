@@ -45,19 +45,16 @@
     {/each}
   </div>
 
-  {#each desktopIcons as desktopIcon}
+  {#each desktopIcons as { DynamicContent, id, icon, label } (id)}
     <Window
-      icon={desktopIcon.icon}
-      label={desktopIcon.label}
-      open={openWindowIds.includes(desktopIcon.id)}
+      {DynamicContent}
+      {icon}
+      {label}
+      open={openWindowIds.includes(id)}
       originCoords={clickCoords}
-      onWindowClick={() => onWindowClick(desktopIcon.id)}
-      onWindowClose={() => onWindowClose(desktopIcon.id)}
-    >
-      {#snippet content()}
-        <span>{desktopIcon.id}</span>
-      {/snippet}
-    </Window>
+      onWindowClick={() => onWindowClick(id)}
+      onWindowClose={() => onWindowClose(id)}
+    />
   {/each}
 
   {@render children()}

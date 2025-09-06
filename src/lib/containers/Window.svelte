@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type Snippet } from 'svelte'
+  import { type Component, type Snippet } from 'svelte'
   import { gsap } from 'gsap'
   import { draggable } from '@neodrag/svelte'
   import Button from '$lib/components/Button.svelte'
@@ -7,23 +7,22 @@
   import type { TImage } from '$lib/assets'
 
   type WindowProps = {
+    DynamicContent: Component
     icon?: TImage
     iframe?: string
     label?: string
     open: boolean
     originCoords?: { x: number; y: number }
-    content: Snippet
     onWindowClick: () => void
     onWindowClose: () => void
   } & Partial<HTMLDialogElement>
 
   let {
+    DynamicContent,
     icon,
-    iframe,
     label,
     open,
     originCoords = { x: window.innerWidth / 2, y: window.innerHeight / 2 },
-    content,
     onWindowClick,
     onWindowClose
   }: WindowProps = $props()
@@ -110,7 +109,7 @@
         allowfullscreen
       ></iframe> -->
 
-      {@render content()}
+      <DynamicContent></DynamicContent>
     </div>
   </div>
 </dialog>
