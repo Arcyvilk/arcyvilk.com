@@ -1,7 +1,6 @@
 <script lang="ts">
   import Date from '$lib/components/Date.svelte'
   import type { RedditPost } from '$lib/data/redditPosts'
-  import dayjs from 'dayjs'
 
   let { id, image, title, subreddit, author, date, upvotes, downvotes }: RedditPost = $props()
 

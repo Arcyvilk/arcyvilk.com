@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Reddit from '$lib/views/Reddit/Reddit.svelte'
+  import HomePage from '$lib/views/Reddit/HomePage.svelte'
 </script>
 
-<Reddit />
+<HomePage />

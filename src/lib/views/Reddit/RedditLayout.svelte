@@ -1,0 +1,25 @@
+<script lang="ts">
+  import RedditHeaderLink from '$lib/views/Reddit/components/RedditHeaderLink.svelte'
+
+  let { children } = $props()
+</script>
+
+<div class="h-screen w-screen bg-white">
+  <div class="flex gap-4 border-b-1 border-gray-400 bg-gray-100 p-1">
+    <RedditHeaderLink label="My subreddits" href="/subreddits" />
+    <RedditHeaderLink label="Home" href="/" />
+    <RedditHeaderLink label="Popular" href="/popular" />
+    <RedditHeaderLink label="All" href="/all" />
+    <RedditHeaderLink label="Random" href="/random" />
+    <RedditHeaderLink label="Mod" href="/mod" />
+    <RedditHeaderLink label="Users" href="/users" />
+  </div>
+
+  <div class="flex items-center gap-4 border-b-1 border-blue-600 bg-blue-100 px-4">
+    <img src="/logo/reddit-logo.png" alt="Reddit Logo" class="h-12 w-12" />
+    <span class="text-2xl font-bold text-black">Reddit</span>
+  </div>
+
+  <!-- <div class="crt absolute h-screen w-screen"></div> -->
+  {@render children()}
+</div>
