@@ -26,14 +26,6 @@
   const onWindowClick = (id: DesktopIconId): void => {
     // TODO: Bring to front on click!
   }
-
-  const getIcon = (id: DesktopIconId) => {
-    return desktopIcons.find((icon) => icon.id === id)?.icon
-  }
-
-  const getLabel = (id: DesktopIconId) => {
-    return desktopIcons.find((icon) => icon.id === id)?.label
-  }
 </script>
 
 <div
@@ -53,17 +45,17 @@
     {/each}
   </div>
 
-  {#each desktopIcons as { id }}
+  {#each desktopIcons as desktopIcon}
     <Window
-      icon={getIcon(id)}
-      label={getLabel(id)}
-      open={openWindowIds.includes(id)}
+      icon={desktopIcon.icon}
+      label={desktopIcon.label}
+      open={openWindowIds.includes(desktopIcon.id)}
       originCoords={clickCoords}
-      onWindowClick={() => onWindowClick(id)}
-      onWindowClose={() => onWindowClose(id)}
+      onWindowClick={() => onWindowClick(desktopIcon.id)}
+      onWindowClose={() => onWindowClose(desktopIcon.id)}
     >
       {#snippet content()}
-        <span>{id}</span>
+        <span>{desktopIcon.id}</span>
       {/snippet}
     </Window>
   {/each}
