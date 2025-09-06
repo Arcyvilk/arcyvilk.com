@@ -22,8 +22,8 @@
 
   <div class="flex flex-1">
     <iframe
-      class="min-h-[20vh] w-full"
-      src='/reddit'
+      class="min-h-[75vh] w-full"
+      src="/reddit"
       title="Embedded content"
       frameborder="0"
       allow="autoplay; clipboard-write; encrypted-media; web-share"
