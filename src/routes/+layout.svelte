@@ -10,7 +10,7 @@
 </script>
 
 <div class="h-screen w-screen bg-white">
-  <div class="crt absolute h-screen w-screen"></div>
+  <!-- <div class="crt absolute h-screen w-screen"></div> -->
   {@render children()}
 </div>
 

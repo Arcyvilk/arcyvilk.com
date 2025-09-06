@@ -20,13 +20,13 @@
     />
   </div>
 
-  <div class="flex flex-1 overflow-y-auto">
+  <div class="flex flex-1">
     <iframe
-      class="h-full min-h-[50vh] w-full"
-      src={'/reddit'}
+      class="min-h-[20vh] w-full"
+      src='/reddit'
       title="Embedded content"
       frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allow="autoplay; clipboard-write; encrypted-media; web-share"
       allowfullscreen
     ></iframe>
   </div>

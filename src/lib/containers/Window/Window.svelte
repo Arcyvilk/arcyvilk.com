@@ -77,10 +77,10 @@
   onclick={onWindowClick}
 >
   <div
-    class="window-border bg-window-bg box-border flex size-fit h-auto max-h-[90vh] max-w-[90vw] flex-col overflow-hidden"
+    class="window-border bg-window-bg box-border flex size-fit h-auto max-h-[90vh] max-w-[90vw] flex-col"
   >
     <header class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1">
-      <div class="flex items-center gap-2 overflow-hidden">
+      <div class="flex items-center gap-2">
         {#if icon}
           <Image image={icon} alt="" className="h-6 w-6 aspect-square" />
         {/if}
