@@ -1,1 +1,0 @@
-<h2>I am an Entry</h2>
