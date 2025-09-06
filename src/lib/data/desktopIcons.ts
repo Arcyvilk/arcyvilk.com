@@ -7,8 +7,9 @@ export type DesktopIconProps = {
   icon: Win95DesktopIcon
   label: string
   alt: string
+  hidden: boolean
   href?: string
-  hidden?: boolean
+  iframe?: string
 }
 
 export const defaultDesktopIcon: DesktopIconProps = {
@@ -33,7 +34,7 @@ export const desktopIcons: DesktopIconProps[] = [
     icon: 'Documents',
     label: 'My Documents',
     alt: 'My Documents',
-    hidden: false
+    hidden: true
   },
   {
     id: 'bin',
@@ -47,7 +48,7 @@ export const desktopIcons: DesktopIconProps[] = [
     icon: 'Explorer',
     label: 'Internet',
     alt: 'Internet',
-    href: '/reddit',
+    iframe: "/reddit",
     hidden: false
   },
   {
@@ -55,6 +56,6 @@ export const desktopIcons: DesktopIconProps[] = [
     icon: 'Script',
     label: 'Completely harmless file, there is nothing to worry about',
     alt: 'Completely harmless file',
-    hidden: false
+    hidden: true
   }
 ]

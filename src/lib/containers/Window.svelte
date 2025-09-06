@@ -9,6 +9,7 @@
 
   type WindowProps = {
     icon?: TImage
+    iframe?: string
     label?: string
     open: boolean
     originCoords?: { x: number; y: number }
@@ -19,6 +20,7 @@
 
   let {
     icon,
+    iframe,
     label,
     open,
     originCoords = { x: window.innerWidth / 2, y: window.innerHeight / 2 },
@@ -100,6 +102,17 @@
     </header>
 
     <div class="box-border flex-1 overflow-y-auto">
+      {#if iframe}
+        <iframe
+          src={iframe}
+          title="Embedded content"
+          class="h-full w-full"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      {/if}
+
       {@render content()}
     </div>
   </div>
