@@ -1,8 +1,8 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte'
   import Divider from '$lib/components/Divider.svelte'
-  import Image from '$lib/components/Image.svelte'
   import { desktopIcons, type DesktopIconId, type DesktopIconProps } from '$lib/data/desktopIcons'
+  import TaskbarButton from '$lib/views/Desktop/TaskbarButton.svelte'
 
   type TaskbarProps = {
     openWindowIds: DesktopIconId[]
@@ -24,16 +24,7 @@
     <Divider />
 
     {#each openWindows as openWindow}
-      <Button className="flex-shrink flex-grow max-w-1/5 basis-1/5">
-        {#snippet label()}
-          <div class="flex items-center gap-2 overflow-hidden px-1">
-            {#if openWindow?.icon}
-              <Image image={openWindow.icon} alt="" className="h-6 w-6 aspect-square" />
-            {/if}
-            <span class="truncate text-sm/3 font-medium">{openWindow.label}</span>
-          </div>
-        {/snippet}
-      </Button>
+      <TaskbarButton buttonIcon={openWindow.icon} buttonLabel={openWindow.label} />
     {/each}
   </div>
 </footer>
