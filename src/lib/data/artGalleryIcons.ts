@@ -1,5 +1,5 @@
-import { type  FolderIcon } from "$lib/types/folderIcon";
-import Home from "$lib/views/Home/Home.svelte";
+import ImagePreview from "$lib/containers/ImagePreview/ImagePreview.svelte";
+import { type FolderIcon } from "$lib/types/folderIcon";
 
 export const artGalleryIcons: FolderIcon[] = [
   {
@@ -9,7 +9,7 @@ export const artGalleryIcons: FolderIcon[] = [
     label: 'Folder',
     alt: 'Folder Icon',
     hidden: false,
-    DynamicContent: Home
+    DynamicContent: ImagePreview
   },
   {
     id: 'notepad',
@@ -18,7 +18,7 @@ export const artGalleryIcons: FolderIcon[] = [
     label: 'Notepad',
     alt: 'Notepad Icon',
     hidden: false,
-    DynamicContent: Home
+    DynamicContent: ImagePreview
   },
   {
     id: 'image',
@@ -27,6 +27,6 @@ export const artGalleryIcons: FolderIcon[] = [
     label: 'Image',
     alt: 'Image Icon',
     hidden: false,
-    DynamicContent: Home
+    DynamicContent: ImagePreview
   }
 ];

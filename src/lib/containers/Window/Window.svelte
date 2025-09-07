@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { type Component, type Snippet } from 'svelte'
+  import { type Component } from 'svelte'
+  import { portal } from 'svelte-portal'
   import { gsap } from 'gsap'
   import { draggable } from '@neodrag/svelte'
   import Button from '$lib/components/Button.svelte'
@@ -7,7 +8,7 @@
   import type { TImage } from '$lib/assets'
 
   type WindowProps = {
-    DynamicContent: Component
+    DynamicContent?: Component
     icon?: TImage
     iframe?: string
     label?: string
@@ -68,8 +69,9 @@
 </script>
 
 <dialog
-  class="fixed"
+  class="absolute top-0 left-0"
   bind:this={dialog}
+  use:portal={'.root'}
   use:draggable={{ bounds: 'parent', handle: '.window-drag-handle' }}
   onclose={onWindowClose}
   onclick={onWindowClick}
@@ -99,7 +101,9 @@
       </Button>
     </header>
 
-    <DynamicContent></DynamicContent>
+    {#if DynamicContent}
+      <DynamicContent></DynamicContent>
+    {/if}
   </div>
 </dialog>
 

@@ -1,13 +1,27 @@
 <script lang="ts">
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Folder from '$lib/containers/Folder/Folder.svelte'
+  import Window from '$lib/containers/Window/Window.svelte'
   import { artGalleryIcons } from '$lib/data/artGalleryIcons'
 
+  let activeWindowId = $state<string | undefined>()
+  let activeWindow = $derived.by(() => {
+    return artGalleryIcons.find((icon) => icon.id === activeWindowId)
+  })
+
   let name = 'Gallery'
-  let description = 'Dupa hehe'
+  let description = 'Art stuff'
 
   const openWindow = (event: MouseEvent, id: string): void => {
-    console.log(id)
+    activeWindowId = id
+  }
+
+  const onWindowClose = (): void => {
+    activeWindowId = undefined
+  }
+
+  const onWindowClick = (): void => {
+    // TODO: Bring to front on click!
   }
 </script>
 
@@ -26,3 +40,12 @@
     {/each}
   {/snippet}
 </Folder>
+
+<Window
+  DynamicContent={activeWindow?.DynamicContent}
+  icon={activeWindow?.icon}
+  label={activeWindow?.label}
+  open={Boolean(activeWindowId)}
+  {onWindowClick}
+  {onWindowClose}
+/>
