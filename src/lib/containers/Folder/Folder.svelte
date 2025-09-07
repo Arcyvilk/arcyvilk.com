@@ -41,7 +41,7 @@
     <input class="address-bar-border h-8 w-full bg-white px-2" readonly value={address} />
   </div>
 
-  <div class="flex flex-1 bg-white">
+  <div class="flex flex-1 overflow-hidden bg-white">
     <div class="flex w-[175px] flex-col bg-blue-100">
       <div class="flex flex-col gap-4 p-6 pb-1">
         <Image className="w-[32px]" image="Documents" />
@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div class="flex flex-grow flex-wrap content-start gap-4 overflow-hidden p-4">
+    <div class="flex flex-grow flex-wrap content-start gap-4 overflow-scroll p-4">
       {@render documents()}
     </div>
   </div>

@@ -69,12 +69,8 @@
   })
 </script>
 
-<!--
-  TODO We put fullscreen windows on top temporarily;
-  need to make the Window ordering smarter in the future
--->
 <dialog
-  class="absolute top-0 left-0 {fullscreen ? 'z-10' : ''}"
+  class="absolute top-0 left-0"
   bind:this={dialog}
   use:portal={'.dialog-container'}
   use:draggable={{ bounds: 'parent', handle: '.window-drag-handle' }}
