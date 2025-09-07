@@ -1,4 +1,5 @@
 import type { Win95DesktopIcon } from '$lib/assets/desktopIcons'
+import ArtGallery from '$lib/containers/ArtGallery/ArtGallery.svelte';
 import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte';
 import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte';
 import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte';
@@ -7,10 +8,11 @@ import SuspiciousScript from '$lib/containers/SuspiciousScript/SuspiciousScript.
 import Home from '$lib/views/Home/Home.svelte';
 import type { Component } from 'svelte';
 
-export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno' | 'internet'
+export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno' | 'internet' | 'gallery'
 
 export type DesktopIconProps = {
   id: DesktopIconId
+  description: string
   icon: Win95DesktopIcon
   label: string
   alt: string
@@ -20,6 +22,7 @@ export type DesktopIconProps = {
 
 export const defaultDesktopIcon: DesktopIconProps = {
   id: 'missingno',
+  description: '',
   icon: 'Tree',
   label: 'MISSINGNO',
   alt: 'MISSINGNO',
@@ -32,6 +35,7 @@ export const desktopIcons: DesktopIconProps[] = [
   defaultDesktopIcon,
   {
     id: 'pc',
+    description: '',
     icon: 'PC',
     label: 'My Computer',
     alt: 'My PC',
@@ -40,6 +44,7 @@ export const desktopIcons: DesktopIconProps[] = [
   },
   {
     id: 'documents',
+    description: '',
     icon: 'Documents',
     label: 'My Documents',
     alt: 'My Documents',
@@ -48,6 +53,7 @@ export const desktopIcons: DesktopIconProps[] = [
   },
   {
     id: 'bin',
+    description: '',
     icon: 'RecycleBin',
     label: 'Recycle Bin',
     alt: 'Recycle Bin',
@@ -56,6 +62,7 @@ export const desktopIcons: DesktopIconProps[] = [
   },
   {
     id: 'internet',
+    description: '',
     icon: 'Explorer',
     label: 'Internet',
     alt: 'Internet',
@@ -63,7 +70,17 @@ export const desktopIcons: DesktopIconProps[] = [
     DynamicContent: BrowserIframe
   },
   {
+    id: 'gallery',
+    description: '',
+    icon: 'Tree',
+    label: 'My Gallery',
+    alt: 'My Gallery',
+    hidden: false,
+    DynamicContent: ArtGallery
+  },
+  {
     id: 'script',
+    description: '',
     icon: 'Script',
     label: 'Completely harmless file, there is nothing to worry about',
     alt: 'Completely harmless file',
