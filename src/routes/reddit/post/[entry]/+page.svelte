@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { children } = $props()
+  import PostPage from '$lib/views/Reddit/PostPage.svelte'
 </script>
 
-<div><span>Post?</span></div>
+<PostPage />

@@ -3,8 +3,18 @@
   import Date from '$lib/components/Date.svelte'
   import Image from '$lib/components/Image.svelte'
   import type { RedditPost } from '$lib/data/redditPosts'
+  import type { Snippet } from 'svelte'
 
-  let { id, title, subreddit, author, date, upvotes, downvotes }: RedditPost = $props()
+  let {
+    id,
+    title,
+    subreddit,
+    author,
+    date,
+    upvotes,
+    downvotes,
+    postBody
+  }: RedditPost & { postBody?: Snippet } = $props()
 
   let vote = $state(0)
   let upvoteIcon = $derived(vote === 1 ? 'UpvoteFull' : 'UpvoteEmpty') as TImage
@@ -46,6 +56,10 @@
     <div class="text-xs text-gray-600">
       submitted <Date {date} /> by <a href={linkUser}>{author}</a> to
       <a href={linkSubreddit}>r/{subreddit}</a>
+    </div>
+
+    <div class="mt-2 rounded-md border border-gray-600 bg-gray-100 p-2 text-sm">
+      {@render postBody?.()}
     </div>
 
     <div class="reddit-font mt-2 flex flex-wrap items-center gap-2 text-xs font-bold text-gray-600">
