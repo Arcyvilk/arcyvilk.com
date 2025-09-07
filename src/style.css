@@ -50,6 +50,7 @@
 :root {
   font-family: 'Win95FA', 'Raleway', sans-serif;
   user-select: none;
+  background-color: #000000;
 
   * {
     box-sizing: border-box;

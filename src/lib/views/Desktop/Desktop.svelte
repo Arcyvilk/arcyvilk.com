@@ -29,7 +29,7 @@
 </script>
 
 <div
-  transition:fade={{ duration: 300 }}
+  transition:fade={{ duration: 200 }}
   class="bg-desktop-bg text-background-text flex h-screen flex-col overflow-hidden"
 >
   <div class="flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4">
