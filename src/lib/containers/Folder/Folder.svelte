@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div class="flex flex-1 flex-wrap gap-2 p-4">
+    <div class="flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4">
       {@render documents()}
     </div>
   </div>
