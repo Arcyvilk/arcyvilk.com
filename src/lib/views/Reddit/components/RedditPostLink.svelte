@@ -12,7 +12,7 @@
 
   const linkSubreddit = `/reddit/r/${subreddit}`
   const linkUser = `/reddit/u/${author}`
-  const linkPost = `/reddit/${id}`
+  const linkPost = `/reddit/post/${id}`
 
   const handleUpvote = () => {
     vote !== 1 ? (vote = 1) : (vote = 0)
