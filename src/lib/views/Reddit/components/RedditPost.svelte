@@ -50,7 +50,7 @@
 
   <div class="flex flex-col">
     <div>
-      <a href={linkPost} class="text-lg">{title}</a>
+      <a href={linkPost} class="text-lg/4">{title}</a>
       <span class="text-xs text-gray-400">(self.{subreddit})</span>
     </div>
     <div class="text-xs text-gray-600">
@@ -58,9 +58,11 @@
       <a href={linkSubreddit}>r/{subreddit}</a>
     </div>
 
-    <div class="mt-2 rounded-md border border-gray-600 bg-gray-100 p-2 text-sm">
-      {@render postBody?.()}
-    </div>
+    {#if postBody}
+      <div class="mt-2 rounded-md border border-gray-600 bg-gray-100 p-2 text-sm">
+        {@render postBody?.()}
+      </div>
+    {/if}
 
     <div class="reddit-font mt-2 flex flex-wrap items-center gap-2 text-xs font-bold text-gray-600">
       <a href={linkPost}>{Math.round(Math.random() * 100)} comments</a>
