@@ -5,8 +5,8 @@ import PC from '$lib/assets/desktopIcons/pc.webp'
 import RecycleBin from '$lib/assets/desktopIcons/bin.webp'
 import Script from '$lib/assets/desktopIcons/script.webp'
 
-const win95DesktopIcons = { Documents, Explorer, PC, RecycleBin, Script, Tree }
+const win98DesktopIcons = { Documents, Explorer, PC, RecycleBin, Script, Tree }
 
-export type Win95DesktopIcon = keyof typeof win95DesktopIcons
+export type Win98DesktopIcon = keyof typeof win98DesktopIcons
 
-export { win95DesktopIcons }
+export { win98DesktopIcons }

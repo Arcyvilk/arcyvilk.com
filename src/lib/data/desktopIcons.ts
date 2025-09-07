@@ -1,4 +1,4 @@
-import type { Win95DesktopIcon } from '$lib/assets/desktopIcons'
+import type { Win98DesktopIcon } from '$lib/assets/win98Icons'
 import ArtGallery from '$lib/containers/ArtGallery/ArtGallery.svelte';
 import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte';
 import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte';
@@ -13,7 +13,7 @@ export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno' 
 export type DesktopIconProps = {
   id: DesktopIconId
   description: string
-  icon: Win95DesktopIcon
+  icon: Win98DesktopIcon
   label: string
   alt: string
   hidden: boolean
