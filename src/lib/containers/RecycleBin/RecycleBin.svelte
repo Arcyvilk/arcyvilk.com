@@ -4,6 +4,7 @@
   import Window from '$lib/containers/Window/Window.svelte'
   import { recycleBinIcons } from '$lib/data/recycleBinIcons'
 
+  let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
   let activeWindowId = $state<string | undefined>()
   let activeWindow = $derived.by(() => {
     return recycleBinIcons.find((icon) => icon.id === activeWindowId)
@@ -13,6 +14,7 @@
   let description = 'Things you deleted for whatever reason'
 
   const openWindow = (event: MouseEvent, id: string): void => {
+    clickCoords = { x: event.clientX, y: event.clientY }
     activeWindowId = id
   }
 
@@ -44,7 +46,7 @@
 <Window
   DynamicContent={activeWindow?.DynamicContent}
   contentArgs={activeWindow?.contentArgs}
-  fullscreen
+  originCoords={clickCoords}
   icon={activeWindow?.icon}
   label={activeWindow?.label}
   open={Boolean(activeWindowId)}

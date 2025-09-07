@@ -42,10 +42,10 @@
   </div>
 
   <div class="flex flex-1 bg-white">
-    <div class="flex w-[150px] flex-col bg-blue-100">
+    <div class="flex w-[175px] flex-col bg-blue-100">
       <div class="flex flex-col gap-4 p-6 pb-1">
         <Image className="w-[32px]" image="Documents" />
-        <h1 class="bold text-4xl">{name}</h1>
+        <h1 class="bold text-2xl/6">{name}</h1>
       </div>
       <hr />
       <div class="p-6">
