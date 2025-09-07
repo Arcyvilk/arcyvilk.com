@@ -32,7 +32,9 @@
   transition:fade={{ duration: 200 }}
   class="bg-desktop-bg text-background-text flex h-screen flex-col overflow-hidden"
 >
-  <div class="flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4">
+  <div
+    class="dialog-container flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4"
+  >
     {#each desktopIcons as desktopIcon}
       {#if !desktopIcon.hidden}
         <DesktopIcon

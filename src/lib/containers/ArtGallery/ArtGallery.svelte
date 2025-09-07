@@ -43,6 +43,7 @@
 
 <Window
   DynamicContent={activeWindow?.DynamicContent}
+  contentArgs={activeWindow?.contentArgs}
   fullscreen
   icon={activeWindow?.icon}
   label={activeWindow?.label}

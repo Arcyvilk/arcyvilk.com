@@ -7,8 +7,9 @@
   import Image from '$lib/components/Image.svelte'
   import type { TImage } from '$lib/assets'
 
-  type WindowProps = {
-    DynamicContent?: Component
+  type WindowProps<T extends Record<string, unknown>> = {
+    DynamicContent?: Component<{ args?: T }>
+    contentArgs?: T
     fullscreen?: boolean
     icon?: TImage
     label?: string
@@ -20,6 +21,7 @@
 
   let {
     DynamicContent,
+    contentArgs,
     fullscreen = false,
     icon,
     label,
@@ -27,7 +29,7 @@
     originCoords = { x: 0, y: 0 },
     onWindowClick,
     onWindowClose
-  }: WindowProps = $props()
+  }: WindowProps<any> = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
 
@@ -70,14 +72,14 @@
 <dialog
   class="absolute top-0 left-0"
   bind:this={dialog}
-  use:portal={'.root'}
+  use:portal={'.dialog-container'}
   use:draggable={{ bounds: 'parent', handle: '.window-drag-handle' }}
   onclose={onWindowClose}
   onclick={onWindowClick}
 >
   <div
     class="window-border bg-window-bg box-border flex size-fit h-auto {fullscreen
-      ? 'max-h-[100vh] max-w-[100vw]'
+      ? 'max-h-[95vh] max-w-[100vw]'
       : 'max-h-[90vh] max-w-[90vw]'} flex-col"
   >
     <header
@@ -103,7 +105,7 @@
     </header>
 
     {#if DynamicContent}
-      <DynamicContent></DynamicContent>
+      <DynamicContent args={contentArgs}></DynamicContent>
     {/if}
   </div>
 </dialog>

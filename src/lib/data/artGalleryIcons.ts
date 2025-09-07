@@ -3,30 +3,33 @@ import { type FolderIcon } from "$lib/types/folderIcon";
 
 export const artGalleryIcons: FolderIcon[] = [
   {
-    id: 'folder',
-    description: "",
-    icon: 'Folder',
-    label: 'Folder',
-    alt: 'Folder Icon',
-    hidden: false,
-    DynamicContent: ImagePreview
-  },
-  {
-    id: 'notepad',
-    description: "",
-    icon: 'TextFile',
-    label: 'Notepad',
-    alt: 'Notepad Icon',
-    hidden: false,
-    DynamicContent: ImagePreview
-  },
-  {
-    id: 'image',
+    id: 'the_blight',
     description: "",
     icon: 'PaintFile',
-    label: 'Image',
-    alt: 'Image Icon',
+    label: 'The Blight',
+    alt: 'The Blight',
     hidden: false,
-    DynamicContent: ImagePreview
+    DynamicContent: ImagePreview,
+    contentArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_blight.jpg' }
+  },
+  {
+    id: 'the_lich',
+    description: "",
+    icon: 'PaintFile',
+    label: 'The Lich',
+    alt: 'The Lich',
+    hidden: false,
+    DynamicContent: ImagePreview,
+    contentArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_lich.jpg' }
+  },
+  {
+    id: 'the_mother',
+    description: "",
+    icon: 'PaintFile',
+    label: 'The Mother',
+    alt: 'The Mother',
+    hidden: false,
+    DynamicContent: ImagePreview,
+    contentArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_mother.jpg' }
   }
 ];

@@ -9,4 +9,5 @@ export type FolderIcon = {
   alt: string
   hidden: boolean
   DynamicContent: Component
+  contentArgs?: Record<string, unknown>
 }
