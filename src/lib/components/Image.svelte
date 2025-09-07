@@ -8,7 +8,7 @@
   }
 
   const { image, alt, className }: ImageProps = $props()
-  const src = images[image]
+  let src = $derived(images[image])
 </script>
 
 <img

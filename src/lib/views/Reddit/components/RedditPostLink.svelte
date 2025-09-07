@@ -1,19 +1,35 @@
 <script lang="ts">
+  import type { TImage } from '$lib/assets'
   import Date from '$lib/components/Date.svelte'
+  import Image from '$lib/components/Image.svelte'
   import type { RedditPost } from '$lib/data/redditPosts'
 
-  let { id, image, title, subreddit, author, date, upvotes, downvotes }: RedditPost = $props()
+  let { id, title, subreddit, author, date, upvotes, downvotes }: RedditPost = $props()
+
+  let vote = $state(0)
+  let upvoteIcon = $derived(vote === 1 ? 'UpvoteFull' : 'UpvoteEmpty') as TImage
+  let downvoteIcon = $derived(vote === -1 ? 'DownvoteFull' : 'DownvoteEmpty') as TImage
 
   const linkSubreddit = `/reddit/r/${subreddit}`
   const linkUser = `/reddit/u/${author}`
   const linkPost = `/reddit/${id}`
+
+  const handleUpvote = () => {
+    vote !== 1 ? (vote = 1) : (vote = 0)
+    console.log(vote)
+  }
+
+  const handleDownvote = () => {
+    vote !== -1 ? (vote = -1) : (vote = 0)
+    console.log(vote)
+  }
 </script>
 
 <div class="box-border grid w-full grid-cols-[64px_72px_1fr] flex-row gap-2">
   <div class="flex flex-col items-center text-sm font-bold text-gray-400">
-    <button>⬆️</button>
+    <button onclick={handleUpvote}><Image image={upvoteIcon} alt="Upvote" /></button>
     <span>{upvotes - downvotes}</span>
-    <button>⬇️</button>
+    <button onclick={handleDownvote}><Image image={downvoteIcon} alt="Downvote" /></button>
   </div>
 
   <img
