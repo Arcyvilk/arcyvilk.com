@@ -3,7 +3,13 @@
   import Image from '$lib/components/Image.svelte'
   import { type FolderIcon } from '$lib/types/folderIcon'
 
-  const { alt, icon, label, ondblclick }: FolderIcon & Partial<HTMLButtonElement> = $props()
+  const {
+    alt,
+    icon,
+    label,
+    labelColor = 'foreground-text',
+    ondblclick
+  }: FolderIcon & { labelColor?: string } & Partial<HTMLButtonElement> = $props()
 </script>
 
 <div use:draggable={{ bounds: 'parent' }}>
@@ -14,7 +20,7 @@
     {ondblclick}
   >
     <Image image={icon} {alt} className="h-16 w-16 aspect-square" />
-    <p class="wrap text-foreground-text line-clamp-2 [font-family:Win95FA] text-xl leading-5">
+    <p class="wrap text-{labelColor} line-clamp-2 [font-family:Win95FA] text-xl leading-5">
       {label}
     </p>
   </button>
