@@ -6,6 +6,12 @@
   if (browser) {
     currentRoute = window.location.pathname
   }
+
+  const handleBack = () => {
+    if (browser) {
+      window.history.back()
+    }
+  }
 </script>
 
 <div class="box-border flex h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
@@ -19,6 +25,7 @@
   </div>
 
   <div class="separator-border flex items-center gap-2 pl-2">
+    <button onclick={handleBack}>⬅️</button>
     <span>Address</span>
     <input
       class="address-bar-border h-8 w-full bg-white px-2"
