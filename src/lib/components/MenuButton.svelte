@@ -1,5 +1,16 @@
 <script lang="ts">
-  let { label, shortcutLetter } = $props()
+  type MenuButtonProps = {
+    label: string
+    shortcutLetter?: string
+    onclick?: () => void
+  }
+
+  let { label, shortcutLetter, onclick }: MenuButtonProps = $props()
+
+  const handleClick = () => {
+    alert('Not implemented yet T_T')
+    if (onclick) onclick()
+  }
 
   const highlighted = $derived.by(() => {
     if (!shortcutLetter) return label
@@ -9,7 +20,7 @@
   })
 </script>
 
-<button class="menu-button">{@html highlighted}</button>
+<button class="menu-button" onclick={handleClick}>{@html highlighted}</button>
 
 <style>
   .menu-button {
