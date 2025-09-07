@@ -9,8 +9,8 @@
 
   type WindowProps = {
     DynamicContent?: Component
+    fullscreen?: boolean
     icon?: TImage
-    iframe?: string
     label?: string
     open: boolean
     originCoords?: { x: number; y: number }
@@ -20,10 +20,11 @@
 
   let {
     DynamicContent,
+    fullscreen = false,
     icon,
     label,
     open,
-    originCoords = { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+    originCoords = { x: 0, y: 0 },
     onWindowClick,
     onWindowClose
   }: WindowProps = $props()
@@ -40,13 +41,11 @@
     else if (!open && dialog?.open) handleWindowClose()
   })
 
-  $inspect(open)
-
   $effect(() => {
     if (!open || !dialog) return
 
-    const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
-    const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
+    const centerX = fullscreen ? 0 : window.innerWidth / 2 - dialog.offsetWidth / 2
+    const centerY = fullscreen ? 0 : window.innerHeight / 2 - dialog.offsetHeight / 2
 
     gsap.fromTo(
       dialog,
@@ -77,7 +76,9 @@
   onclick={onWindowClick}
 >
   <div
-    class="window-border bg-window-bg box-border flex size-fit h-auto max-h-[90vh] max-w-[90vw] flex-col"
+    class="window-border bg-window-bg box-border flex size-fit h-auto {fullscreen
+      ? 'max-h-[100vh] max-w-[100vw]'
+      : 'max-h-[90vh] max-w-[90vw]'} flex-col"
   >
     <header
       class="window-drag-handle bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1"
