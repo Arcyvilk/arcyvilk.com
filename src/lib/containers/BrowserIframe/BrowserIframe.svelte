@@ -1,4 +1,11 @@
 <script lang="ts">
+  import { browser } from '$app/environment'
+
+  let currentRoute = $state('/')
+
+  if (browser) {
+    currentRoute = window.location.pathname
+  }
 </script>
 
 <div class="box-border flex h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
@@ -16,7 +23,7 @@
     <input
       class="address-bar-border h-8 w-full bg-white px-2"
       readonly
-      value="https://www.reddit.com"
+      value={`https://www.reddit.com`}
     />
   </div>
 

@@ -35,10 +35,8 @@
   }
 
   $effect(() => {
-    if (!dialog) return
-
-    if (open && !dialog.open) dialog?.show()
-    else if (!open && dialog.open) handleWindowClose()
+    if (open && !dialog?.open) dialog?.show()
+    else if (!open && dialog?.open) handleWindowClose()
   })
 
   $inspect(open)
