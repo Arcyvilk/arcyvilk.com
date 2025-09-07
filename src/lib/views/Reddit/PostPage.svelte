@@ -1,12 +1,19 @@
 <script lang="ts">
+  import { page } from '$app/state'
   import { redditPosts } from '$lib/data/redditPosts'
   import RedditPost from '$lib/views/Reddit/components/RedditPost.svelte'
 
-  let post = redditPosts[0]
+  const postId = page.params.entry
+
+  let post = redditPosts.find((p) => p.id === postId)
 </script>
 
-<RedditPost {...post}>
-  {#snippet postBody()}
-    {post.body}
-  {/snippet}
-</RedditPost>
+{#if post}
+  <RedditPost {...post}>
+    {#snippet postBody()}
+      {post.body}
+    {/snippet}
+  </RedditPost>
+{:else}
+  <p>Post not found.</p>
+{/if}

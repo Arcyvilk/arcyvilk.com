@@ -48,10 +48,10 @@
     alt="Post thumbnail"
   />
 
-  <div class="flex flex-col">
+  <div class="flex flex-col gap-1">
     <div>
       <a href={linkPost} class="text-lg/4">{title}</a>
-      <span class="text-xs text-gray-400">(self.{subreddit})</span>
+      <span class="text-xs/2 text-gray-400">(self.{subreddit})</span>
     </div>
     <div class="text-xs text-gray-600">
       submitted <Date {date} /> by <a href={linkUser}>{author}</a> to
@@ -59,12 +59,14 @@
     </div>
 
     {#if postBody}
-      <div class="mt-2 rounded-md border border-gray-600 bg-gray-100 p-2 text-sm">
+      <div class="mt-2 rounded-md border border-gray-600 bg-gray-100 p-2 text-sm/5">
         {@render postBody?.()}
       </div>
     {/if}
 
-    <div class="reddit-font mt-2 flex flex-wrap items-center gap-2 text-xs font-bold text-gray-600">
+    <div
+      class="reddit-font mt-2 flex flex-wrap items-center gap-2 text-xs/2 font-bold text-gray-600"
+    >
       <a href={linkPost}>{Math.round(Math.random() * 100)} comments</a>
       <a href={'#'}>share</a>
       <a href={'#'}>save</a>
