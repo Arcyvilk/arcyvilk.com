@@ -1,11 +1,17 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte'
   import { browser } from '$app/environment'
   import MenuButton from '$lib/components/MenuButton.svelte'
+  import Image from '$lib/components/Image.svelte'
 
   type FolderProps = {
     address: string
+    description: string
+    name: string
+    documents: Snippet
   }
-  let { address }: FolderProps = $props()
+
+  let { address, description, name, documents }: FolderProps = $props()
   let currentRoute = $state('/')
 
   if (browser) {
@@ -35,7 +41,22 @@
     <input class="address-bar-border h-8 w-full bg-white px-2" readonly value={address} />
   </div>
 
-  <div class="flex flex-1">Dupa</div>
+  <div class="flex flex-1 bg-white">
+    <div class="flex w-[150px] flex-col bg-blue-100">
+      <div class="flex flex-col gap-4 p-6 pb-1">
+        <Image className="w-[32px]" image="Documents" />
+        <h1 class="bold text-4xl">{name}</h1>
+      </div>
+      <hr />
+      <div class="p-6">
+        <p>{description}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-1 flex-wrap gap-2 p-4">
+      {@render documents()}
+    </div>
+  </div>
 </div>
 
 <style>
