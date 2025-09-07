@@ -5,9 +5,9 @@ import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte';
 import RecycleBin from '$lib/containers/RecycleBin/RecycleBin.svelte';
 import SuspiciousScript from '$lib/containers/SuspiciousScript/SuspiciousScript.svelte';
 import Home from '$lib/views/Home/Home.svelte';
-import type { FolderIconProps } from '$lib/types/folderIcon';
+import type { FolderIcon } from '$lib/types/folderIcon';
 
-export const defaultDesktopIcon: FolderIconProps = {
+export const defaultDesktopIcon: FolderIcon = {
   id: 'missingno',
   description: '',
   icon: 'Tree',
@@ -18,7 +18,7 @@ export const defaultDesktopIcon: FolderIconProps = {
 }
 
 
-export const desktopIcons: FolderIconProps[] = [
+export const desktopIcons: FolderIcon[] = [
   defaultDesktopIcon,
   {
     id: 'pc',

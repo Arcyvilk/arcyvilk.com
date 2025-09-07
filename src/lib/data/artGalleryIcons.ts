@@ -1,28 +1,32 @@
-import type { FolderIconProps } from "$lib/types/folderIcon";
+import { type  FolderIcon } from "$lib/types/folderIcon";
+import Home from "$lib/views/Home/Home.svelte";
 
-export const artGalleryIcons: FolderIconProps[] = [
+export const artGalleryIcons: FolderIcon[] = [
   {
     id: 'folder',
-    type: 'folder',
+    description: "",
     icon: 'Folder',
     label: 'Folder',
     alt: 'Folder Icon',
-    hidden: false
+    hidden: false,
+    DynamicContent: Home
   },
   {
     id: 'notepad',
-    type: 'notepad',
+    description: "",
     icon: 'TextFile',
     label: 'Notepad',
     alt: 'Notepad Icon',
-    hidden: false
+    hidden: false,
+    DynamicContent: Home
   },
   {
     id: 'image',
-    type: "image",
+    description: "",
     icon: 'PaintFile',
     label: 'Image',
     alt: 'Image Icon',
-    hidden: false
+    hidden: false,
+    DynamicContent: Home
   }
 ];

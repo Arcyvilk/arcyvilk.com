@@ -2,7 +2,7 @@
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Folder from '$lib/containers/Folder/Folder.svelte'
   import { artGalleryIcons } from '$lib/data/artGalleryIcons'
-  import type { FolderIconProps } from '$lib/types/folderIcon'
+  import { type FolderIcon } from '$lib/types/folderIcon'
 
   let name = 'Gallery'
   let description = 'Dupa hehe'
