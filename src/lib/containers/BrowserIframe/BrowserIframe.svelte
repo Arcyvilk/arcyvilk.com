@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment'
+  import MenuButton from '$lib/components/MenuButton.svelte'
 
   let currentRoute = $state('/')
 
@@ -16,12 +17,12 @@
 
 <div class="box-border flex h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
   <div class="separator-border flex px-2">
-    <button class="menu-button"><span class="underline">F</span>ile</button>
-    <button class="menu-button"><span class="underline">E</span>dit</button>
-    <button class="menu-button"><span class="underline">V</span>iew</button>
-    <button class="menu-button"><span class="underline">G</span>o</button>
-    <button class="menu-button"><span class="underline">F</span>avourites</button>
-    <button class="menu-button"><span class="underline">H</span>elp</button>
+    <MenuButton label="File" shortcutLetter="F" />
+    <MenuButton label="Edit" shortcutLetter="E" />
+    <MenuButton label="View" shortcutLetter="V" />
+    <MenuButton label="Go" shortcutLetter="G" />
+    <MenuButton label="Favourites" shortcutLetter="v" />
+    <MenuButton label="Help" shortcutLetter="H" />
   </div>
 
   <div class="separator-border flex items-center gap-4 pl-2">
@@ -47,31 +48,6 @@
 </div>
 
 <style>
-  .menu-button {
-    padding-inline: 12px;
-    margin: 1px;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-
-    &:hover {
-      background-color: #b0b0b0;
-      cursor: pointer;
-      border: 1px solid var(--color-highlight-bg);
-
-      border-bottom-color: var(--color-shadow-bg);
-      border-right-color: var(--color-shadow-bg);
-    }
-
-    &:active {
-      background-color: #b0b0b0;
-      cursor: pointer;
-      border: 1px solid var(--color-highlight-bg);
-
-      border-top-color: var(--color-shadow-bg);
-      border-left-color: var(--color-shadow-bg);
-    }
-  }
-
   .separator-border {
     border-top: 1px solid var(--color-highlight-bg);
     border-bottom: 1px solid var(--color-shadow-bg);
