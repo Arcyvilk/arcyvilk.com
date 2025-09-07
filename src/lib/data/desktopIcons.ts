@@ -1,4 +1,3 @@
-import type { Win98DesktopIcon } from '$lib/assets/win98Icons'
 import ArtGallery from '$lib/containers/ArtGallery/ArtGallery.svelte';
 import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte';
 import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte';
@@ -6,21 +5,9 @@ import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte';
 import RecycleBin from '$lib/containers/RecycleBin/RecycleBin.svelte';
 import SuspiciousScript from '$lib/containers/SuspiciousScript/SuspiciousScript.svelte';
 import Home from '$lib/views/Home/Home.svelte';
-import type { Component } from 'svelte';
+import type { FolderIconProps } from '$lib/types/folderIcon';
 
-export type DesktopIconId = 'pc' | 'documents' | 'bin' | 'script' | 'missingno' | 'internet' | 'gallery'
-
-export type DesktopIconProps = {
-  id: DesktopIconId
-  description: string
-  icon: Win98DesktopIcon
-  label: string
-  alt: string
-  hidden: boolean
-  DynamicContent: Component
-}
-
-export const defaultDesktopIcon: DesktopIconProps = {
+export const defaultDesktopIcon: FolderIconProps = {
   id: 'missingno',
   description: '',
   icon: 'Tree',
@@ -31,7 +18,7 @@ export const defaultDesktopIcon: DesktopIconProps = {
 }
 
 
-export const desktopIcons: DesktopIconProps[] = [
+export const desktopIcons: FolderIconProps[] = [
   defaultDesktopIcon,
   {
     id: 'pc',

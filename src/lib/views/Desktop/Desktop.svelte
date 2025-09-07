@@ -1,17 +1,17 @@
 <script lang="ts">
   import { fade } from 'svelte/transition'
-  import { desktopIcons, type DesktopIconId } from '$lib/data/desktopIcons'
+  import { desktopIcons } from '$lib/data/desktopIcons'
   import DesktopIcon from '$lib/components/DesktopIcon.svelte'
   import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
 
   let { children } = $props()
-  let openWindowIds: DesktopIconId[] = $state([])
+  let openWindowIds: string[] = $state([])
   let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
 
   $inspect(openWindowIds)
 
-  const openWindow = (event: MouseEvent, id: DesktopIconId): void => {
+  const openWindow = (event: MouseEvent, id: string): void => {
     // TODO: when user tries to open window which is already opened,
     // bring it to the top of the page
     if (openWindowIds.includes(id)) return
@@ -19,11 +19,11 @@
     openWindowIds.push(id)
   }
 
-  const onWindowClose = (id: DesktopIconId): void => {
+  const onWindowClose = (id: string): void => {
     openWindowIds = openWindowIds.filter((windowId) => windowId !== id)
   }
 
-  const onWindowClick = (id: DesktopIconId): void => {
+  const onWindowClick = (id: string): void => {
     // TODO: Bring to front on click!
   }
 </script>

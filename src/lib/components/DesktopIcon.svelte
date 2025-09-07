@@ -1,9 +1,9 @@
 <script lang="ts">
   import { draggable } from '@neodrag/svelte'
   import Image from '$lib/components/Image.svelte'
-  import { type DesktopIconProps } from '$lib/data/desktopIcons'
+  import type { FolderIconProps } from '$lib/types/folderIcon'
 
-  const { alt, icon, label, ondblclick }: DesktopIconProps & Partial<HTMLButtonElement> = $props()
+  const { alt, icon, label, ondblclick }: FolderIconProps & Partial<HTMLButtonElement> = $props()
 </script>
 
 <div use:draggable={{ bounds: 'parent' }}>

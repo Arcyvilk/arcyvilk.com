@@ -1,18 +1,19 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte'
   import Divider from '$lib/components/Divider.svelte'
-  import { desktopIcons, type DesktopIconId, type DesktopIconProps } from '$lib/data/desktopIcons'
+  import { desktopIcons } from '$lib/data/desktopIcons'
+  import type { FolderIconProps } from '$lib/types/folderIcon'
   import TaskbarButton from '$lib/views/Desktop/TaskbarButton.svelte'
 
   type TaskbarProps = {
-    openWindowIds: DesktopIconId[]
+    openWindowIds: string[]
   }
   let { openWindowIds }: TaskbarProps = $props()
 
-  let openWindows: DesktopIconProps[] = $derived(
+  let openWindows: FolderIconProps[] = $derived(
     openWindowIds
       .map((id) => desktopIcons.find((icon) => icon.id === id))
-      .filter(Boolean) as DesktopIconProps[]
+      .filter(Boolean) as FolderIconProps[]
   )
 </script>
 
