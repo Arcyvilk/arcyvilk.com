@@ -9,7 +9,7 @@
 <div use:draggable={{ bounds: 'parent' }}>
   <button
     data-testid="desktop-icon"
-    class="button-outline flex h-30 max-h-30 w-30 max-w-30 flex-1 flex-col items-center justify-center gap-2 overflow-hidden p-1"
+    class="button-outline flex h-30 max-h-30 w-32 max-w-32 flex-1 flex-col items-center justify-center gap-2 overflow-hidden p-1"
     title={label}
     {ondblclick}
   >
