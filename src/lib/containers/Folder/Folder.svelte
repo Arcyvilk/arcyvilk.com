@@ -25,7 +25,7 @@
   }
 </script>
 
-<div class="box-border flex h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
+<div class="box-border flex max-h-[80vh] max-w-[80vw] flex-1 flex-col overflow-hidden">
   <div class="separator-border flex px-2">
     <MenuButton label="File" shortcutLetter="F" />
     <MenuButton label="Edit" shortcutLetter="E" />
@@ -41,8 +41,8 @@
     <input class="address-bar-border h-8 w-full bg-white px-2" readonly value={address} />
   </div>
 
-  <div class="flex flex-1 overflow-hidden bg-white">
-    <div class="flex w-[175px] flex-col bg-blue-100">
+  <div class="relative flex h-full flex-1 overflow-auto bg-white">
+    <div class="sticky top-0 flex w-[175px] flex-col bg-blue-100">
       <div class="flex flex-col gap-4 p-6 pb-1">
         <Image className="w-[32px]" image="Documents" />
         <h1 class="bold text-2xl/6">{name}</h1>
@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div class="flex flex-grow flex-wrap content-start gap-4 overflow-scroll p-4">
+    <div class="flex flex-1 flex-wrap content-start gap-4 p-4">
       {@render documents()}
     </div>
   </div>

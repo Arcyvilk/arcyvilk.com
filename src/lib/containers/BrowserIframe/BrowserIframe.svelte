@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="box-border flex h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
+<div class="box-border flex max-h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
   <div class="separator-border flex px-2">
     <MenuButton label="File" shortcutLetter="F" />
     <MenuButton label="Edit" shortcutLetter="E" />
@@ -35,7 +35,7 @@
     />
   </div>
 
-  <div class="flex flex-1">
+  <div class="flex flex-1 overflow-auto">
     <iframe
       class="min-h-[75vh] w-full"
       src="/reddit"
