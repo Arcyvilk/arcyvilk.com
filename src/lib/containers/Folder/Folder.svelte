@@ -49,7 +49,7 @@
       </div>
       <hr />
       <div class="p-6">
-        <p>{description}</p>
+        <p class="text-base/4">{description}</p>
       </div>
     </div>
 
