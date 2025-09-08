@@ -1,7 +1,7 @@
 import ImagePreview from "$lib/containers/ImagePreview/ImagePreview.svelte";
-import { type FolderIcon } from "$lib/types/folderIcon";
+import { type FileSystemItem } from "$lib/types/fileSystemItem";
 
-export const artGalleryIcons: FolderIcon[] = [
+export const artGalleryIcons: FileSystemItem[] = [
   {
     id: 'the_blight',
     description: "",

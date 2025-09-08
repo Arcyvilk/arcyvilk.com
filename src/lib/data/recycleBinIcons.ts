@@ -1,8 +1,8 @@
-import type { Win98DesktopIcon } from "$lib/assets";
+import type { Win98Icon } from "$lib/assets";
 import Notepad from "$lib/containers/Notepad/Notepad.svelte";
-import { type FolderIcon } from "$lib/types/folderIcon";
+import { type FileSystemItem } from "$lib/types/fileSystemItem";
 
-export const recycleBinIcons: FolderIcon[] = [
+export const recycleBinIcons: FileSystemItem[] = [
   {
         id: 'test',
         description: "",
@@ -20,7 +20,7 @@ export const recycleBinIcons: FolderIcon[] = [
             return {
               id: 'hopes',
               description: "",
-              icon: 'TextFile' as Win98DesktopIcon,
+              icon: 'TextFile' as Win98Icon,
               label: 'Hopes',
               alt: 'Hopes',
               hidden: false,
@@ -31,7 +31,7 @@ export const recycleBinIcons: FolderIcon[] = [
             return {
               id: 'dreams',
               description: "",
-              icon: 'TextFile' as Win98DesktopIcon,
+              icon: 'TextFile' as Win98Icon,
               label: 'Dreams',
               alt: 'Dreams',
               hidden: false,

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition'
   import { desktopIcons } from '$lib/data/desktopIcons'
-  import DesktopIcon from '$lib/components/DesktopIcon.svelte'
+  import FileSystemIcon from '$lib/components/FileSystemIcon.svelte'
   import Taskbar from '$lib/views/Desktop/Taskbar.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
 
@@ -37,7 +37,7 @@
   >
     {#each desktopIcons as desktopIcon}
       {#if !desktopIcon.hidden}
-        <DesktopIcon
+        <FileSystemIcon
           {...desktopIcon}
           ondblclick={(event: MouseEvent) => {
             openWindow(event, desktopIcon.id)

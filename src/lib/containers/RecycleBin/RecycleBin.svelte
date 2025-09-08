@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DesktopIcon from '$lib/components/DesktopIcon.svelte'
+  import FileSystemIcon from '$lib/components/FileSystemIcon.svelte'
   import Folder from '$lib/containers/Folder/Folder.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
   import { recycleBinIcons } from '$lib/data/recycleBinIcons'
@@ -41,7 +41,7 @@
   {#snippet documents()}
     {#each recycleBinIcons as recycleBinIcon}
       {#if !recycleBinIcon.hidden}
-        <DesktopIcon
+        <FileSystemIcon
           {...recycleBinIcon}
           labelColor="black"
           ondblclick={(event: MouseEvent) => {

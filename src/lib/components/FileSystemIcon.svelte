@@ -1,7 +1,7 @@
 <script lang="ts">
   import { draggable } from '@neodrag/svelte'
   import Image from '$lib/components/Image.svelte'
-  import { type FolderIcon } from '$lib/types/folderIcon'
+  import { type FileSystemItem } from '$lib/types/fileSystemItem'
 
   const {
     alt,
@@ -9,7 +9,7 @@
     label,
     labelColor = 'foreground-text',
     ondblclick
-  }: FolderIcon & { labelColor?: string } & Partial<HTMLButtonElement> = $props()
+  }: FileSystemItem & { labelColor?: string } & Partial<HTMLButtonElement> = $props()
 </script>
 
 <div use:draggable={{ bounds: 'parent' }}>

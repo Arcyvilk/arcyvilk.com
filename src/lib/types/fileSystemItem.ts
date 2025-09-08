@@ -1,10 +1,10 @@
-import type { Win98DesktopIcon } from "$lib/assets"
+import type { Win98Icon } from "$lib/assets"
 import type { Component } from "svelte"
 
-export type FolderIcon = {
+export type FileSystemItem = {
   id: string
   description: string
-  icon: Win98DesktopIcon
+  icon: Win98Icon
   label: string
   alt: string
   hidden: boolean

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DesktopIcon from '$lib/components/DesktopIcon.svelte'
+  import FileSystemIcon from '$lib/components/FileSystemIcon.svelte'
   import Folder from '$lib/containers/Folder/Folder.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
   import { artGalleryIcons } from '$lib/data/artGalleryIcons'
@@ -39,7 +39,7 @@
   {#snippet documents()}
     {#each artGalleryIcons as artGalleryIcon}
       {#if !artGalleryIcon.hidden}
-        <DesktopIcon
+        <FileSystemIcon
           {...artGalleryIcon}
           labelColor="black"
           ondblclick={(event: MouseEvent) => {

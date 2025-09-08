@@ -9,7 +9,7 @@ import Shortcut from '$lib/assets/win98Icons/shortcut.webp'
 import TextFile from '$lib/assets/win98Icons/textFile.webp'
 import Tree from '$lib/assets/win98Icons/tree.webp'
 
-const win98DesktopIcons = {
+const win98Icons = {
   Documents,
   Explorer,
   Folder,
@@ -22,6 +22,6 @@ const win98DesktopIcons = {
   Tree,
 }
 
-export type Win98DesktopIcon = keyof typeof win98DesktopIcons
+export type Win98Icon = keyof typeof win98Icons
 
-export { win98DesktopIcons }
+export { win98Icons }
