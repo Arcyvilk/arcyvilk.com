@@ -35,21 +35,21 @@
   <div
     class="dialog-container flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4"
   >
-    {#each desktopIcons as desktopIcon}
-      {#if !desktopIcon.hidden}
+    {#each desktopIcons as item}
+      {#if !item.hidden}
         <FileSystemIcon
-          {...desktopIcon}
+          {...item}
           ondblclick={(event: MouseEvent) => {
-            openWindow(event, desktopIcon.id)
+            openWindow(event, item.id)
           }}
         />
       {/if}
     {/each}
   </div>
 
-  {#each desktopIcons as { DynamicContent, id, icon, label } (id)}
+  {#each desktopIcons as { WindowContent, id, icon, label } (id)}
     <Window
-      {DynamicContent}
+      {WindowContent}
       {icon}
       {label}
       open={openWindowIds.includes(id)}

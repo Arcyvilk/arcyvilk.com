@@ -1,7 +1,7 @@
 import ImagePreview from "$lib/containers/ImagePreview/ImagePreview.svelte";
 import { type FileSystemItem } from "$lib/types/fileSystemItem";
 
-export const artGalleryIcons: FileSystemItem[] = [
+export const artGalleryItems: FileSystemItem[] = [
   {
     id: 'the_blight',
     description: "",
@@ -9,8 +9,8 @@ export const artGalleryIcons: FileSystemItem[] = [
     label: 'The Blight',
     alt: 'The Blight',
     hidden: false,
-    DynamicContent: ImagePreview,
-    contentArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_blight.jpg' }
+    WindowContent: ImagePreview,
+    windowArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_blight.jpg' }
   },
   {
     id: 'the_lich',
@@ -19,8 +19,8 @@ export const artGalleryIcons: FileSystemItem[] = [
     label: 'The Lich',
     alt: 'The Lich',
     hidden: false,
-    DynamicContent: ImagePreview,
-    contentArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_lich.jpg' }
+    WindowContent: ImagePreview,
+    windowArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_lich.jpg' }
   },
   {
     id: 'the_mother',
@@ -29,7 +29,7 @@ export const artGalleryIcons: FileSystemItem[] = [
     label: 'The Mother',
     alt: 'The Mother',
     hidden: false,
-    DynamicContent: ImagePreview,
-    contentArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_mother.jpg' }
+    WindowContent: ImagePreview,
+    windowArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_mother.jpg' }
   }
 ];

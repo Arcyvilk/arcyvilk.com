@@ -8,6 +8,6 @@ export type FileSystemItem = {
   label: string
   alt: string
   hidden: boolean
-  DynamicContent: Component
-  contentArgs?: Record<string, unknown>
+  WindowContent: Component
+  windowArgs?: Record<string, unknown>
 }

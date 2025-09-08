@@ -14,7 +14,7 @@ export const defaultDesktopIcon: FileSystemItem = {
   label: 'MISSINGNO',
   alt: 'MISSINGNO',
   hidden: true,
-  DynamicContent: Home
+  WindowContent: Home
 }
 
 
@@ -27,7 +27,7 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'My Computer',
     alt: 'My PC',
     hidden: false,
-    DynamicContent: MyComputer
+    WindowContent: MyComputer
   },
   {
     id: 'documents',
@@ -36,7 +36,7 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'My Documents',
     alt: 'My Documents',
     hidden: true,
-    DynamicContent: MyDocuments
+    WindowContent: MyDocuments
   },
   {
     id: 'bin',
@@ -45,7 +45,7 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'Recycle Bin',
     alt: 'Recycle Bin',
     hidden: false,
-    DynamicContent: RecycleBin
+    WindowContent: RecycleBin
   },
   {
     id: 'internet',
@@ -54,7 +54,7 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'Internet',
     alt: 'Internet',
     hidden: false,
-    DynamicContent: BrowserIframe
+    WindowContent: BrowserIframe
   },
   {
     id: 'gallery',
@@ -63,7 +63,7 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'My Gallery',
     alt: 'My Gallery',
     hidden: false,
-    DynamicContent: ArtGallery
+    WindowContent: ArtGallery
   },
   {
     id: 'script',
@@ -72,6 +72,6 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'Completely harmless file, there is nothing to worry about',
     alt: 'Completely harmless file',
     hidden: true,
-    DynamicContent: SuspiciousScript
+    WindowContent: SuspiciousScript
   }
 ]

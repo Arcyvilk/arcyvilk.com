@@ -8,8 +8,8 @@
   import type { TImage } from '$lib/assets'
 
   type WindowProps<T extends Record<string, unknown>> = {
-    DynamicContent?: Component<{ args?: T }>
-    contentArgs?: T
+    WindowContent?: Component<{ args?: T }>
+    windowArgs?: T
     fullscreen?: boolean
     icon?: TImage
     label?: string
@@ -20,8 +20,8 @@
   } & Partial<HTMLDialogElement>
 
   let {
-    DynamicContent,
-    contentArgs,
+    WindowContent,
+    windowArgs,
     fullscreen = false,
     icon,
     label,
@@ -104,8 +104,8 @@
       </Button>
     </header>
 
-    {#if DynamicContent}
-      <DynamicContent args={contentArgs}></DynamicContent>
+    {#if WindowContent}
+      <WindowContent args={windowArgs}></WindowContent>
     {/if}
   </div>
 </dialog>

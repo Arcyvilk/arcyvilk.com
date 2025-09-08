@@ -2,14 +2,14 @@
   import FileSystemIcon from '$lib/components/FileSystemIcon.svelte'
   import Folder from '$lib/containers/Folder/Folder.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
-  import { recycleBinIcons } from '$lib/data/recycleBinIcons'
+  import { recycleBinItems } from '$lib/data/recycleBinItems'
   import { onMount } from 'svelte'
 
   let mounted = $state(false)
   let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
   let activeWindowId = $state<string | undefined>()
   let activeWindow = $derived.by(() => {
-    return recycleBinIcons.find((icon) => icon.id === activeWindowId)
+    return recycleBinItems.find((item) => item.id === activeWindowId)
   })
 
   let name = 'Recycle Bin'
@@ -39,13 +39,13 @@
 
 <Folder address="C:/Bin" {name} {description}>
   {#snippet documents()}
-    {#each recycleBinIcons as recycleBinIcon}
-      {#if !recycleBinIcon.hidden}
+    {#each recycleBinItems as item}
+      {#if !item.hidden}
         <FileSystemIcon
-          {...recycleBinIcon}
+          {...item}
           labelColor="black"
           ondblclick={(event: MouseEvent) => {
-            openWindow(event, recycleBinIcon.id)
+            openWindow(event, item.id)
           }}
         />
       {/if}
@@ -55,8 +55,8 @@
 
 {#if mounted}
   <Window
-    DynamicContent={activeWindow?.DynamicContent}
-    contentArgs={activeWindow?.contentArgs}
+    WindowContent={activeWindow?.WindowContent}
+    windowArgs={activeWindow?.windowArgs}
     originCoords={clickCoords}
     icon={activeWindow?.icon}
     label={activeWindow?.label}

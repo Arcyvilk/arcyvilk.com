@@ -3,16 +3,19 @@
   import Image from '$lib/components/Image.svelte'
   import { type FileSystemItem } from '$lib/types/fileSystemItem'
 
+  type FileSystemIconProps = { labelColor?: string; isDraggable?: boolean } & FileSystemItem &
+    Partial<HTMLButtonElement>
   const {
     alt,
+    isDraggable = false,
     icon,
     label,
     labelColor = 'foreground-text',
     ondblclick
-  }: FileSystemItem & { labelColor?: string } & Partial<HTMLButtonElement> = $props()
+  }: FileSystemIconProps = $props()
 </script>
 
-<div use:draggable={{ bounds: 'parent' }}>
+<div use:draggable={{ bounds: 'parent', axis: isDraggable ? 'both' : 'none' }}>
   <button
     data-testid="desktop-icon"
     class="button-outline flex h-30 max-h-30 w-32 max-w-32 flex-1 flex-col items-center justify-center gap-2 overflow-hidden p-1"

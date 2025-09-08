@@ -2,13 +2,13 @@
   import FileSystemIcon from '$lib/components/FileSystemIcon.svelte'
   import Folder from '$lib/containers/Folder/Folder.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
-  import { artGalleryIcons } from '$lib/data/artGalleryIcons'
+  import { artGalleryItems } from '$lib/data/artGalleryItems'
   import { onMount } from 'svelte'
 
   let mounted = $state(false)
   let activeWindowId = $state<string | undefined>()
   let activeWindow = $derived.by(() => {
-    return artGalleryIcons.find((icon) => icon.id === activeWindowId)
+    return artGalleryItems.find((icon) => icon.id === activeWindowId)
   })
 
   let name = 'Gallery'
@@ -37,13 +37,13 @@
 
 <Folder address="C:/ArtGallery" {name} {description}>
   {#snippet documents()}
-    {#each artGalleryIcons as artGalleryIcon}
-      {#if !artGalleryIcon.hidden}
+    {#each artGalleryItems as item}
+      {#if !item.hidden}
         <FileSystemIcon
-          {...artGalleryIcon}
+          {...item}
           labelColor="black"
           ondblclick={(event: MouseEvent) => {
-            openWindow(event, artGalleryIcon.id)
+            openWindow(event, item.id)
           }}
         />
       {/if}
@@ -53,8 +53,8 @@
 
 {#if mounted}
   <Window
-    DynamicContent={activeWindow?.DynamicContent}
-    contentArgs={activeWindow?.contentArgs}
+    WindowContent={activeWindow?.WindowContent}
+    windowArgs={activeWindow?.windowArgs}
     fullscreen
     icon={activeWindow?.icon}
     label={activeWindow?.label}
