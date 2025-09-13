@@ -103,55 +103,51 @@
 {#if open}
   <dialog
     open={true}
-    class="absolute"
+    class="window-border window-size-transition absolute {isFullscreen
+      ? 'fullscreen'
+      : 'nonfullscreen'} bg-window-bg box-border flex size-fit flex-col"
     id={elementId}
     bind:this={dialog}
     use:portal={'.dialog-container'}
     onclose={onWindowClose}
     onclick={onWindowClick}
   >
-    <div
-      class="window-border window-size-transition {isFullscreen
-        ? 'fullscreen'
-        : 'nonfullscreen'} bg-window-bg box-border flex size-fit flex-col"
+    <header
+      id={elementHandleId}
+      class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1"
     >
-      <header
-        id={elementHandleId}
-        class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1"
-      >
-        <div class="flex items-center gap-2">
-          {#if icon}
-            <Image image={icon} alt="" className="h-6 w-6 aspect-square" />
-          {/if}
+      <div class="flex items-center gap-2">
+        {#if icon}
+          <Image image={icon} alt="" className="h-6 w-6 aspect-square" />
+        {/if}
 
-          {#if label}
-            <h2 class="text-foreground-text truncate text-base/4 font-semibold">
-              {label}
-            </h2>
-          {/if}
-        </div>
+        {#if label}
+          <h2 class="text-foreground-text truncate text-base/4 font-semibold">
+            {label}
+          </h2>
+        {/if}
+      </div>
 
-        <div class="flex gap-1">
-          <Button square onclick={resizeWindow}>
-            {#snippet label()}
-              <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">▢</span>
-            {/snippet}
-          </Button>
+      <div class="flex gap-1">
+        <Button square onclick={resizeWindow}>
+          {#snippet label()}
+            <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">▢</span>
+          {/snippet}
+        </Button>
 
-          <Button square onclick={onWindowClose}>
-            {#snippet label()}
-              <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">✕</span>
-            {/snippet}
-          </Button>
-        </div>
-      </header>
+        <Button square onclick={onWindowClose}>
+          {#snippet label()}
+            <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">✕</span>
+          {/snippet}
+        </Button>
+      </div>
+    </header>
 
-      {#if WindowContent}
-        <div class="box-border flex h-full w-full flex-1 flex-col overflow-hidden">
-          <WindowContent args={windowArgs}></WindowContent>
-        </div>
-      {/if}
-    </div>
+    {#if WindowContent}
+      <div class="box-border flex h-full w-full flex-1 flex-col overflow-hidden">
+        <WindowContent args={windowArgs}></WindowContent>
+      </div>
+    {/if}
   </dialog>
 {/if}
 
