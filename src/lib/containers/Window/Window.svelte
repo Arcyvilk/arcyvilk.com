@@ -2,7 +2,7 @@
   import { type Component } from 'svelte'
   import { portal } from 'svelte-portal'
   import { gsap } from 'gsap'
-  import { draggable } from '@neodrag/svelte'
+  import Draggable from 'gsap/Draggable'
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
   import type { TImage } from '$lib/assets'
@@ -40,9 +40,36 @@
   }
 
   const resizeWindow = () => {
-    if (isFullscreen) isFullscreen = false
-    else isFullscreen = true
+    if (!dialog) return
+
+    if (isFullscreen) {
+      isFullscreen = false
+
+      const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
+      const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
+
+      gsap.to(dialog, {
+        x: centerX,
+        y: centerY,
+        duration: 0.4,
+        ease: 'power2-out'
+      })
+    } else {
+      isFullscreen = true
+      
+      gsap.to(dialog, {
+        x: 0,
+        y: 0,
+        duration: 0.4,
+        ease: 'power2-out'
+      })
+    }
   }
+
+  Draggable.create('.window-dialog', {
+    bounds: '.dialog-container',
+    trigger: '.window-drag-handle'
+  })
 
   $effect(() => {
     if (open && !dialog?.open) dialog?.show()
@@ -51,9 +78,10 @@
 
   $effect(() => {
     if (!open || !dialog) return
+    if (isFullscreen) return
 
-    const centerX = isFullscreen ? 0 : window.innerWidth / 2 - dialog.offsetWidth / 2
-    const centerY = isFullscreen ? 0 : window.innerHeight / 2 - dialog.offsetHeight / 2
+    const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
+    const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
 
     gsap.fromTo(
       dialog,
@@ -76,10 +104,9 @@
 </script>
 
 <dialog
-  class="absolute top-0 left-0"
+  class="window-dialog absolute top-0 left-0"
   bind:this={dialog}
   use:portal={'.dialog-container'}
-  use:draggable={{ bounds: 'parent', handle: '.window-drag-handle' }}
   onclose={onWindowClose}
   onclick={onWindowClick}
 >
