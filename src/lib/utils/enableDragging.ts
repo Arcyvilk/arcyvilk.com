@@ -7,7 +7,7 @@ export const enableDragging = ({ elementId, ...options }: DraggableProps) => {
   const draggableOptions: Draggable.Vars = {
     allowEventDefault: true,
     dragClickables: true,
-    force3D: false,
+    // force3D: false,
     ...options
   }
 

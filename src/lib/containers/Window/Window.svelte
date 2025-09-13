@@ -8,7 +8,7 @@
   import type { TImage } from '$lib/assets'
   import { enableDragging } from '$lib/utils'
 
-  const RESIZE_DURATION = 0.4
+  const RESIZE_DURATION = 0.2
   const GSAP_EASE = undefined
 
   type WindowProps<T extends Record<string, unknown>> = {
@@ -93,6 +93,8 @@
 
   const resizeToNormalSize = () => {
     if (!dialog) return
+
+    dialog.style.height = 'auto'
 
     const parent = dialog.parentElement
     const parentWidth = parent?.offsetWidth ?? window.innerWidth
@@ -214,8 +216,10 @@
   }
 
   .window-size-transition {
+    height: auto;
+
     transition:
-      width 0.4s ease,
-      height 0.4s ease;
+      width 0.2s ease,
+      height 0.2s ease;
   }
 </style>
