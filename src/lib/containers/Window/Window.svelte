@@ -8,6 +8,9 @@
   import type { TImage } from '$lib/assets'
   import { enableDragging } from '$lib/utils'
 
+  const RESIZE_DURATION = 0.4
+  const GSAP_EASE = undefined
+
   type WindowProps<T extends Record<string, unknown>> = {
     WindowContent?: Component<{ args?: T }>
     windowArgs?: T
@@ -50,32 +53,36 @@
     if (!dialog) return
 
     const parent = dialog.parentElement
-    const parentXCenter = parent?.offsetWidth ?? window.innerWidth
-    const parentYCenter = parent?.offsetHeight ?? window.innerHeight
+    const parentWidth = parent?.offsetWidth ?? window.innerWidth
+    const parentHeight = parent?.offsetHeight ?? window.innerHeight
 
-    const finalX = (parentXCenter - dialog.offsetWidth) / 2
-    const finalY = (parentYCenter - dialog.offsetHeight) / 2
+    setDialogMaxSize()
 
     originalSize = { w: dialog.offsetWidth, h: dialog.offsetHeight }
 
-    gsap.fromTo(
-      dialog,
-      {
-        opacity: 0.1,
-        scale: 0.1,
-        transformOrigin: '0 0',
-        x: originCoords.x,
-        y: originCoords.y
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        x: finalX,
-        y: finalY,
-        duration: 0.4,
-        ease: 'power2-out'
-      }
-    )
+    const finalX = (parentWidth - dialog.offsetWidth) / 2
+    const finalY = (parentHeight - dialog.offsetHeight) / 2
+
+    gsap
+      .fromTo(
+        dialog,
+        {
+          opacity: 0.1,
+          scale: 0.1,
+          transformOrigin: '0 0',
+          x: originCoords.x,
+          y: originCoords.y
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          x: finalX,
+          y: finalY,
+          duration: RESIZE_DURATION,
+          ease: GSAP_EASE
+        }
+      )
+      .then(() => setDialogOriginalSize())
   }
 
   const resizeWindow = () => {
@@ -87,53 +94,74 @@
   }
 
   const resizeToNormalSize = () => {
-    isFullscreen = false
-
     if (!dialog) return
 
-    dialog.style.width = `${originalSize.w}px`
-    dialog.style.height = `${originalSize.h}px`
-
     const parent = dialog.parentElement
-    const parentXCenter = parent?.offsetWidth ?? window.innerWidth
-    const parentYCenter = parent?.offsetHeight ?? window.innerHeight
+    const parentWidth = parent?.offsetWidth ?? window.innerWidth
+    const parentHeight = parent?.offsetHeight ?? window.innerHeight
 
-    const finalX = (parentXCenter - originalSize.w) / 2
-    const finalY = (parentYCenter - originalSize.h) / 2
+    const finalX = (parentWidth - originalSize.w) / 2
+    const finalY = (parentHeight - originalSize.h) / 2
 
-    gsap.to(dialog, {
-      transformOrigin: '0 0',
-      x: finalX,
-      y: finalY,
-      duration: 0.4,
-      ease: 'power2-out'
-    })
+    isFullscreen = false
+
+    setDialogOriginalSize()
+
+    gsap
+      .to(dialog, {
+        transformOrigin: '0 0',
+        x: finalX,
+        y: finalY,
+        duration: RESIZE_DURATION,
+        ease: GSAP_EASE
+      })
+      .then(() => setDialogMaxSize())
   }
 
   const resizeToFullscreen = () => {
-    isFullscreen = true
-
     if (!dialog) return
 
-    dialog.style.width = `100%`
-    dialog.style.height = `100%`
+    isFullscreen = true
+
+    setDialogFullScreen()
 
     gsap.to(dialog, {
       transformOrigin: '0 0',
       x: 0,
       y: 0,
-      duration: 0.4,
-      ease: 'power2-out'
+      duration: RESIZE_DURATION,
+      ease: GSAP_EASE
     })
+  }
+
+  const setDialogOriginalSize = () => {
+    if (dialog) {
+      dialog.style.width = `${originalSize.w}px`
+      dialog.style.height = `${originalSize.h}px`
+    }
+  }
+
+  const setDialogMaxSize = () => {
+    if (dialog) {
+      dialog.style.maxWidth = '90%'
+      dialog.style.maxHeight = '90%'
+    }
+  }
+
+  const setDialogFullScreen = () => {
+    if (dialog) {
+      dialog.style.width = '100%'
+      dialog.style.height = '100%'
+      dialog.style.maxWidth = 'unset'
+      dialog.style.maxHeight = 'unset'
+    }
   }
 </script>
 
 {#if open}
   <dialog
     open={true}
-    class="window-border window-size-transition absolute top-0 left-0 {isFullscreen
-      ? 'fullscreen'
-      : 'nonfullscreen'} bg-window-bg box-border flex size-fit flex-col"
+    class="window-border window-size-transition bg-window-bg absolute top-0 left-0 box-border flex size-fit flex-col"
     id={elementId}
     bind:this={dialog}
     use:portal={'.dialog-container'}
@@ -179,7 +207,7 @@
   </dialog>
 {/if}
 
-<style scoped>
+<style>
   .window-border {
     border-width: 4px;
     border-style: ridge;
@@ -193,18 +221,6 @@
   .window-size-transition {
     transition:
       width 0.4s ease,
-      height 0.4s ease,
-      max-width 0.4s ease,
-      max-height 0.4s ease;
-  }
-
-  .window-size-transition.fullscreen {
-    height: 100%;
-    width: 100%;
-  }
-
-  .window-size-transition.nonfullscreen {
-    max-height: 90%;
-    max-width: 90%;
+      height 0.4s ease;
   }
 </style>
