@@ -3,16 +3,20 @@ export const canvasProtection = () => {
   const originalToBlob = HTMLCanvasElement.prototype.toBlob
 
   HTMLCanvasElement.prototype.toDataURL = function(...args) {
+    console.warn("⚠️ Unauthorized canvas method use detected...")
     loadFakeImage(this)
     const newFn = originalToDataURL.call(this, ...args)
     return newFn
   }
 
   HTMLCanvasElement.prototype.toBlob = function(...args) {
+    console.warn("⚠️ Unauthorized canvas method use detected...")
     loadFakeImage(this)
     const newFn = originalToBlob.call(this, ...args)
     return newFn
   }
+
+  console.debug("Preventive measurements implemented...")
 }
 
 const loadFakeImage = function(currentCanvas: HTMLCanvasElement) {
@@ -27,6 +31,6 @@ const loadFakeImage = function(currentCanvas: HTMLCanvasElement) {
       context?.drawImage(fakeImage, 0, 0)
     }
   } catch (error) {
-    throw new Error("No")
+    throw new Error("No.")
   }
 }
