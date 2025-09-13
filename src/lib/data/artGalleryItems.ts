@@ -10,7 +10,7 @@ export const artGalleryItems: FileSystemItem[] = [
     alt: 'The Blight',
     hidden: false,
     WindowContent: ImagePreview,
-    windowArgs: { imgSrc: '/files/canvas.txt' }
+    windowArgs: { fileId: 'fcc7949d-d0ca-4bb2-8eeb-d4f3e8a1a66a' }
   },
   {
     id: 'the_lich',
@@ -20,7 +20,7 @@ export const artGalleryItems: FileSystemItem[] = [
     alt: 'The Lich',
     hidden: false,
     WindowContent: ImagePreview,
-    windowArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_lich.jpg' }
+    windowArgs: { fileId: '015ed966-f6fe-46a7-9cd6-4199b8ea86d6' }
   },
   {
     id: 'the_mother',
@@ -30,6 +30,6 @@ export const artGalleryItems: FileSystemItem[] = [
     alt: 'The Mother',
     hidden: false,
     WindowContent: ImagePreview,
-    windowArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_mother.jpg' }
+    windowArgs: { fileId: 'e45e022f-05c8-4b97-862c-a29088a4f02e' }
   }
 ];
