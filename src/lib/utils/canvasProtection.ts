@@ -1,6 +1,13 @@
 export const canvasProtection = () => {
+  console.debug("Enable preventive measurements...")
+
+  enableDataUrlProtection()
+  enableBlobProtection()
+  enableSaveProtection()
+}
+
+const enableDataUrlProtection = () => {
   const originalToDataURL = HTMLCanvasElement.prototype.toDataURL
-  const originalToBlob = HTMLCanvasElement.prototype.toBlob
 
   HTMLCanvasElement.prototype.toDataURL = function(...args) {
     console.warn("⚠️ Unauthorized canvas method use detected...")
@@ -8,18 +15,37 @@ export const canvasProtection = () => {
     const newFn = originalToDataURL.call(this, ...args)
     return newFn
   }
+}
 
+const enableBlobProtection = () => {
+  const originalToBlob = HTMLCanvasElement.prototype.toBlob
+  
   HTMLCanvasElement.prototype.toBlob = function(...args) {
     console.warn("⚠️ Unauthorized canvas method use detected...")
     loadFakeImage(this)
     const newFn = originalToBlob.call(this, ...args)
     return newFn
   }
-
-  console.debug("Preventive measurements implemented...")
 }
 
-const loadFakeImage = function(currentCanvas: HTMLCanvasElement) {
+// [TODO] Make it MUCH more robust
+const enableSaveProtection = () => {
+  const originalAddEventListener = HTMLCanvasElement.prototype.addEventListener;
+
+  // @ts-ignore
+  HTMLCanvasElement.prototype.addEventListener = function(...args) {
+    // @ts-ignore
+    if (args.type === 'contextmenu') {
+      loadFakeImage(this)
+    }
+  
+    // @ts-ignore
+    return originalAddEventListener.call(this, ...args);
+  }
+
+}
+
+export const loadFakeImage = function(currentCanvas: HTMLCanvasElement) {
   try {
     const context = currentCanvas.getContext('2d')
     context?.clearRect(0, 0, currentCanvas.width, currentCanvas.height)
