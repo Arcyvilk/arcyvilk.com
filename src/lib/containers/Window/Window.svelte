@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type Component } from 'svelte'
+  import { onMount, type Component } from 'svelte'
   import { portal } from 'svelte-portal'
   import { gsap } from 'gsap'
   import { v4 as uuid } from 'uuid'
@@ -36,16 +36,18 @@
   let elementId = `window-dialog-${uuid()}`
   let isFullscreen = $state(fullscreen)
 
+  onMount(() => {
+    enableDragging({
+      elementId,
+      bounds: '.dialog-container',
+      trigger: '.window-drag-handle'
+    })
+  })
+
   const handleWindowClose = () => {
     dialog?.close()
     onWindowClose()
   }
-
-  enableDragging({
-    elementId,
-    bounds: '.dialog-container',
-    trigger: '.window-drag-handle'
-  })
 
   const resizeWindow = () => {
     if (!dialog) return
