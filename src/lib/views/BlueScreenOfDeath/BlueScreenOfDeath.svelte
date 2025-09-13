@@ -17,7 +17,7 @@
   <p class="bsod__header">Windows</p>
 
   <p>
-    A fatal exception 0E has occurred at 0028:C0034B23. The current application will be terminated.
+    A fatal exception 0E has occurred at 0017:C0021F37. The current application will be terminated.
   </p>
 
   <ul class="bsod__steps">
