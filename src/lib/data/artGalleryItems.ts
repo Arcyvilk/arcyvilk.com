@@ -10,7 +10,7 @@ export const artGalleryItems: FileSystemItem[] = [
     alt: 'The Blight',
     hidden: false,
     WindowContent: ImagePreview,
-    windowArgs: { imgSrc: 'https://cdn.arcyvilk.com/art_gallery/the_blight.jpg' }
+    windowArgs: { imgSrc: '/files/canvas.txt' }
   },
   {
     id: 'the_lich',

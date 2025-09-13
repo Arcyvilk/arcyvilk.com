@@ -1,14 +1,15 @@
 <script lang="ts">
+  import { preparePreview } from '$lib/utils'
   import { onMount } from 'svelte'
 
   let { args } = $props<{ args?: { imgSrc: string } }>()
 
-  let imgSrc = $derived(args?.imgSrc)
+  let fileSrc = $derived(args?.imgSrc)
   let width = $state(400)
   let height = $state(600)
 
   onMount(() => {
-    const loadRealImageIntoCanvas = () => {
+    const loadRealImageIntoCanvas = async () => {
       const canvas = document.getElementById('preview-canvas') as HTMLCanvasElement
       const context = canvas?.getContext('2d')
 
@@ -17,18 +18,14 @@
         return
       }
 
-      const image = new Image()
-      image.src = imgSrc
+      const bitmap = await preparePreview(fileSrc)
+      width = bitmap.width
+      height = bitmap.height
 
-      image.onload = () => {
-        width = image.width
-        height = image.height
+      canvas.width = width
+      canvas.height = height
 
-        canvas.width = width
-        canvas.height = height
-
-        context.drawImage(image, 0, 0)
-      }
+      context.drawImage(bitmap, 0, 0)
     }
 
     loadRealImageIntoCanvas()
