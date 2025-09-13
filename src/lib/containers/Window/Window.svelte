@@ -77,14 +77,8 @@
     }
   }
 
-  $effect(() => {
-    if (open && !dialog?.open) dialog?.show()
-    else if (!open && dialog?.open) handleWindowClose()
-  })
-
-  $effect(() => {
-    if (!open || !dialog) return
-    if (isFullscreen) return
+  const initialWindowOpen = () => {
+    if (!dialog) return
 
     const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
     const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
@@ -93,7 +87,7 @@
       dialog,
       {
         opacity: 0.5,
-        scale: 0.1,
+        scale: 0.01,
         x: originCoords.x,
         y: originCoords.y
       },
@@ -106,6 +100,15 @@
         ease: 'power2-out'
       }
     )
+  }
+
+  $effect(() => {
+    if (open && !dialog?.open) {
+      dialog?.show()
+      initialWindowOpen()
+    } else if (!open && dialog?.open) {
+      handleWindowClose()
+    }
   })
 </script>
 
@@ -118,9 +121,9 @@
   onclick={onWindowClick}
 >
   <div
-    class="window-border bg-window-bg box-border flex size-fit {isFullscreen
-      ? 'h-[95vh] w-[100vw]'
-      : 'h-auto max-h-[90vh] max-w-[90vw]'} flex-col"
+    class="window-border window-size-transition {isFullscreen
+      ? 'fullscreen'
+      : 'nonfullscreen'} bg-window-bg box-border flex size-fit flex-col"
   >
     <header
       id={elementHandleId}
@@ -170,5 +173,23 @@
     border-left-color: var(--color-highlight-bg);
     border-bottom-color: var(--color-shadow-bg);
     border-right-color: var(--color-shadow-bg);
+  }
+
+  .window-size-transition {
+    transition:
+      width 0.4s ease,
+      max-width 0.4s ease,
+      height 0.4s ease,
+      max-height 0.4s ease;
+  }
+
+  .window-size-transition.fullscreen {
+    height: 95vh;
+    width: 100vw;
+  }
+  .window-size-transition.nonfullscreen {
+    /* height: auto; */
+    max-height: 90vh;
+    max-width: 90vw;
   }
 </style>
