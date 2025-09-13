@@ -55,7 +55,6 @@
   <Window
     WindowContent={activeWindow?.WindowContent}
     windowArgs={activeWindow?.windowArgs}
-    fullscreen
     icon={activeWindow?.icon}
     label={activeWindow?.label}
     open={Boolean(activeWindowId)}

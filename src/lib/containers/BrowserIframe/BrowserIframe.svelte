@@ -15,36 +15,34 @@
   }
 </script>
 
-<div class="box-border flex max-h-[80vh] w-[80vw] flex-1 flex-col overflow-hidden">
-  <div class="separator-border flex px-2">
-    <MenuButton label="File" shortcutLetter="F" />
-    <MenuButton label="Edit" shortcutLetter="E" />
-    <MenuButton label="View" shortcutLetter="V" />
-    <MenuButton label="Go" shortcutLetter="G" />
-    <MenuButton label="Favourites" shortcutLetter="v" />
-    <MenuButton label="Help" shortcutLetter="H" />
-  </div>
+<div class="separator-border flex px-2">
+  <MenuButton label="File" shortcutLetter="F" />
+  <MenuButton label="Edit" shortcutLetter="E" />
+  <MenuButton label="View" shortcutLetter="V" />
+  <MenuButton label="Go" shortcutLetter="G" />
+  <MenuButton label="Favourites" shortcutLetter="v" />
+  <MenuButton label="Help" shortcutLetter="H" />
+</div>
 
-  <div class="separator-border flex items-center gap-4 pl-2">
-    <button onclick={handleBack}>⬅️</button>
-    <span>Address</span>
-    <input
-      class="address-bar-border h-8 w-full bg-white px-2"
-      readonly
-      value={`https://www.reddit.com`}
-    />
-  </div>
+<div class="separator-border flex items-center gap-4 pl-2">
+  <button onclick={handleBack}>⬅️</button>
+  <span>Address</span>
+  <input
+    class="address-bar-border h-8 w-full bg-white px-2"
+    readonly
+    value={`https://www.reddit.com`}
+  />
+</div>
 
-  <div class="flex flex-1 overflow-auto">
-    <iframe
-      class="min-h-[75vh] w-full"
-      src="/reddit"
-      title="Embedded content"
-      frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; web-share"
-      allowfullscreen
-    ></iframe>
-  </div>
+<div class="flex flex-1 overflow-auto">
+  <iframe
+    class="min-h-[75vh] w-full min-w-[80vw]"
+    src="/reddit"
+    title="Embedded content"
+    frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; web-share"
+    allowfullscreen
+  ></iframe>
 </div>
 
 <style>

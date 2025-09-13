@@ -32,10 +32,16 @@
   }: WindowProps<any> = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
+  let isFullscreen = $state(fullscreen)
 
   const handleWindowClose = () => {
     dialog?.close()
     onWindowClose()
+  }
+
+  const resizeWindow = () => {
+    if (isFullscreen) isFullscreen = false
+    else isFullscreen = true
   }
 
   $effect(() => {
@@ -46,8 +52,8 @@
   $effect(() => {
     if (!open || !dialog) return
 
-    const centerX = fullscreen ? 0 : window.innerWidth / 2 - dialog.offsetWidth / 2
-    const centerY = fullscreen ? 0 : window.innerHeight / 2 - dialog.offsetHeight / 2
+    const centerX = isFullscreen ? 0 : window.innerWidth / 2 - dialog.offsetWidth / 2
+    const centerY = isFullscreen ? 0 : window.innerHeight / 2 - dialog.offsetHeight / 2
 
     gsap.fromTo(
       dialog,
@@ -78,9 +84,9 @@
   onclick={onWindowClick}
 >
   <div
-    class="window-border bg-window-bg box-border flex size-fit h-auto {fullscreen
-      ? 'max-h-[95vh] max-w-[100vw]'
-      : 'max-h-[90vh] max-w-[90vw]'} flex-col"
+    class="window-border bg-window-bg box-border flex size-fit {isFullscreen
+      ? 'h-[95vh] w-[100vw]'
+      : 'h-auto max-h-[90vh] max-w-[90vw]'} flex-col"
   >
     <header
       class="window-drag-handle bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1"
@@ -97,15 +103,25 @@
         {/if}
       </div>
 
-      <Button square onclick={handleWindowClose}>
-        {#snippet label()}
-          <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">✕</span>
-        {/snippet}
-      </Button>
+      <div class="flex gap-1">
+        <Button square onclick={resizeWindow}>
+          {#snippet label()}
+            <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">▢</span>
+          {/snippet}
+        </Button>
+
+        <Button square onclick={handleWindowClose}>
+          {#snippet label()}
+            <span class="flex h-[16px] w-[20px] items-center justify-center text-sm/3">✕</span>
+          {/snippet}
+        </Button>
+      </div>
     </header>
 
     {#if WindowContent}
-      <WindowContent args={windowArgs}></WindowContent>
+      <div class="box-border flex h-full w-full flex-1 flex-col overflow-hidden">
+        <WindowContent args={windowArgs}></WindowContent>
+      </div>
     {/if}
   </div>
 </dialog>
