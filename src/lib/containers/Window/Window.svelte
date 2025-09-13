@@ -34,13 +34,14 @@
 
   let dialog: HTMLDialogElement | undefined = $state()
   let elementId = `window-dialog-${uuid()}`
+  let elementHandleId = `window-drag-${uuid()}`
   let isFullscreen = $state(fullscreen)
 
   onMount(() => {
     enableDragging({
       elementId,
       bounds: '.dialog-container',
-      trigger: '.window-drag-handle'
+      trigger: `#${elementHandleId}`
     })
   })
 
@@ -122,7 +123,8 @@
       : 'h-auto max-h-[90vh] max-w-[90vw]'} flex-col"
   >
     <header
-      class="window-drag-handle bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1"
+      id={elementHandleId}
+      class="bg-window-header-bg flex cursor-move items-center justify-between gap-8 p-1"
     >
       <div class="flex items-center gap-2">
         {#if icon}
