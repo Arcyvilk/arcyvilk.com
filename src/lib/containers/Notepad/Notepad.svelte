@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SvelteMarkdown from 'svelte-markdown'
   import MenuButton from '$lib/components/MenuButton.svelte'
 
   let { args } = $props<{ args?: Record<string, unknown> }>()
@@ -14,8 +15,10 @@
     <MenuButton label="Help" shortcutLetter="H" />
   </div>
 
-  <div class="notepad-border flex h-full flex-1 overflow-scroll bg-white p-2">
-    <p class="font-['Inconsolata'] font-bold">{text}</p>
+  <div
+    class="notepad-border flex-column flex h-full flex-1 flex-wrap overflow-scroll bg-white p-2 font-['Inconsolata'] font-bold text-wrap"
+  >
+    <SvelteMarkdown source={text} />
   </div>
 </div>
 
