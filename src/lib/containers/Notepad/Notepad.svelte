@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<style>
+<style scoped>
   .notepad-border {
     border-width: 3px;
     border-style: ridge;

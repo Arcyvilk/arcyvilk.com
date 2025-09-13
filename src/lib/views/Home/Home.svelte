@@ -5,7 +5,7 @@
   <div class="desktop-bg border-box flex h-full w-full bg-contain bg-center bg-no-repeat"></div>
 </div>
 
-<style>
+<style scoped>
   .desktop-bg {
     background-image: url('/illustrations/win98.jpg');
   }

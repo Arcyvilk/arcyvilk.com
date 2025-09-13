@@ -22,7 +22,7 @@
 
 <button class="menu-button" onclick={handleClick}>{@html highlighted}</button>
 
-<style>
+<style scoped>
   .menu-button {
     padding-inline: 12px;
     margin: 1px;

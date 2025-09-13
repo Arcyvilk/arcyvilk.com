@@ -77,7 +77,7 @@
   </div>
 </div>
 
-<style>
+<style scoped>
   .reddit-font {
     font-family:
       normal x-small verdana,

@@ -157,7 +157,7 @@
   </div>
 </dialog>
 
-<style>
+<style scoped>
   .window-border {
     border-width: 4px;
     border-style: ridge;

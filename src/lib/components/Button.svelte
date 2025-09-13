@@ -21,7 +21,7 @@
   {@render label()}
 </button>
 
-<style>
+<style scoped>
   .button-border {
     border-width: 3px;
     border-style: ridge;
