@@ -34,8 +34,11 @@
   let elementId = `window-dialog-${uuid()}`
   let elementHandleId = `window-drag-${uuid()}`
   let isFullscreen = $state(false)
+  let originalSize = $state({ w: 0, h: 0 })
 
   onMount(() => {
+    initialWindowOpen()
+
     enableDragging({
       elementId,
       bounds: '.dialog-container',
@@ -43,67 +46,92 @@
     })
   })
 
-  const resizeWindow = () => {
-    if (!dialog) return
-
-    if (isFullscreen) {
-      isFullscreen = false
-
-      const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
-      const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
-
-      gsap.to(dialog, {
-        x: centerX,
-        y: centerY,
-        duration: 0.4,
-        ease: 'power2-out'
-      })
-    } else {
-      isFullscreen = true
-
-      gsap.to(dialog, {
-        x: 0,
-        y: 0,
-        duration: 0.4,
-        ease: 'power2-out'
-      })
-    }
-  }
-
   const initialWindowOpen = () => {
     if (!dialog) return
 
-    const centerX = window.innerWidth / 2 - dialog.offsetWidth / 2
-    const centerY = window.innerHeight / 2 - dialog.offsetHeight / 2
+    const parent = dialog.parentElement
+    const parentXCenter = parent?.offsetWidth ?? window.innerWidth
+    const parentYCenter = parent?.offsetHeight ?? window.innerHeight
+
+    const finalX = (parentXCenter - dialog.offsetWidth) / 2
+    const finalY = (parentYCenter - dialog.offsetHeight) / 2
+
+    originalSize = { w: dialog.offsetWidth, h: dialog.offsetHeight }
 
     gsap.fromTo(
       dialog,
       {
-        opacity: 0.5,
-        scale: 0.01,
+        opacity: 0.1,
+        scale: 0.1,
+        transformOrigin: '0 0',
         x: originCoords.x,
         y: originCoords.y
       },
       {
         opacity: 1,
         scale: 1,
-        x: centerX,
-        y: centerY,
+        x: finalX,
+        y: finalY,
         duration: 0.4,
         ease: 'power2-out'
       }
     )
   }
 
-  onMount(() => {
-    initialWindowOpen()
-  })
+  const resizeWindow = () => {
+    if (isFullscreen) {
+      resizeToNormalSize()
+    } else {
+      resizeToFullscreen()
+    }
+  }
+
+  const resizeToNormalSize = () => {
+    isFullscreen = false
+
+    if (!dialog) return
+
+    dialog.style.width = `${originalSize.w}px`
+    dialog.style.height = `${originalSize.h}px`
+
+    const parent = dialog.parentElement
+    const parentXCenter = parent?.offsetWidth ?? window.innerWidth
+    const parentYCenter = parent?.offsetHeight ?? window.innerHeight
+
+    const finalX = (parentXCenter - originalSize.w) / 2
+    const finalY = (parentYCenter - originalSize.h) / 2
+
+    gsap.to(dialog, {
+      transformOrigin: '0 0',
+      x: finalX,
+      y: finalY,
+      duration: 0.4,
+      ease: 'power2-out'
+    })
+  }
+
+  const resizeToFullscreen = () => {
+    isFullscreen = true
+
+    if (!dialog) return
+
+    dialog.style.width = `100%`
+    dialog.style.height = `100%`
+
+    gsap.to(dialog, {
+      transformOrigin: '0 0',
+      x: 0,
+      y: 0,
+      duration: 0.4,
+      ease: 'power2-out'
+    })
+  }
 </script>
 
 {#if open}
   <dialog
     open={true}
-    class="window-border window-size-transition absolute {isFullscreen
+    class="window-border window-size-transition absolute top-0 left-0 {isFullscreen
       ? 'fullscreen'
       : 'nonfullscreen'} bg-window-bg box-border flex size-fit flex-col"
     id={elementId}
@@ -165,18 +193,18 @@
   .window-size-transition {
     transition:
       width 0.4s ease,
-      max-width 0.4s ease,
       height 0.4s ease,
+      max-width 0.4s ease,
       max-height 0.4s ease;
   }
 
   .window-size-transition.fullscreen {
-    height: 95vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
   }
+
   .window-size-transition.nonfullscreen {
-    /* height: auto; */
-    max-height: 90vh;
-    max-width: 90vw;
+    max-height: 90%;
+    max-width: 90%;
   }
 </style>
