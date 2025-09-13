@@ -1,7 +1,18 @@
 import ImagePreview from "$lib/containers/ImagePreview/ImagePreview.svelte";
+import Notepad from "$lib/containers/Notepad/Notepad.svelte";
 import { type FileSystemItem } from "$lib/types/fileSystemItem";
 
 export const artGalleryItems: FileSystemItem[] = [
+    {
+    id: 'ai_art_rant',
+    description: "",
+    icon: 'TextFile',
+    label: 'AI Art rant',
+    alt: 'AI Art rant',
+    hidden: false,
+    WindowContent: Notepad,
+    windowArgs: { text: "[WIP] \n\n When I'm done, this will be a very long and very salty rant." }
+  },
   {
     id: 'the_blight',
     description: "",
