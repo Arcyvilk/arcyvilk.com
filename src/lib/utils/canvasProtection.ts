@@ -52,9 +52,9 @@ export const loadFakeImage = function(currentCanvas: HTMLCanvasElement) {
 
     const fakeImage = new Image()
     fakeImage.src = 'illustrations/image.png'
-
+    
     fakeImage.onload = () => {
-      context?.drawImage(fakeImage, 0, 0)
+      context?.drawImage(fakeImage, 0, 0, currentCanvas.width, currentCanvas.height)
     }
   } catch (error) {
     throw new Error("No.")
