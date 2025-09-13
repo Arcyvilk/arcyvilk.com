@@ -1,5 +1,6 @@
 <script lang="ts">
   import Image from '$lib/components/Image.svelte'
+  import { v4 as uuid } from 'uuid'
   import { type FileSystemItem } from '$lib/types/fileSystemItem'
   import { enableDragging } from '$lib/utils'
   import { onMount } from 'svelte'
@@ -20,12 +21,12 @@
     ondblclick
   }: FileSystemIconProps = $props()
 
-  const elementId = `filesystem-icon-${Date.now()}`
+  let elementId = `filesystem-icon-${uuid()}`
 
   onMount(() => {
     if (isDraggable) {
       enableDragging({
-        element: `#${elementId}`,
+        elementId,
         zIndexBoost: false,
         bounds
       })

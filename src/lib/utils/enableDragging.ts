@@ -1,15 +1,14 @@
 import Draggable from 'gsap/Draggable'
 
-type DraggingProps = Draggable.Vars & {
-  element: string;
-}
+type DraggableProps = Draggable.Vars & { elementId: string }
+export const enableDragging = ({ elementId, ...options }: DraggableProps) => {
+  const elementIdSelector = `#${elementId}`
 
-export const enableDragging = ({ element, ...options }: DraggingProps) => {
   const draggableOptions: Draggable.Vars = {
     allowEventDefault: true,
     dragClickables: true,
     ...options
   }
 
-  Draggable.create(element, draggableOptions)
+  Draggable.create(elementIdSelector, draggableOptions)
 }

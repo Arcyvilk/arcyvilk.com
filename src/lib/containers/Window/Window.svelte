@@ -2,6 +2,7 @@
   import { type Component } from 'svelte'
   import { portal } from 'svelte-portal'
   import { gsap } from 'gsap'
+  import { v4 as uuid } from 'uuid'
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
   import type { TImage } from '$lib/assets'
@@ -32,9 +33,8 @@
   }: WindowProps<any> = $props()
 
   let dialog: HTMLDialogElement | undefined = $state()
+  let elementId = `window-dialog-${uuid()}`
   let isFullscreen = $state(fullscreen)
-
-  const elementId = `window-dialog-${Date.now()}`
 
   const handleWindowClose = () => {
     dialog?.close()
@@ -42,7 +42,7 @@
   }
 
   enableDragging({
-    element: `#${elementId}`,
+    elementId,
     bounds: '.dialog-container',
     trigger: '.window-drag-handle'
   })
