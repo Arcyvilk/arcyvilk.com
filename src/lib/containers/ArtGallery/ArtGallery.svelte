@@ -3,9 +3,8 @@
   import Folder from '$lib/containers/Folder/Folder.svelte'
   import Window from '$lib/containers/Window/Window.svelte'
   import { artGalleryItems } from '$lib/data/artGalleryItems'
-  import { onMount } from 'svelte'
 
-  let mounted = $state(false)
+  let clickCoords: { x: number; y: number } = $state({ x: 0, y: 0 })
   let activeWindowId = $state<string | undefined>()
   let activeWindow = $derived.by(() => {
     return artGalleryItems.find((icon) => icon.id === activeWindowId)
@@ -15,6 +14,7 @@
   let description = 'Art stuff'
 
   const openWindow = (event: MouseEvent, id: string): void => {
+    clickCoords = { x: event.clientX, y: event.clientY }
     activeWindowId = id
   }
 
@@ -25,14 +25,6 @@
   const onWindowClick = (): void => {
     // TODO: Bring to front on click!
   }
-
-  // This forces Windows rendered inside other Windows
-  // to be portaled to the very end of a DOM stack
-  // so they are always above their original parents.
-  // [TODO] Probably can be done in a prettier way ^^;
-  onMount(() => {
-    mounted = true
-  })
 </script>
 
 <Folder address="C:/ArtGallery" {name} {description}>
@@ -51,13 +43,13 @@
   {/snippet}
 </Folder>
 
-{#if mounted}
+{#if Boolean(activeWindowId)}
   <Window
     WindowContent={activeWindow?.WindowContent}
     windowArgs={activeWindow?.windowArgs}
     icon={activeWindow?.icon}
     label={activeWindow?.label}
-    open={Boolean(activeWindowId)}
+    originCoords={clickCoords}
     {onWindowClick}
     {onWindowClose}
   />

@@ -57,7 +57,6 @@
         WindowContent={getWindowData(id).WindowContent}
         icon={getWindowData(id).icon}
         label={getWindowData(id).label}
-        open={openWindowIds.includes(id)}
         originCoords={clickCoords}
         onWindowClick={() => onWindowClick(id)}
         onWindowClose={() => onWindowClose(id)}
