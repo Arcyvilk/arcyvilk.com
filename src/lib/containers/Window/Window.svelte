@@ -2,10 +2,10 @@
   import { type Component } from 'svelte'
   import { portal } from 'svelte-portal'
   import { gsap } from 'gsap'
-  import Draggable from 'gsap/Draggable'
   import Button from '$lib/components/Button.svelte'
   import Image from '$lib/components/Image.svelte'
   import type { TImage } from '$lib/assets'
+  import { enableDragging } from '$lib/utils'
 
   type WindowProps<T extends Record<string, unknown>> = {
     WindowContent?: Component<{ args?: T }>
@@ -34,10 +34,18 @@
   let dialog: HTMLDialogElement | undefined = $state()
   let isFullscreen = $state(fullscreen)
 
+  const elementId = `window-dialog-${Date.now()}`
+
   const handleWindowClose = () => {
     dialog?.close()
     onWindowClose()
   }
+
+  enableDragging({
+    element: `#${elementId}`,
+    bounds: '.dialog-container',
+    trigger: '.window-drag-handle'
+  })
 
   const resizeWindow = () => {
     if (!dialog) return
@@ -56,7 +64,7 @@
       })
     } else {
       isFullscreen = true
-      
+
       gsap.to(dialog, {
         x: 0,
         y: 0,
@@ -65,11 +73,6 @@
       })
     }
   }
-
-  Draggable.create('.window-dialog', {
-    bounds: '.dialog-container',
-    trigger: '.window-drag-handle'
-  })
 
   $effect(() => {
     if (open && !dialog?.open) dialog?.show()
@@ -104,7 +107,8 @@
 </script>
 
 <dialog
-  class="window-dialog absolute top-0 left-0"
+  class="absolute top-0 left-0"
+  id={elementId}
   bind:this={dialog}
   use:portal={'.dialog-container'}
   onclose={onWindowClose}

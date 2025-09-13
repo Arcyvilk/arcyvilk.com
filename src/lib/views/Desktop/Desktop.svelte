@@ -39,6 +39,8 @@
       {#if !item.hidden}
         <FileSystemIcon
           {...item}
+          isDraggable
+          bounds=".dialog-container"
           ondblclick={(event: MouseEvent) => {
             openWindow(event, item.id)
           }}
