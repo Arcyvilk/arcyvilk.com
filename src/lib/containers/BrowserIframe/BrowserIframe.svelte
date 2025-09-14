@@ -2,18 +2,18 @@
   import { browser } from '$app/environment'
   import MenuButton from '$lib/components/MenuButton.svelte'
 
-  let { args } = $props<{args?: { realIframePath:string }}>()
+  let { args } = $props<{ args?: { realIframePath: string } }>()
   let realIframePath = $derived(args?.realIframePath)
 
-  let fakedPath = $state('')
-  let fakedAddress = $derived('https://www.reddit.com' + fakedPath)
+  let fakePath = $state('')
+  let fakeAddress = $derived('https://www.reddit.com' + fakePath)
 
   $effect(() => {
     const updateIframePath = ({ data }: MessageEvent<{ type: string; path: string }>) => {
       const { type, path } = data
 
       if (type === 'IFRAME_PATH_UPDATE') {
-        fakedPath = path.replace('/reddit', '')
+        fakePath = path.replace('/reddit', '')
       }
     }
 
@@ -41,7 +41,7 @@
 <div class="separator-border flex items-center gap-4 pl-2">
   <button onclick={handleBack}>⬅️</button>
   <span>Address</span>
-  <input class="address-bar-border h-8 w-full bg-white px-2" value={fakedAddress} readonly />
+  <input class="address-bar-border h-8 w-full bg-white px-2" value={fakeAddress} readonly />
 </div>
 
 <div class="flex flex-1 overflow-auto">
