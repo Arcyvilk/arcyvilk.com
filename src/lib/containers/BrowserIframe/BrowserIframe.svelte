@@ -2,18 +2,18 @@
   import { browser } from '$app/environment'
   import MenuButton from '$lib/components/MenuButton.svelte'
 
-  let { args } = $props<{ args?: { realIframePath: string } }>()
-  let realIframePath = $derived(args?.realIframePath)
+  let { args } = $props<{ args?: { realIframePath: string; fakeIframePath: string } }>()
+  let { realIframePath, fakeIframePath } = $derived(args)
 
   let fakePath = $state('')
-  let fakeAddress = $derived('https://www.reddit.com' + fakePath)
+  let fakeAddress = $derived(fakeIframePath + fakePath)
 
   $effect(() => {
     const updateIframePath = ({ data }: MessageEvent<{ type: string; path: string }>) => {
       const { type, path } = data
 
       if (type === 'IFRAME_PATH_UPDATE') {
-        fakePath = path.replace('/reddit', '')
+        fakePath = path.replace(realIframePath, '')
       }
     }
 

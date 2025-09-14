@@ -55,7 +55,7 @@ export const desktopIcons: FileSystemItem[] = [
     alt: 'Internet',
     hidden: false,
     WindowContent: BrowserIframe,
-    windowArgs: { realIframePath: "/reddit" }
+    windowArgs: { realIframePath: "/reddit", fakeIframePath: 'https://www.reddit.com' }
   },
   {
     id: 'gallery',
