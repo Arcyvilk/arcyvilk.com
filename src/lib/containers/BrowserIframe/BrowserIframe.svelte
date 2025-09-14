@@ -2,11 +2,25 @@
   import { browser } from '$app/environment'
   import MenuButton from '$lib/components/MenuButton.svelte'
 
-  let currentRoute = $state('/')
+  let { args } = $props<{args?: { realIframePath:string }}>()
+  let realIframePath = $derived(args?.realIframePath)
 
-  if (browser) {
-    currentRoute = window.location.pathname
-  }
+  let fakedPath = $state('')
+  let fakedAddress = $derived('https://www.reddit.com' + fakedPath)
+
+  $effect(() => {
+    const updateIframePath = ({ data }: MessageEvent<{ type: string; path: string }>) => {
+      const { type, path } = data
+
+      if (type === 'IFRAME_PATH_UPDATE') {
+        fakedPath = path.replace('/reddit', '')
+      }
+    }
+
+    window.addEventListener('message', updateIframePath)
+
+    return () => window.removeEventListener('message', updateIframePath)
+  })
 
   const handleBack = () => {
     if (browser) {
@@ -27,17 +41,14 @@
 <div class="separator-border flex items-center gap-4 pl-2">
   <button onclick={handleBack}>⬅️</button>
   <span>Address</span>
-  <input
-    class="address-bar-border h-8 w-full bg-white px-2"
-    readonly
-    value={`https://www.reddit.com`}
-  />
+  <input class="address-bar-border h-8 w-full bg-white px-2" value={fakedAddress} readonly />
 </div>
 
 <div class="flex flex-1 overflow-auto">
   <iframe
+    id="browser-preview"
     class="min-h-[75vh] w-full min-w-[80vw]"
-    src="/reddit"
+    src={realIframePath}
     title="Embedded content"
     frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; web-share"

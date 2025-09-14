@@ -1,13 +1,19 @@
 <script lang="ts">
+  import { page } from '$app/state'
   import dayjs from 'dayjs'
   import { gsap } from 'gsap'
   import Draggable from 'gsap/Draggable'
-
   import relativeTime from 'dayjs/plugin/relativeTime'
+
   import '../style.css'
 
   dayjs.extend(relativeTime)
   gsap.registerPlugin(Draggable)
+
+  $effect(() => {
+    const newPath = page.url.pathname
+    window.parent.postMessage({ type: 'IFRAME_PATH_UPDATE', path: newPath }, '*')
+  })
 
   let { children } = $props()
 </script>

@@ -55,6 +55,7 @@
     {#each openWindowIds as id}
       <Window
         WindowContent={getWindowData(id).WindowContent}
+        windowArgs={getWindowData(id).windowArgs}
         icon={getWindowData(id).icon}
         label={getWindowData(id).label}
         originCoords={clickCoords}
