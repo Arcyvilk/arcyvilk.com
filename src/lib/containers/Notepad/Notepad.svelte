@@ -16,7 +16,7 @@
   </div>
 
   <div
-    class="notepad-border flex h-full flex-1 flex-col overflow-scroll bg-white p-2 font-['Inconsolata'] font-bold text-wrap"
+    class="notepad-border flex h-full flex-1 flex-col overflow-y-auto bg-white p-2 font-['Inconsolata'] font-bold text-wrap"
   >
     <SvelteMarkdown source={text} />
   </div>
