@@ -1,11 +1,12 @@
-import ArtGallery from '$lib/containers/ArtGallery/ArtGallery.svelte';
-import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte';
-import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte';
-import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte';
-import RecycleBin from '$lib/containers/RecycleBin/RecycleBin.svelte';
-import SuspiciousScript from '$lib/containers/SuspiciousScript/SuspiciousScript.svelte';
-import Home from '$lib/views/Home/Home.svelte';
-import type { FileSystemItem } from '$lib/types/fileSystemItem';
+import ArtGallery from '$lib/containers/ArtGallery/ArtGallery.svelte'
+import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte'
+import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte'
+import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte'
+import RecycleBin from '$lib/containers/RecycleBin/RecycleBin.svelte'
+import SuspiciousScript from '$lib/containers/SuspiciousScript/SuspiciousScript.svelte'
+import Home from '$lib/views/Home/Home.svelte'
+import type { FileSystemItem } from '$lib/types/fileSystemItem'
+import Notepad from '$lib/containers/Notepad/Notepad.svelte'
 
 export const defaultDesktopIcon: FileSystemItem = {
   id: 'missingno',
@@ -16,7 +17,6 @@ export const defaultDesktopIcon: FileSystemItem = {
   hidden: true,
   WindowContent: Home
 }
-
 
 export const desktopIcons: FileSystemItem[] = [
   defaultDesktopIcon,
@@ -55,7 +55,7 @@ export const desktopIcons: FileSystemItem[] = [
     alt: 'Internet',
     hidden: false,
     WindowContent: BrowserIframe,
-    windowArgs: { realIframePath: "/reddit", fakeIframePath: 'https://www.reddit.com' }
+    windowArgs: { realIframePath: '/reddit', fakeIframePath: 'https://www.reddit.com' }
   },
   {
     id: 'gallery',
@@ -65,6 +65,18 @@ export const desktopIcons: FileSystemItem[] = [
     alt: 'My Gallery',
     hidden: false,
     WindowContent: ArtGallery
+  },
+  {
+    id: 'readme',
+    description: '',
+    icon: 'TextFile',
+    label: 'README',
+    alt: 'README',
+    hidden: false,
+    WindowContent: Notepad,
+    windowArgs: {
+      text: 'This entire project is still a very early WIP. \n\nYes, I know there is a bunch of bugs. Yes, I know Sveltekit is not supposed to be used like _that_. \n\nAll in its time :3'
+    }
   },
   {
     id: 'script',
