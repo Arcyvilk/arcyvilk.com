@@ -52,7 +52,7 @@
       {/if}
     {/each}
 
-    {#each openWindowIds as id}
+    {#each openWindowIds as id (id)}
       <Window
         WindowContent={getWindowData(id).WindowContent}
         windowArgs={getWindowData(id).windowArgs}
