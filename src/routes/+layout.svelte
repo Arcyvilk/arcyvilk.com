@@ -42,6 +42,14 @@
   <meta property="og:image:alt" content="My stupid face" />
 </svelte:head>
 
-<div class="relative h-screen w-screen">
+<div class="layout">
   {@render children()}
 </div>
+
+<style>
+  .layout {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+  }
+</style>
