@@ -31,7 +31,7 @@
   <p>Press any key to continue <span class="cursor">_</span></p>
 </div>
 
-<style scoped>
+<style>
   .bsod {
     background-color: #2323af;
     font-family: 'DOS', 'Win95FA', sans-serif;

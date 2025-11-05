@@ -8,7 +8,7 @@
   {@render children()}
 </RedditLayout>
 
-<style scoped>
+<style>
   :root {
     font-family: Verdana, sans-serif;
   }

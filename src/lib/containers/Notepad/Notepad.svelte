@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<style scoped>
+<style>
   .notepad-border {
     border-width: 3px;
     border-style: ridge;

@@ -57,7 +57,7 @@
   </div>
 </div>
 
-<style scoped>
+<style>
   .separator-border {
     border-top: 1px solid var(--color-highlight-bg);
     border-bottom: 1px solid var(--color-shadow-bg);

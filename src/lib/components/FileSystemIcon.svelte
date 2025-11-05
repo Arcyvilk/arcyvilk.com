@@ -47,7 +47,7 @@
   </p>
 </button>
 
-<style scoped>
+<style>
   .button-outline {
     &:active,
     &:focus,
