@@ -17,15 +17,32 @@
   )
 </script>
 
-<footer class="sticky bottom-0 left-0 w-full">
-  <div
-    class="bg-window-bg text-foreground-text border-t-highlight-bg flex gap-1 border-t-4 [border-style:groove] p-1"
-  >
-    <Button>{#snippet label()}<span class="px-2">Start</span>{/snippet}</Button>
-    <Divider />
+<footer class="taskbar">
+  <Button>
+    {#snippet label()}
+      Start
+    {/snippet}
+  </Button>
+  <Divider />
 
-    {#each openWindows as openWindow}
-      <TaskbarButton buttonIcon={openWindow.icon} buttonLabel={openWindow.label} />
-    {/each}
-  </div>
+  {#each openWindows as openWindow}
+    <TaskbarButton buttonIcon={openWindow.icon} buttonLabel={openWindow.label} />
+  {/each}
 </footer>
+
+<style>
+  .taskbar {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    padding-inline-start: 8px;
+    background-color: var(--color-window-bg);
+    color: var(--color-foreground-text);
+    border-top: 4px groove var(--color-highlight-bg);
+  }
+</style>

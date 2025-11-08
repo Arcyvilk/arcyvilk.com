@@ -12,17 +12,21 @@
   const { label, square, className, ...rest } = allProps
 </script>
 
-<button
-  class="button-border bg-accent-bg text-accent-text cursor-pointer font-bold shadow-lg {square
-    ? 'aspect-square'
-    : ''} {className ? className : ''}"
-  {...rest}
->
+<button class="button {square ? 'button--square' : ''} {className ? className : ''}" {...rest}>
   {@render label()}
 </button>
 
 <style>
-  .button-border {
+  .button {
+    background-color: var(--color-accent-bg);
+    color: var(--color-accent-text);
+    cursor: pointer;
+    font-weight: bold;
+    padding-inline: 8px;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+
     border-width: 3px;
     border-style: ridge;
 
@@ -37,5 +41,10 @@
       border-bottom-color: var(--color-highlight-bg);
       border-right-color: var(--color-highlight-bg);
     }
+  }
+
+  .button--square {
+    aspect-ratio: 1/1;
+    padding-inline: 0px;
   }
 </style>

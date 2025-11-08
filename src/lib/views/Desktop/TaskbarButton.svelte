@@ -12,7 +12,7 @@
 
 <Button className="flex-shrink flex-grow max-w-1/5 basis-1/5">
   {#snippet label()}
-    <div class="flex items-center gap-2 overflow-hidden px-1">
+    <div class="flex items-center gap-2 overflow-hidden">
       {#if buttonIcon}
         <Image image={buttonIcon} alt="" className="h-6 w-6 aspect-square" />
       {/if}
