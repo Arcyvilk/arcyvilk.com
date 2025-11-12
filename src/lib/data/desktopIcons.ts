@@ -1,5 +1,5 @@
 import ArtGallery from '$lib/containers/ArtGallery/ArtGallery.svelte'
-import BrowserIframe from '$lib/containers/BrowserIframe/BrowserIframe.svelte'
+import Browser from '$lib/containers/Browser/Browser.svelte'
 import MyComputer from '$lib/containers/MyComputer/MyComputer.svelte'
 import MyDocuments from '$lib/containers/MyDocuments/MyDocuments.svelte'
 import RecycleBin from '$lib/containers/RecycleBin/RecycleBin.svelte'
@@ -54,7 +54,7 @@ export const desktopIcons: FileSystemItem[] = [
     label: 'Internet',
     alt: 'Internet',
     hidden: false,
-    WindowContent: BrowserIframe,
+    WindowContent: Browser,
     windowArgs: { realIframePath: '/reddit', fakeIframePath: 'https://www.reddit.com' }
   },
   {
