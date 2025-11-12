@@ -46,10 +46,10 @@
 <style>
   .fsicon {
     display: flex;
-    max-height: 120px;
-    min-height: 128px;
-    max-width: 128px;
-    min-width: 128px;
+    max-height: 112px;
+    min-height: 112px;
+    max-width: 120px;
+    min-width: 120px;
     flex: 1;
     flex-direction: column;
     overflow-wrap: anywhere;

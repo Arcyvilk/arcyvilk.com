@@ -20,7 +20,7 @@
 <footer class="taskbar">
   <Button>
     {#snippet label()}
-      Start
+      <span class="button-start__label">Start</span>
     {/snippet}
   </Button>
   <Divider />
@@ -44,5 +44,10 @@
     background-color: var(--color-window-bg);
     color: var(--color-foreground-text);
     border-top: 4px groove var(--color-highlight-bg);
+  }
+
+  .button-start__label {
+    display: block;
+    padding-block: 4px;
   }
 </style>

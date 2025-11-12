@@ -20,11 +20,6 @@ body {
   overflow: hidden;
 }
 
-button {
-  all: unset;
-  cursor: pointer;
-}
-
 a {
   color: rgb(0, 0, 255);
 }
@@ -35,4 +30,13 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+input {
+  all: unset;
 }
