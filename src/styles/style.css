@@ -22,29 +22,3 @@
   font-style: normal;
   font-display: swap;
 }
-
-body {
-  overflow: hidden;
-}
-
-:root {
-  font-family: 'Win95FA', 'Raleway', sans-serif;
-  user-select: none;
-  background-color: #000000;
-
-  a {
-    color: rgb(0, 0, 255);
-  }
-
-  a:visited {
-    color: rgb(128, 0, 128);
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  button {
-    cursor: pointer;
-  }
-}
