@@ -5,7 +5,7 @@
   import Draggable from 'gsap/Draggable'
   import relativeTime from 'dayjs/plugin/relativeTime'
 
-  import '../style.css'
+  import '../styles/style.css'
 
   dayjs.extend(relativeTime)
   gsap.registerPlugin(Draggable)

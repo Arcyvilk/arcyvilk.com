@@ -1,0 +1,16 @@
+/**
+* WINDOWS THEME!
+*/
+:root {
+  --color-desktop-bg: #008080;
+  --color-window-header-bg: #000080;
+  --color-window-bg: #c0c0c0;
+  --color-accent-bg: #c0c0c0;
+
+  --color-background-text: #000000;
+  --color-foreground-text: #ffffff;
+  --color-accent-text: #000000;
+
+  --color-shadow-bg: #666666;
+  --color-highlight-bg: #e8e8e8;
+}

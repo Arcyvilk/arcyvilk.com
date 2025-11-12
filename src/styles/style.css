@@ -1,0 +1,50 @@
+@import './reset.css';
+@import './theme.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Silkscreen:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+@font-face {
+  font-family: 'Win95FA';
+  src:
+    url('/fonts/w95fa.woff2') format('woff2'),
+    url('/fonts/w95fa.woff') format('woff'),
+    url('/fonts/W95FA.otf') format('otf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DOS';
+  src: url('/fonts/DOSVGA437.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  overflow: hidden;
+}
+
+:root {
+  font-family: 'Win95FA', 'Raleway', sans-serif;
+  user-select: none;
+  background-color: #000000;
+
+  a {
+    color: rgb(0, 0, 255);
+  }
+
+  a:visited {
+    color: rgb(128, 0, 128);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
