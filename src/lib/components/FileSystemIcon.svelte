@@ -36,7 +36,8 @@
 </script>
 
 <button id={elementId} class="fsicon" title={label} {ondblclick}>
-  <Image image={icon} {alt} className="fsicon__icon" />
+  <Image image={icon} {alt} h="64px" w="64px" />
+
   <p class="fsicon__label {inverted ? 'fsicon__label--inverted' : ''}">
     {label}
   </p>
@@ -65,13 +66,6 @@
       outline-width: 2px;
       outline-style: dotted;
     }
-  }
-
-  /* TODO: This is not passed down to parent */
-  .fsicon__icon {
-    height: 4rem;
-    width: 4rem;
-    aspect-ratio: 1/1;
   }
 
   .fsicon__label {

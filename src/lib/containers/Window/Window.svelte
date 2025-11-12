@@ -233,7 +233,7 @@
     gap: 32px;
     padding: 4px;
 
-    background-color: var(--theme-window-header-bg);
+    background-color: var(--color-window-header-bg);
     cursor: move;
   }
 

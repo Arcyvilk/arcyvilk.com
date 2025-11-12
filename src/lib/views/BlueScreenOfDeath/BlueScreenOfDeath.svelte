@@ -42,7 +42,7 @@
     justify-content: center;
     gap: 48px;
 
-    color: var(--theme-foreground-text);
+    color: var(--color-foreground-text);
     background-color: #2323af;
     font-family: 'DOS', 'Win95FA', sans-serif;
     font-size: 1.2rem;

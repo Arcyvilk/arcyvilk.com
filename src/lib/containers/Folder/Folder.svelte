@@ -62,6 +62,7 @@
   .folder__menu {
     display: flex;
     padding-inline: 8px;
+    padding-block: 4px;
   }
 
   .folder__address-bar {
@@ -73,6 +74,7 @@
 
   .folder__address-bar__input {
     width: 100%;
+    height: 32px;
     background-color: white;
     padding-inline: 8px;
     border-width: 3px;

@@ -14,7 +14,7 @@
   {#snippet label()}
     <div class="taskbar-button__label">
       {#if buttonIcon}
-        <Image className="taskbar-button__icon" image={buttonIcon} alt="" />
+        <Image className="taskbar-button__icon" h="24px" w="24px" image={buttonIcon} alt="" />
       {/if}
 
       <span class="taskbar-button__label-text">{buttonLabel}</span>
@@ -36,13 +36,6 @@
     gap: 8px;
     overflow: hidden;
   }
-
-  .taskbar-button__icon {
-    height: 24px;
-    width: 24px;
-    aspect-ratio: 1/1;
-  }
-
   .taskbar-button__label-text {
     overflow: hidden;
     text-overflow: ellipsis;
