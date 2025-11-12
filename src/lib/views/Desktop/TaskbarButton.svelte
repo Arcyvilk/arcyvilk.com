@@ -10,13 +10,43 @@
   let { buttonIcon, buttonLabel }: TaskbarButtonProps = $props()
 </script>
 
-<Button className="flex-shrink flex-grow max-w-1/5 basis-1/5">
+<Button className="taskbar-button">
   {#snippet label()}
-    <div class="flex items-center gap-2 overflow-hidden">
+    <div class="taskbar-button__label">
       {#if buttonIcon}
-        <Image image={buttonIcon} alt="" className="h-6 w-6 aspect-square" />
+        <Image className="taskbar-button__icon" image={buttonIcon} alt="" />
       {/if}
-      <span class="truncate text-sm/3 font-medium">{buttonLabel}</span>
+
+      <span class="taskbar-button__label-text">{buttonLabel}</span>
     </div>
   {/snippet}
 </Button>
+
+<style>
+  .taskbar-button {
+    flex-shrink: 1;
+    flex-grow: 1;
+    flex-basis: 20%;
+    max-width: 20%;
+  }
+
+  .taskbar-button__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .taskbar-button__icon {
+    height: 24px;
+    width: 24px;
+    aspect-ratio: 1/1;
+  }
+
+  .taskbar-button__label-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+</style>

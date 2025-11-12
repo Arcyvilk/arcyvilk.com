@@ -13,7 +13,7 @@
   })
 </script>
 
-<div class="bsod flex h-screen w-screen flex-col items-center justify-center gap-12 text-white">
+<div class="bsod">
   <p class="bsod__header">Windows</p>
 
   <p>
@@ -33,6 +33,16 @@
 
 <style>
   .bsod {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+
+    color: var(--theme-foreground-text);
     background-color: #2323af;
     font-family: 'DOS', 'Win95FA', sans-serif;
     font-size: 1.2rem;

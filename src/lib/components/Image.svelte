@@ -5,15 +5,20 @@
     image: TImage
     alt?: string
     className?: string
+    w?: string
+    h?: string
   }
 
-  const { image, alt, className }: ImageProps = $props()
+  const { image, alt, className, w, h }: ImageProps = $props()
+
   let src = $derived(images[image])
 </script>
 
-<img
-  {src}
-  {alt}
-  draggable="false"
-  class="object-contain select-none {className ? className : ''}"
-/>
+<img class="image {className}" {src} {alt} width={w} height={h} draggable="false" />
+
+<style>
+  .image {
+    object-fit: contain;
+    user-select: none;
+  }
+</style>

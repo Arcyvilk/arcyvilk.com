@@ -7,6 +7,7 @@
 
   type FileSystemIconProps = {
     labelColor?: string
+    inverted?: boolean
     isDraggable?: boolean
     bounds?: string
   } & FileSystemItem &
@@ -16,8 +17,8 @@
     bounds,
     isDraggable = false,
     icon,
+    inverted = false,
     label,
-    labelColor = 'foreground-text',
     ondblclick
   }: FileSystemIconProps = $props()
 
@@ -34,21 +35,29 @@
   })
 </script>
 
-<button
-  data-testid="filesystem-icon"
-  id={elementId}
-  class="filesystem-icon button-outline flex max-h-30 min-h-30 max-w-32 min-w-32 flex-1 flex-col items-center justify-center gap-2 overflow-hidden p-1"
-  title={label}
-  {ondblclick}
->
-  <Image image={icon} {alt} className="h-16 w-16 aspect-square" />
-  <p class="wrap text-{labelColor} line-clamp-2 [font-family:Win95FA] text-xl leading-5">
+<button id={elementId} class="fsicon" title={label} {ondblclick}>
+  <Image image={icon} {alt} className="fsicon__icon" />
+  <p class="fsicon__label {inverted ? 'fsicon__label--inverted' : ''}">
     {label}
   </p>
 </button>
 
 <style>
-  .button-outline {
+  .fsicon {
+    display: flex;
+    max-height: 120px;
+    min-height: 128px;
+    max-width: 128px;
+    min-width: 128px;
+    flex: 1;
+    flex-direction: column;
+    overflow-wrap: anywhere;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    overflow: hidden;
+    padding: 4px;
+
     &:active,
     &:focus,
     &:focus-visible {
@@ -56,5 +65,29 @@
       outline-width: 2px;
       outline-style: dotted;
     }
+  }
+
+  /* TODO: This is not passed down to parent */
+  .fsicon__icon {
+    height: 4rem;
+    width: 4rem;
+    aspect-ratio: 1/1;
+  }
+
+  .fsicon__label {
+    font-family: Win95FA;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--color-foreground-text);
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2px;
+  }
+
+  .fsicon__label--inverted {
+    color: var(--color-background-text);
   }
 </style>

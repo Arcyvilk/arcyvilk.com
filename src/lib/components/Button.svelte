@@ -12,7 +12,7 @@
   const { label, square, className, ...rest } = allProps
 </script>
 
-<button class="button {square ? 'button--square' : ''} {className ? className : ''}" {...rest}>
+<button class="button {square ? 'button--square' : ''} {className}" {...rest}>
   {@render label()}
 </button>
 

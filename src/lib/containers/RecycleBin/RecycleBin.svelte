@@ -33,7 +33,7 @@
       {#if !item.hidden}
         <FileSystemIcon
           {...item}
-          labelColor="black"
+          inverted
           ondblclick={(event: MouseEvent) => {
             openWindow(event, item.id)
           }}

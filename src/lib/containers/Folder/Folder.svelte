@@ -25,7 +25,7 @@
   }
 </script>
 
-<div class="separator-border flex px-2">
+<div class="folder__menu border">
   <MenuButton label="File" shortcutLetter="F" />
   <MenuButton label="Edit" shortcutLetter="E" />
   <MenuButton label="View" shortcutLetter="V" />
@@ -34,36 +34,47 @@
   <MenuButton label="Help" shortcutLetter="H" />
 </div>
 
-<div class="separator-border flex items-center gap-4 pl-2">
+<div class="folder__address-bar border">
   <button onclick={handleBack}>⬅️</button>
   <span>Address</span>
-  <input class="address-bar-border h-8 w-full bg-white px-2" readonly value={address} />
+  <input class="folder__address-bar__input" readonly value={address} />
 </div>
 
-<div class="relative flex h-full flex-1 overflow-auto bg-white">
-  <div class="sticky top-0 flex w-[175px] flex-col bg-blue-100">
-    <div class="flex flex-col gap-4 p-6 pb-1">
-      <Image className="w-[32px]" image="Documents" />
-      <h1 class="bold text-2xl/6">{name}</h1>
+<div class="folder__container">
+  <div class="folder__sidebar">
+    <div class="folder__header">
+      <Image w="32px" image="Documents" />
+      <h1 class="folder__name">{name}</h1>
     </div>
+
     <hr />
-    <div class="p-6">
-      <p class="text-base/4">{description}</p>
-    </div>
+
+    <p class="folder__description">{description}</p>
   </div>
 
-  <div class="flex flex-1 flex-wrap content-start gap-4 p-4">
+  <div class="folder__content">
     {@render documents()}
   </div>
 </div>
 
 <style>
-  .separator-border {
-    border-top: 1px solid var(--color-highlight-bg);
-    border-bottom: 1px solid var(--color-shadow-bg);
+  /* TODO: menu and address bar should be a separate component? Or a snippet? */
+  .folder__menu {
+    display: flex;
+    padding-inline: 8px;
   }
 
-  .address-bar-border {
+  .folder__address-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 8px;
+  }
+
+  .folder__address-bar__input {
+    width: 100%;
+    background-color: white;
+    padding-inline: 8px;
     border-width: 3px;
     border-style: solid;
 
@@ -71,5 +82,55 @@
     border-right-color: var(--color-highlight-bg);
     border-top-color: var(--color-shadow-bg);
     border-left-color: var(--color-shadow-bg);
+  }
+
+  .folder__container {
+    position: relative;
+    display: flex;
+    height: 100%;
+    flex: 1;
+    overflow: auto;
+    background-color: white;
+  }
+
+  .folder__sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    width: 175px;
+    flex-direction: column;
+    /* TODO: Move this color to CSS theming file */
+    background-color: rgb(219, 234, 255);
+  }
+
+  .folder__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    padding-bottom: 4px;
+  }
+
+  .folder__name {
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .folder__description {
+    padding: 24px;
+    line-height: 1rem;
+  }
+
+  .folder__content {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-content: start;
+    padding: 8px;
+  }
+
+  .border {
+    border-top: 1px solid var(--color-highlight-bg);
+    border-bottom: 1px solid var(--color-shadow-bg);
   }
 </style>

@@ -29,7 +29,7 @@
   }
 </script>
 
-<div class="separator-border flex px-2">
+<div class="browser__menu border">
   <MenuButton label="File" shortcutLetter="F" />
   <MenuButton label="Edit" shortcutLetter="E" />
   <MenuButton label="View" shortcutLetter="V" />
@@ -38,16 +38,16 @@
   <MenuButton label="Help" shortcutLetter="H" />
 </div>
 
-<div class="separator-border flex items-center gap-4 pl-2">
+<div class="browser__address-bar border">
   <button onclick={handleBack}>⬅️</button>
   <span>Address</span>
-  <input class="address-bar-border h-8 w-full bg-white px-2" value={fakeAddress} readonly />
+  <input class="browser__address-bar__input" value={fakeAddress} readonly />
 </div>
 
-<div class="flex flex-1 overflow-auto">
+<div class="browser__content">
   <iframe
     id="browser-preview"
-    class="min-h-[75vh] w-full min-w-[80vw]"
+    class="browser__content__iframe"
     src={realIframePath}
     title="Embedded content"
     frameborder="0"
@@ -57,12 +57,23 @@
 </div>
 
 <style>
-  .separator-border {
-    border-top: 1px solid var(--color-highlight-bg);
-    border-bottom: 1px solid var(--color-shadow-bg);
+  .browser__menu {
+    display: flex;
+    padding-inline: 4px;
   }
 
-  .address-bar-border {
+  .browser__address-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 8px;
+  }
+
+  .browser__address-bar__input {
+    background-color: white;
+    padding-inline: 8px;
+    width: 100%;
+
     border-width: 3px;
     border-style: solid;
 
@@ -70,5 +81,22 @@
     border-right-color: var(--color-highlight-bg);
     border-top-color: var(--color-shadow-bg);
     border-left-color: var(--color-shadow-bg);
+  }
+
+  .browser__content {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+  }
+
+  .browser__content__iframe {
+    min-height: 75vh;
+    width: 100%;
+    min-width: 80vw;
+  }
+
+  .border {
+    border-top: 1px solid var(--color-highlight-bg);
+    border-bottom: 1px solid var(--color-shadow-bg);
   }
 </style>

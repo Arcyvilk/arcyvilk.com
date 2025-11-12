@@ -35,38 +35,37 @@
   }
 </script>
 
-<div class="box-border grid w-full grid-cols-[64px_72px_1fr] flex-row gap-2">
-  <div class="flex flex-col items-center text-sm font-bold text-gray-400">
+<div class="reddit-post">
+  <div class="reddit-post__votes">
     <button onclick={handleUpvote}><Image image={upvoteIcon} alt="Upvote" /></button>
     <span>{upvotes - downvotes}</span>
     <button onclick={handleDownvote}><Image image={downvoteIcon} alt="Downvote" /></button>
   </div>
 
   <img
-    class="w-full max-w-16 rounded-full bg-gray-200 p-4"
+    class="reddit-post__thumbnail"
     src={'https://cdn-icons-png.flaticon.com/512/7046/7046086.png'}
     alt="Post thumbnail"
   />
 
-  <div class="flex flex-col gap-1">
+  <div class="reddit-post__content">
     <div>
-      <a href={linkPost} class="text-lg/4">{title}</a>
-      <span class="text-xs/2 text-gray-400">(self.{subreddit})</span>
+      <a href={linkPost} class="reddit-post__title">{title}</a>
+      <span class="reddit-post__subreddit">(self.{subreddit})</span>
     </div>
-    <div class="text-xs text-gray-600">
+
+    <div class="reddit-post__date">
       submitted <Date {date} /> by <a href={linkUser}>{author}</a> to
       <a href={linkSubreddit}>r/{subreddit}</a>
     </div>
 
     {#if postBody}
-      <div class="mt-2 rounded-md border border-gray-600 bg-gray-100 p-2 text-sm/5">
+      <div class="reddit-post__body">
         {@render postBody?.()}
       </div>
     {/if}
 
-    <div
-      class="reddit-font mt-2 flex flex-wrap items-center gap-2 text-xs/2 font-bold text-gray-600"
-    >
+    <div class="reddit-post__actions">
       <a href={linkPost}>{Math.round(Math.random() * 100)} comments</a>
       <a href={'#'}>share</a>
       <a href={'#'}>save</a>
@@ -78,7 +77,71 @@
 </div>
 
 <style>
-  .reddit-font {
+  .reddit-post {
+    box-sizing: border-box;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 64px 72px 1fr;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .reddit-post__votes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    color: gray-400;
+    font-size: 14px;
+  }
+
+  .reddit-post__thumbnail {
+    width: 100%;
+    max-width: 64px;
+    border-radius: 100%;
+    background-color: gray 200;
+    padding: 16px;
+  }
+
+  .reddit-post__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .reddit-post__body {
+    margin-top: 8px;
+    border-radius: 8px;
+    border-color: gray-600;
+    background-color: gray-100;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .reddit-post__title {
+    font-size: 18px;
+  }
+
+  .reddit-post__subreddit {
+    font-size: 12px;
+    color: gray-400;
+  }
+
+  .reddit-post__date {
+    font-size: 12px;
+    color: gray-600;
+  }
+
+  .reddit-post__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+
+    color: gray-600;
+    font-size: 12px;
+    font-weight: bold;
     font-family:
       normal x-small verdana,
       arial,

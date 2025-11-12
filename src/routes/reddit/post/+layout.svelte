@@ -2,6 +2,15 @@
   let { children } = $props()
 </script>
 
-<div class="flex flex-col gap-4 p-4">
+<div class="layout">
   {@render children()}
 </div>
+
+<style>
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px;
+  }
+</style>

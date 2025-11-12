@@ -40,8 +40,21 @@
   })
 </script>
 
-<div
-  class="box-border flex min-h-[80vh] min-w-[80vw] flex-1 flex-col items-center justify-start overflow-scroll bg-black"
->
+<div class="preview">
   <canvas id="preview-canvas" class="max-w-full"></canvas>
 </div>
+
+<style>
+  .preview {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 80vh;
+    min-width: 80vw;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    overflow: scroll;
+    background-color: black;
+  }
+</style>

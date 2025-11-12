@@ -3,10 +3,24 @@
   import RedditPost from '$lib/views/Reddit/components/RedditPost.svelte'
 </script>
 
-<div
-  class="box-border flex w-screen flex-col items-center justify-center gap-4 bg-white p-4 font-sans text-black"
->
+<div class="reddit-homepage">
   {#each redditPosts as post}
     <RedditPost {...post}></RedditPost>
   {/each}
 </div>
+
+<style>
+  .reddit-homepage {
+    box-sizing: border-box;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background-color: white;
+    padding: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-background-text);
+  }
+</style>

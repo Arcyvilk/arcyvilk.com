@@ -16,14 +16,17 @@
     if (!shortcutLetter) return label
 
     const regex = new RegExp(shortcutLetter, 'gi')
-    return label.replace(regex, (match: string) => `<span class="underline">${match}</span>`)
+    return label.replace(
+      regex,
+      (match: string) => `<span style="text-decoration: underline">${match}</span>`
+    )
   })
 </script>
 
-<button class="menu-button" onclick={handleClick}>{@html highlighted}</button>
+<button class="menubutton" onclick={handleClick}>{@html highlighted}</button>
 
 <style>
-  .menu-button {
+  .menubutton {
     padding-inline: 12px;
     margin: 1px;
     border: 1px solid transparent;

@@ -32,19 +32,14 @@
   }
 </script>
 
-<div
-  transition:fade={{ duration: 200 }}
-  class="bg-desktop-bg text-background-text flex h-screen flex-col overflow-hidden"
->
-  <div
-    class="dialog-container relative flex flex-grow flex-col flex-wrap content-start gap-4 overflow-hidden p-4"
-  >
+<div class="desktop" transition:fade={{ duration: 200 }}>
+  <div class="__dialog_container_gsap_helper desktop__container">
     {#each desktopIcons as item}
       {#if !item.hidden}
         <FileSystemIcon
           {...item}
           isDraggable
-          bounds=".dialog-container"
+          bounds=".__dialog_container_gsap_helper"
           ondblclick={(event: MouseEvent) => {
             openWindow(event, item.id)
           }}
@@ -69,3 +64,28 @@
 
   <Taskbar {openWindowIds} />
 </div>
+
+<style>
+  .desktop {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-desktop-bg);
+    color: var(--color-background-text);
+  }
+
+  .desktop__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-content: start;
+    gap: 16px;
+
+    position: relative;
+    padding: 16px;
+    overflow: hidden;
+  }
+</style>
