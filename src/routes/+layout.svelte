@@ -7,6 +7,8 @@
 
   import '../styles/style.css'
 
+  export const prerender = true
+
   dayjs.extend(relativeTime)
   gsap.registerPlugin(Draggable)
 
