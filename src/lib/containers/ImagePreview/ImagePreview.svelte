@@ -41,7 +41,7 @@
 </script>
 
 <div class="preview">
-  <canvas id="preview-canvas" class="max-w-full"></canvas>
+  <canvas id="preview-canvas"></canvas>
 </div>
 
 <style>
@@ -55,5 +55,9 @@
     justify-content: start;
     overflow: scroll;
     background-color: black;
+  }
+
+  #preview-canvas {
+    max-width: 100%;
   }
 </style>

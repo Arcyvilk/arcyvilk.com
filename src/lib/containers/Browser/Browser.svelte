@@ -59,7 +59,8 @@
 <style>
   .browser__menu {
     display: flex;
-    padding-inline: 4px;
+    padding-inline: 8px;
+    padding-block: 4px;
   }
 
   .browser__address-bar {
@@ -73,6 +74,7 @@
     background-color: white;
     padding-inline: 8px;
     width: 100%;
+    height: 32px;
 
     border-width: 3px;
     border-style: solid;

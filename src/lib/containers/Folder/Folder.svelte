@@ -73,10 +73,11 @@
   }
 
   .folder__address-bar__input {
-    width: 100%;
-    height: 32px;
     background-color: white;
     padding-inline: 8px;
+    width: 100%;
+    height: 32px;
+
     border-width: 3px;
     border-style: solid;
 
