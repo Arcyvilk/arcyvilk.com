@@ -627,11 +627,6 @@
   resolved "https://registry.yarnpkg.com/@sveltejs/acorn-typescript/-/acorn-typescript-1.0.5.tgz#f518101d1b2e12ce80854f1cd850d3b9fb91d710"
   integrity sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==
 
-"@sveltejs/adapter-auto@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-auto/-/adapter-auto-6.1.0.tgz#614955b8a447eb92dac910cd1db245b82da4fb91"
-  integrity sha512-shOuLI5D2s+0zTv2ab5M5PqfknXqWbKi+0UwB9yLTRIdzsK1R93JOO8jNhIYSHdW+IYXIYnLniu+JZqXs7h9Wg==
-
 "@sveltejs/adapter-node@^5.3.2":
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-node/-/adapter-node-5.3.2.tgz#70a4fe12a3121ed936e911a05d1c50b9d74e8e02"
@@ -641,6 +636,11 @@
     "@rollup/plugin-json" "^6.1.0"
     "@rollup/plugin-node-resolve" "^16.0.0"
     rollup "^4.9.5"
+
+"@sveltejs/adapter-static@^3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-static/-/adapter-static-3.0.10.tgz#526ab78cd1d3a861dd0233e8ff34a204af40d595"
+  integrity sha512-7D9lYFWJmB7zxZyTE/qxjksvMqzMuYrrsyh1f4AlZqeZeACPRySjbC3aFiY55wb1tWUaKOQG9PVbm74JcN2Iew==
 
 "@sveltejs/kit@^2.37.0":
   version "2.37.0"
