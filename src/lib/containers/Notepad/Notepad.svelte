@@ -22,7 +22,6 @@
 
 <style>
   .notepad {
-    box-sizing: border-box;
     display: flex;
     flex: 1;
     flex-direction: column;

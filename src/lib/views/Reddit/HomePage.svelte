@@ -11,7 +11,6 @@
 
 <style>
   .reddit-homepage {
-    box-sizing: border-box;
     display: flex;
     width: 100vw;
     flex-direction: column;

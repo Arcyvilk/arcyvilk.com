@@ -30,7 +30,6 @@
     padding-inline: 12px;
     margin: 1px;
     border: 1px solid transparent;
-    box-sizing: border-box;
 
     &:hover {
       background-color: #b0b0b0;

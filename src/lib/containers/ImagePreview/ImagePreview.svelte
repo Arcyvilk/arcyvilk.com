@@ -46,7 +46,6 @@
 
 <style>
   .preview {
-    box-sizing: border-box;
     display: flex;
     min-height: 80vh;
     min-width: 80vw;

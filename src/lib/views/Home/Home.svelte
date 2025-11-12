@@ -7,7 +7,6 @@
 
 <style>
   .loading-screen {
-    box-sizing: border-box;
     height: 100vh;
     width: 100vw;
     background-color: black;
@@ -18,7 +17,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    box-sizing: border-box;
 
     background-size: contain;
     background-position: center;

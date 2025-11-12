@@ -78,7 +78,6 @@
 
 <style>
   .reddit-post {
-    box-sizing: border-box;
     display: grid;
     width: 100%;
     grid-template-columns: 64px 72px 1fr;
